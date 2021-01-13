@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2021-01-13T08:10:10.751Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="fa1fQDaqVZSeaH6R5cBH" version="14.1.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-01-13T08:10:27.975Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="R5PnW37dLhYr6-oO9O99" version="14.1.2" type="github">
   <diagram id="OEhobAqETvOdapS4N9l6" name="Page-1">
-    <mxGraphModel dx="719" dy="673" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1059" dy="739" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="UVmjL0It9Q5CvrIjIJqg-1" value="" style="shape=internalStorage;whiteSpace=wrap;html=1;dx=15;dy=15;rounded=1;arcSize=8;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="140" y="60" width="170" height="230" as="geometry" />
+        <mxCell id="JVKfqlb26yD9942Ung3X-1" value="안녕하세요!!!" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="350" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
