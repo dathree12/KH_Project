@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      section {
+        margin: 1rem auto;
+        width: 1500px;
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+      h2 {
+        display: inline-block;
+        background-color: yellowgreen;
+        color: darkgreen;
+        padding: 8px;
+        border-radius: 18px;
+      }
+      table {
+        border: 1px solid green;
+        border-collapse: collapse;
+        margin: 2rem auto;
+      }
+      td,
+      th {
+        border: 1px solid green;
+        width: 11rem;
+        height: 2rem;
+        text-align: center;
+      }
+      div {
+        padding: 1rem 1rem;
+        margin: 1rem 1rem;
+        /* 테두리 보여주기 위한 border. 사이즈 조정후 삭제할 것. */
+        border: 1px solid orangered;
+      }
+      #board_top {
+        display: flex;
+        justify-content: flex-end;
+      }
+      #board_top > * {
+        margin: 0 0.5rem;
+      }
+      #board_main {
+        display: flex;
+        padding: none;
+      }
+      #board_option {
+        flex: 1;
+        padding: 1rem 0;
+      }
+      #board_content {
+        flex: 5;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        justify-content: center;
+      }
+      hr {
+        border: 2px solid purple;
+        width: 80%;
+        margin: 0 auto;
+      }
+      .content {
+        padding: 0;
+        width: 11.7rem;
+        height: 12rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+      }
+      img {
+        border: 1px solid blue;
+        width: 185px;
+        height: 105px;
+      }
+    </style>
+    <title>Page3 - Board</title>
+  </head>
+  <body>
+    <section>
+      <div id="board_top">
+        <input type="text" />
+        <select name="board_sort" class="dropdown">
+          <option value="s_new" selected>최신순</option>
+          <option value="s_rating">별점순</option>
+          <option value="s_views">조회순</option>
+        </select>
+        <select name="board_view" class="dropdown">
+          <option value="v_10" selected>10개씩 보기</option>
+          <option value="v_20">20개씩 보기</option>
+        </select>
+      </div>
+      <hr />
+      <div id="board_main">
+        <div id="board_option">
+          <table>
+            <tr>
+              <th>채식 타입</th>
+            </tr>
+            <tr>
+              <td>
+                비건
+                <input type="checkbox" checked />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                락토/오보
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                페스코
+                <input type="checkbox" />
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <th>상황별</th>
+            </tr>
+            <tr>
+              <td>
+                모두선택
+                <input type="checkbox" checked />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                건강식
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                빠른요리
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                일상식사
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                다이어트
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                아침/점심
+                <input type="checkbox" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                저녁
+                <input type="checkbox" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="board_content">
+          <div id="content1" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content2" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content3" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content4" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content5" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content6" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content7" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content8" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content9" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div id="content10" class="content">
+            <img src="" alt="food img" />
+            <span>tag1</span><span>tag2</span><br />
+            description blah blah blah blah
+          </div>
+          <div class="page">
+            <button><</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>10</button>
+            <button>></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
