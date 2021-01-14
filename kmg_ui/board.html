@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/semi.css">
+</head>
+<body>
+    <!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/views/common/header.jsp"%> -->
+
+<section id="content">
+	<div id='board-container'>
+        <!-- 대표 이미지 가져와 출력 -->
+        <div id="food_image">
+            <img src="image/food6.jpg" >
+        </div>
+		<div>
+			<h2 id="title" align="center">레시피 제목</h2>
+			<p align="right">비건종류</p>
+			<hr>
+		</div>
+
+		<div id="date">
+			<a align="left">레시피 작성 날짜</a> 
+			<a class="num">댓글수</a> <img src="image/1.JPG" class="num"> 
+			<a class="num">추천수 </a> <img src="image/2.JPG" class="num">
+			<!-- 추천 댓글 아이콘 구하기  -->
+		</div>
+
+		<hr>
+		<br>
+
+		<div id="write">레시피 작성 부분</div>
+
+		<br>
+		<hr>
+		
+        <!-- 업로드한 이미지를 가져온다. -->
+        <div id="food_images">
+            <h2>완성사진</h2>
+            <img src="image/food1.jpg" width="300" height="300">
+            <img src="image/food2.jpg" width="300" height="300">
+            <img src="image/food3.jpg" width="300" height="300">
+        </div>
+        
+        <hr>
+
+        <!-- 추천버튼 스크랩 버튼 -->
+		<div id="icon1">
+			<button onclick=""><img src="image\reco.JPG" ></button> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<button onclick=""><img src="image\scrap.JPG" ></button> 
+		</div>
+
+		<br>
+
+		<div id=reply>
+			<strong>요리후기</strong> &nbsp;&nbsp; <a>댓글수</a> 
+			<br><br>
+
+			<table id="tbl-comment">
+			<!-- for문을 사용하여 댓글수만큼 출럭 가능하게 구현하기 -->
+				<tr class="level1">
+					<td><sub class="comment-writer">원두는참지않아 </sub> 
+					<sub class="comment-date">2020-12-24 20:09:07</sub>
+					 <br><br> 
+						애들이 진짜 맛있데요 7살 10살인데 이제까지 먹은 것 중에 젤 맛있데요 에어프라이어로 치킨 곧잘
+						해줬었는데 앞으로는 이렇게만 해달라네요 후기도 처음 써봅니다ㅎㅎㅎ 시켜먹는 치킨보다 맛있데요 다른 레시피로 닭을
+						삶았어요 월계수잎 넣고 맛술 생강 넣어 삶았어요 저는 대파가 없어서 물기 없을까바 물 종이컵으로 반 정도 넣었고 씨 뺀
+						청량고추 하나 넣고 졸였어요 이거 쓰는데도 와와 하며 먹네요 정말 레시피 감사드려요 
+					<br><br>
+					</td>
+				</tr>
+
+				<tr class="level1">
+					<td><sub class="comment-writer">빛과소금찬양 </sub> 
+					<sub class="comment-date">2020-11-12 22:24:29</sub> 
+					<br><br> 
+					아이들이 좋아하는 맛이에요 너무 맛있고 간단하고 좋았어요 또 해먹을 거랍니다 강추해요^♡^ 
+					<br><br>
+					</td>
+				</tr>
+			</table>
+
+
+			<!-- 별점은 다른 라이브러리 사용 -->
+			<p id="star_grade">
+				<a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a>
+			</p>
+
+
+            <!-- 댓글 등록 부분참조 -->
+			<div id="comment-container">
+				<form action="" method="post" id="reply_form">
+					<input type="hidden" name="boardNo" value=" %>"> 
+					<input type="hidden" name="writer" value="">
+					<textarea name="content" cols="110" rows="6" onfocus="checkLogin()"></textarea>
+					<button type="submit" id="btn-insert">등록</button>
+				</form>
+			</div>
+		</div>
+		
+		<br><br><br>
+		
+		<div id="other-recommend">
+			<h3>다른 추천 메뉴</h3>
+		</div>
+		
+	</div>
+	
+    <!-- 별점 스크립트 -->
+	<script>
+		$('#star_grade a').click(function() {
+			$(this).parent().children("a").removeClass("on"); /* 별점의 on 클래스 전부 제거 */
+			$(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
+			return false;
+		});
+	</script>
+</section>
+
+
+<!-- <%@ include file="/views/common/footer.jsp"%> -->
+
+</body>
+</html>
