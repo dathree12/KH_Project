@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#mypage-sidebar {
+		width: 150px;
+		height: 800px;
+        padding: 5px;
+        margin-bottom: 5px;
+        float: left;
+        border: 1px solid #bcbcbc;
+		}
+		
+		section {
+        margin: 1rem auto;
+		width: 800px;
+		height: 1000px;
+        border: 1px solid black;
+	  }
+	  
+	  #mypage-header {
+		padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      
+      #info-modify {
+        width: 600px;
+		height: 800px;
+		float: right;
+		padding: 5px;
+        margin-bottom: 5px;
+        border: 1px solid #bcbcbc;
+        text-align: center;
+      }
+      .form-group {
+          padding: 25px;
+      }
+	</style>
+</head>
+<body>
+	<section>
+		<!--마이페이지 제목섹션-->
+		<div id="mypage-header">
+			<h1>마이페이지</h1>
+		</div>
+		<!-- 사이드바 메뉴 (추후에 부트스트랩 등등 이용 ) -->
+		<div id="mypage-sidebar"> 
+			<ul>
+				<li>마이페이지홈</li>
+				<li>레시피스크랩</li>
+				<li>회원정보수정</li>
+				<li>회원탈퇴</li>
+			</ul>
+		</div>
+		<div id="info-modify">
+            <div>
+                <h2>회원정보수정</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">아이디</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="아이디를 입력하세요(추후아이디고정및 수정불가)">
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">암호</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="암호">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">이메일 주소</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="이메일을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">이름</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="이름을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">닉네임</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="닉네임을 입력하세요">
+                </div>
+
+                <button type="submit" class="btn btn-default">수정하기</button>
+                <button type="submit" class="btn btn-default">취소하기</button>
+              </form>
+
+        </div>
+	</section>
+
+</body>
+</html>
