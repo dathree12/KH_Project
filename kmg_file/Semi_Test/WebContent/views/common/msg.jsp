@@ -22,7 +22,7 @@
 		}
 		
 		// 페이지 이동
-		location.replace("<%= request.getContextPath()%><%=location%>");	
+		location.replace("<%= request.getContextPath()%><%= location%>");	
 	</script>
 </body>
 </html>

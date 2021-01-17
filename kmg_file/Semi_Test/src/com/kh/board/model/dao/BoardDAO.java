@@ -21,7 +21,7 @@ public class BoardDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,DEFAULT,DEFAULT,?,?,DEFAULT,DEFAULT, ?, ?, ?)");
+					"INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,DEFAULT,DEFAULT,?,?,DEFAULT,DEFAULT, ?, ?, ?, ?, DEFAULT)");
 			
 			pstmt.setString(1, board.getBoardTitle());
 			pstmt.setString(2, board.getBoardContent());
@@ -31,7 +31,8 @@ public class BoardDAO {
 			pstmt.setString(6, board.getImagefile1());
 			pstmt.setString(7, board.getImagefile2());
 			pstmt.setString(8, board.getImagefile3());
-		
+			pstmt.setInt(9, board.getBoardWriteNo());
+			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -73,8 +74,24 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Board board = null;
-		String query = "SELECT * FROM BOARD WHERE BOARD_NO = ?";
-			  
+		String query =  "SELECT  B.BOARD_NO, "
+				+         "B.BOARD_TITLE, "
+				+         "M.USER_ID, "
+				+         "B.BOARD_READCOUNT, "
+				+         "B.BOARD_IMAGEF_FILE, "
+				+         "B.BOARD_CONTENT, "
+				+         "B.BOARD_CREATE_DATE, "
+				+		  "B.VEGANLIST, "
+				+ 		  "B.SITUATION, "
+				+		  "B.IMAGE_FILE1, "
+				+		  "B.IMAGE_FILE2, "
+				+		  "B.IMAGE_FILE3, "
+				+         "BOARD_MODIFY_DATE, "
+				+		  "B.RECOMMEND "
+				+ "FROM BOARD B "
+				+ "JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
+				+ "WHERE B.STATUS = 'Y' AND B.BOARD_NO=?";
+		
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -88,6 +105,7 @@ public class BoardDAO {
 				
 				board.setBoardNo(rs.getInt("BOARD_NO"));
 				board.setBoardTitle(rs.getString("BOARD_TITLE"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setBoardContent(rs.getString("BOARD_CONTENT"));
 				board.setBoardImageFile(rs.getNString("BOARD_IMAGEF_FILE"));
 				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
@@ -97,6 +115,8 @@ public class BoardDAO {
 				board.setImagefile1(rs.getString("IMAGE_FILE1"));
 				board.setImagefile2(rs.getString("IMAGE_FILE2"));
 				board.setImagefile3(rs.getString("IMAGE_FILE3"));
+				board.setRecommned(rs.getInt("RECOMMEND"));
+				board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
 			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -255,6 +275,28 @@ public class BoardDAO {
 			
 			pstmt.setString(1, status);
 			pstmt.setInt(2, replyNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
+
+	public int updateBoardRecommend(Connection conn, Board board) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement("UPDATE BOARD SET RECOMMEND=? WHERE BOARD_NO=?");
+			
+			board.setRecommned(board.getRecommned()+1);
+			
+			pstmt.setInt(1, board.getRecommned());
+			pstmt.setInt(2, board.getBoardNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

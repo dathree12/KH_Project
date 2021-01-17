@@ -15,6 +15,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Board;
 import com.kh.common.util.FileRename;
+import com.kh.member.model.vo.Member;
 //import com.kh.mvc.common.util.FileRename;
 //import com.kh.mvc.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
@@ -51,7 +52,9 @@ public class BoardWriteServlet extends HttpServlet {
 		String content = mr.getParameter("content");	
 		String veganlist = mr.getParameter("veganlist");
 		String situation[] = mr.getParameterValues("situation");
+		String writer = mr.getParameter("writer");
 		
+		//배열값을 문자열로 변환 
 		String str = Arrays.toString(situation);
 		
 		
@@ -61,33 +64,44 @@ public class BoardWriteServlet extends HttpServlet {
 		String imagefile2 = mr.getOriginalFileName("imagefile2");		
 		String imagefile3 = mr.getOriginalFileName("imagefile3");		
 	
-//		// 로그인 안된 사용자나 다른 사용자가 접근해서 게시글 작성이 가능하기 때문에 로그인 체크를 위한 로그인 정보
-//		HttpSession session = request.getSession(false);
-//		Member loginMember = session != null ? (Member)session.getAttribute("loginMember") : null;
-		
-		Board board = new Board();
+
+		// 로그인 안된 사용자나 다른 사용자가 접근해서 게시글 작성이 가능하기 때문에 로그인 체크를 위한 로그인 정보
+		HttpSession session = request.getSession(false);
+		Member loginMember = session != null ? (Member)session.getAttribute("loginMember") : null;
 				
-		board.setBoardTitle(title);
-		board.setBoardContent(content);
-		board.setBoardImageFile(boardImageFile);
-		board.setVeganlist(veganlist);
-		board.setSituaion(str);
-		board.setImagefile1(imagefile1);
-		board.setImagefile2(imagefile2);
-		board.setImagefile3(imagefile3);
+		System.out.println(loginMember);
 			
+		if (loginMember != null) {			
+			if(loginMember.getUserId().equals(writer)) {
+				Board board = new Board();
 				
-		System.out.println(board);
+				board.setBoardTitle(title);
+				board.setBoardContent(content);
+				board.setBoardImageFile(boardImageFile);
+				board.setVeganlist(veganlist);
+				board.setSituaion(str);
+				board.setImagefile1(imagefile1);
+				board.setImagefile2(imagefile2);
+				board.setImagefile3(imagefile3);
+				board.setBoardWriteNo(loginMember.getUserNo());
 				
-		int result = new BoardService().saveBoard(board);
-		
-		if(result > 0) {
-			msg = "게시글 등록 성공";						
+				System.out.println(board);
+				
+				int result = new BoardService().saveBoard(board);
+				
+				if(result > 0) {
+					msg = "게시글 등록 성공";			
+					
+				} else {
+					msg = "게시글 등록 실패";			
+				}
+			} else {
+				msg = "잘못된 접근입니다.";
+			}
 		} else {
-			msg = "게시글 등록 실패";			
+			msg = "로그인 진행 후 작성해주세요. ";
 		}
-			
-			
+	
 		request.setAttribute("msg", msg);
 		request.setAttribute("location", "");
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
