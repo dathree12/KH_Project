@@ -29,8 +29,47 @@ public class Board {
 	
 	private String imagefile3;
 	
+	private int boardWriteNo;
+	
+	private String userId;	
+	
+	private int recommned;
+	
 	public Board() {
 	}
+
+	
+	
+	public int getRecommned() {
+		return recommned;
+	}
+
+
+	public void setRecommned(int recommned) {
+		this.recommned = recommned;
+	}
+
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+	public int getBoardWriteNo() {
+		return boardWriteNo;
+	}
+
+
+	public void setBoardWriteNo(int boardWriteNo) {
+		this.boardWriteNo = boardWriteNo;
+	}
+
 
 	public int getBoardNo() {
 		return boardNo;
@@ -149,18 +188,21 @@ public class Board {
 		this.imagefile3 = imagefile3;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", boardImageFile=" + boardImageFile + ", boardCreateDate=" + boardCreateDate + ", boardModifyDate="
 				+ boardModifyDate + ", veganlist=" + veganlist + ", situation=" + situation + ", boardReadCount="
 				+ boardReadCount + ", status=" + status + ", imagefile1=" + imagefile1 + ", imagefile2=" + imagefile2
-				+ ", imagefile3=" + imagefile3 + "]";
+				+ ", imagefile3=" + imagefile3 + ", boardWriteNo=" + boardWriteNo + "]";
 	}
+
+
 
 	public Board(int boardNo, String boardTitle, String boardContent, String boardImageFile, Date boardCreateDate,
 			Date boardModifyDate, String veganlist, String situation, int boardReadCount, String status,
-			String imagefile1, String imagefile2, String imagefile3) {
+			String imagefile1, String imagefile2, String imagefile3, int boardWriteNo, String userId, int recommned) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -175,10 +217,17 @@ public class Board {
 		this.imagefile1 = imagefile1;
 		this.imagefile2 = imagefile2;
 		this.imagefile3 = imagefile3;
+		this.boardWriteNo = boardWriteNo;
+		this.userId = userId;
+		this.recommned = recommned;
 	}
+
 
 	
 	
+
 	
+	
+		
 	
 }

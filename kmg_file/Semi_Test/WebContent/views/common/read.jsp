@@ -21,10 +21,10 @@
 		<div>
 			<h2 id="title" align="center"><%=board.getBoardTitle() %></h2>
 			<div align="right">
-			<table >
+			<table>
 				<tr>
 				<td>채식주의 종류 :</td>
-				<td> <%=board.getVeganlist() %></td>
+				<td> [<%=board.getVeganlist()%>]</td>
 				</tr>
 				<tr>
 				<td>상황 카테고리 :</td>
@@ -40,7 +40,7 @@
 			<a align="left"><%=board.getBoardCreateDate()%></a> 
 			<a class="num"><%=board.getBoardReadCount()%></a> <img src="<%=request.getContextPath()%>/image/3.JPG" class="num"> 
 			<a class="num"><%=replies.size()%></a> <img src="<%=request.getContextPath()%>/image/1.JPG" class="num"> 
-			<a class="num">추천수 </a> <img src="<%=request.getContextPath()%>/image/2.JPG" class="num">
+			<a class="num"><%=board.getRecommned()%></a> <img src="<%=request.getContextPath()%>/image/2.JPG" class="num">
 			<!-- 추천 댓글 아이콘 구하기  -->
 		</div>
 
@@ -64,13 +64,17 @@
 
         <!-- 추천버튼 스크랩 버튼 -->
 		<div id="icon1">
-			<button onclick=""><img src="<%=request.getContextPath()%>/image/reco.JPG" ></button> 
+			<button onclick="boardrecommend()"><img src="<%=request.getContextPath()%>/image/reco.JPG" ></button> 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<button onclick=""><img src="<%=request.getContextPath()%>/image/scrap.JPG" ></button> 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<span id="del"><button onclick="updateBoard()" id="submit">수정</button></span>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<span id="del"><button onclick="deleteBoard()" id="submit2">삭제</button></span>
+		
+		
+			<% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()))) { %> 
+				<span id="del"><button onclick="updateBoard()" id="submit">수정</button></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<span id="del"><button onclick="deleteBoard()" id="submit2">삭제</button></span>
+			 <%}%>
 		</div>
 
 		<br>
@@ -96,16 +100,19 @@
 
 
 			<!-- 별점은 다른 라이브러리 사용 -->
-			<p id="star_grade">
-				<a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a>
+			<p class="star_rating">
+   			 <a href="#" onclick="abc(this)">★</a>
+		     <a href="#" onclick="abc(this)">★</a>
+		     <a href="#" onclick="abc(this)">★</a>
+		     <a href="#">★</a>
+		     <a href="#">★</a>
 			</p>
-
 
             <!-- 댓글 등록 부분참조 -->
 			<div id="comment-container">
 				<form action="<%=request.getContextPath()%>/board/reply" method="post" id="reply_form">
 					<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
-					<textarea name="content" cols="110" rows="6"></textarea>
+					<textarea name="content" cols="110" rows="6" onfocus="checklogin()"></textarea>
 					<button type="submit" id="btn-insert">등록</button>
 				</form>
 			</div>
@@ -115,7 +122,49 @@
 		
 		<div id="other-recommend">
 			<h3>다른 추천 메뉴</h3>
+			<div class="slideshow-container">
+			
+				<div class="mySlides fade2">
+					<span class="prev" onclick="plusSlides(-1)">❮</span> 
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food1.jpg">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food2.jpg">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food3.jpg">
+					<span class="next" onclick="plusSlides(1)">❯</span>
+				
+				</div>
+			
+				
+				<div class="mySlides fade2">
+					<span class="prev" onclick="plusSlides(-1)">❮</span> 
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food2.jpg">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food3.jpg">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food1.jpg">
+					<span class="next" onclick="plusSlides(1)">❯</span>
+					
+				</div>
+		
+				<div class="mySlides fade2">
+					<span class="prev" onclick="plusSlides(-1)">❮</span> 
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food3.jpg">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food1.jpg">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food2.jpg">
+					<span class="next" onclick="plusSlides(1)">❯</span>
+					
+				</div>
+				
+				<div style="text-align: center">
+				<span class="dot" onclick="currentSlide(1)"></span> 
+				<span class="dot" onclick="currentSlide(2)"></span> 
+				<span class="dot" onclick="currentSlide(3)"></span>
+				</div>
 		</div>
+	</div>
 		
 	</div>
 	
@@ -130,6 +179,57 @@
 			}
 		}
 		
+		function boardrecommend(){		
+			location.replace('<%=request.getContextPath()%>/board/recommend?boardNo=<%=board.getBoardNo()%>');
+		}
+		
+		function checklogin() {
+			if(<%= loginMember == null %>){
+				alert("로그인 후 이용해주세요!");
+				$("#userId").focus();
+			}
+		}
+		
+		$( ".star_rating a" ).click(function() {
+		    $(this).parent().children("a").removeClass("on");
+		    $(this).addClass("on").prevAll("a").addClass("on");
+		    return false;
+		});
+		
+		var slideIndex = 1;
+
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+			showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+			showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			if (n > slides.length) {
+				slideIndex = 1
+			}
+			if (n < 1) {
+				slideIndex = slides.length
+			}
+
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+
+			slides[slideIndex - 1].style.display = "block";
+			dots[slideIndex - 1].className += " active";
+		}
 	</script>
  
 </section>

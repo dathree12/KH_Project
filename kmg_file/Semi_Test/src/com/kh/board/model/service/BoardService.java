@@ -127,5 +127,23 @@ public class BoardService {
 		return result;
 	}
 	
+
+	public int boardRecommend(int boardNo) {
+		Connection conn = getConnection();
+		Board board = new BoardDAO().findBoardByNo(conn, boardNo);
+		
+		int result = new BoardDAO().updateBoardRecommend(conn, board);
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;
+	}
+	
 }
 	

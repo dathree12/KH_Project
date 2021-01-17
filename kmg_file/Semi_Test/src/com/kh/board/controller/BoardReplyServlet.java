@@ -31,21 +31,29 @@ public class BoardReplyServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String writer = request.getParameter("writer");
 		
-		
-				BoardReply reply = new BoardReply();			
-				
-				reply.setBoardNo(boardNo);
-				reply.setReplyContent(content);
-				reply.setReplyWriterNo(loginMember.getUserNo());
-				
-				int result = new BoardService().saveBoardReply(reply);
-				
+		if(loginMember != null) {
+			if(loginMember.getUserId().equals(writer)) {
+			BoardReply reply = new BoardReply();			
+			
+			reply.setBoardNo(boardNo);
+			reply.setReplyContent(content);
+			reply.setReplyWriterNo(loginMember.getUserNo());
+			
+			int result = new BoardService().saveBoardReply(reply);
+			
 				if(result > 0) {
 					msg = "댓글 등록 성공";			
 					
 				} else {
 					msg = "댓글 등록 실패";			
 				}
+			}else {
+				msg = "본인은 작성이 불가능합니다..";
+			}	
+		}else {
+			msg = "로그인 진행 후 작성해주세요. ";
+		}
+				
 			
 		request.setAttribute("msg", msg);
 		request.setAttribute("location", "/board/view?boardNo=" + boardNo);		
