@@ -37,7 +37,7 @@ public class BoardReplyServlet extends HttpServlet {
 			
 			reply.setBoardNo(boardNo);
 			reply.setReplyContent(content);
-			reply.setReplyWriterNo(loginMember.getUserNo());
+			reply.setReplyWriterNo(loginMember.getUserNum());
 			
 			int result = new BoardService().saveBoardReply(reply);
 			
@@ -48,7 +48,7 @@ public class BoardReplyServlet extends HttpServlet {
 					msg = "댓글 등록 실패";			
 				}
 			}else {
-				msg = "잘못된 접근입니다..";
+				msg = "본인은 작성이 불가능합니다..";
 			}	
 		}else {
 			msg = "로그인 진행 후 작성해주세요. ";

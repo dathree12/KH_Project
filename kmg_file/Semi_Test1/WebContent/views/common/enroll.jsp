@@ -1,18 +1,17 @@
-<%@page import="com.kh.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <% 
- 	Board board = (Board)request.getAttribute("board");
- %>
-  
-<%@ include file="/views/common/header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="/views/common/header.jsp"%>
+	
 <section id="content">
-	<form action='<%=request.getContextPath()%>/board/update' method="post">
-		<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
+	<form action='<%=request.getContextPath() %>/board/write' method="post" enctype="multipart/form-data">
 		<table id='board-table'>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" id="title" name="title" value="<%= board.getBoardTitle() %>"></td>
+				<td><input type="text" id="title" name="title"></td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" id="title" name="writer" value="<%=loginMember.getUserId()%>" readonly></td>
 			</tr>
 			<tr>
 				<th>비건종류</th>
@@ -36,11 +35,11 @@
 			</tr>
 			<tr>
 				<th>대표 사진</th>
-				<td><input type="file" name="boardImageFile"><%=board.getBoardImageFile()%></td>
+				<td><input type="file" name="boardImageFile"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" cols="130" rows="50" id="text"><%=board.getBoardContent() %></textarea></td>
+				<td><textarea name="content" cols="130" rows="50" id="text"></textarea></td>
 			</tr>
 			<tr>
 				<th>완성 사진</th>
@@ -50,17 +49,26 @@
 		<br><br>
 		<div id="write_1">
 			<div>
-			<input type="submit" value="수정" id="button1">
+			<input type="submit" value="등록" id="button1">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="취소" id="button1">
+			<input type="reset" value="리셋" id="button1">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="button" id="button1" onclick="history.back();">취소</button>
 			</div>
+		
 		</div>
 		
 		</form>
 
-<script type="text/javascript">
 
-$('#text').val().replace(/\n/g, "<br>")</script>
+		<script type="text/javascript">
+			$('#text').val().replace(/\n/g, "<br>")
+		</script>
 	
 </section>
-<%@ include file="/views/common/footer.jsp" %>
+	
+
+	
+	
+	
+<%@ include file="/views/common/footer.jsp"%>
