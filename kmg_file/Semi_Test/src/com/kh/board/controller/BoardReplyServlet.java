@@ -48,7 +48,7 @@ public class BoardReplyServlet extends HttpServlet {
 					msg = "댓글 등록 실패";			
 				}
 			}else {
-				msg = "본인은 작성이 불가능합니다..";
+				msg = "잘못된 접근입니다..";
 			}	
 		}else {
 			msg = "로그인 진행 후 작성해주세요. ";
