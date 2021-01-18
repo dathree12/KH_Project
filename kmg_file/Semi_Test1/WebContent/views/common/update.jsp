@@ -18,9 +18,9 @@
 				<th>비건종류</th>
 				<td>
 					<div action="" id="vegan-box1">
-						<input type="radio" id="vegan-check" value="vegan" name="veganlist">비건 &nbsp; <input type="radio" id="vegan-check" value="lacto" name="veganlist">락토 &nbsp; 
-						<input type="radio" id="vegan-check" value="ovo" name="veganlist">오보 &nbsp; <input type="radio" id="vegan-check" value="lacto-ovo" name="veganlist">락토오보 &nbsp;
-						<input type="radio" id="vegan-check" value="pesco" name="veganlist">페스코 &nbsp; 
+						<input type="radio" id="vegan-check" value="비건" name="veganlist">비건 &nbsp; <input type="radio" id="vegan-check" value="락토 베지테리언" name="veganlist">락토 &nbsp; 
+						<input type="radio" id="vegan-check" value="오보 베지테리언" name="veganlist">오보 &nbsp; <input type="radio" id="vegan-check" value="락토 오보 베지테리언" name="veganlist">락토오보 &nbsp;
+						<input type="radio" id="vegan-check" value="페스코 베지테리언" name="veganlist">페스코 &nbsp; 
 					</div>
 				</td>
 			</tr>

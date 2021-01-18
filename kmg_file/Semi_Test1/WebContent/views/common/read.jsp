@@ -89,7 +89,9 @@
 			<tr class="level1">
 					<td><sub class="comment-writer"><%=reply.getUserId()%> </sub> 
 					<sub class="comment-date"><%=reply.getReplyCreateDate()%></sub>
+					<% if(loginMember != null && (loginMember.getUserId().equals(reply.getUserId()))) { %> 
 					<a id="deletereply" href="<%=request.getContextPath()%>/board/deletereply?replyNo=<%=reply.getReplyNo()%>">삭제</a>
+					 <%}%>
 					 <br><br> 
 						<%=reply.getReplyContent()%>
 					<br><br>
