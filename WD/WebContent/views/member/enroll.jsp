@@ -73,7 +73,7 @@
 				}else {
 					console.log("pass-false");
 					$("#validatePwd").text("패스워드가 일치하지 않습니다.").css("color","red");
-					$("#pass2").val("");
+					$("#pwd2").val("");
 				}
 			}
 		});
