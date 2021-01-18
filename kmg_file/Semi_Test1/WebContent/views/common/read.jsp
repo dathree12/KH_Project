@@ -70,11 +70,10 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		
 		
-			<% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()))) { %> 
 				<span id="del"><button onclick="updateBoard()" id="submit">수정</button></span>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				<span id="del"><button onclick="deleteBoard()" id="submit2">삭제</button></span>
-			 <%}%>
+			
 		</div>
 
 		<br>
@@ -89,9 +88,7 @@
 			<tr class="level1">
 					<td><sub class="comment-writer"><%=reply.getUserId()%> </sub> 
 					<sub class="comment-date"><%=reply.getReplyCreateDate()%></sub>
-					<% if(loginMember != null && (loginMember.getUserId().equals(reply.getUserId()))) { %> 
 					<a id="deletereply" href="<%=request.getContextPath()%>/board/deletereply?replyNo=<%=reply.getReplyNo()%>">삭제</a>
-					 <%}%>
 					 <br><br> 
 						<%=reply.getReplyContent()%>
 					<br><br>
