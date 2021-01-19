@@ -97,6 +97,6 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 				<li id="myMenuScrap">레시피스크랩</li>
 				<li id="myMenuPassword" onclick="location.href = '<%= request.getContextPath() %>/mypage/updatepwd';">비밀번호 변경</li>
 				<li id="myMenuUpdate" onclick="location.href = '<%= request.getContextPath() %>/mypage/update?userId=<%= loginMember.getUserId() %>';">회원정보 수정</li>
-				<li id="myMenuDelete">회원탈퇴</li>
+				<li id="myMenuDelete" onclick="location.href = '<%= request.getContextPath() %>/mypage/delete';">회원탈퇴</li>
 			</ul>
 		</div>

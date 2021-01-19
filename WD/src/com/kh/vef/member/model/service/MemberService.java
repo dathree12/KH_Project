@@ -87,9 +87,9 @@ public class MemberService {
 		return result;
 	}
 
-	public int deleteMember(String id) {
+	public int deleteMember(String id, String pwd) {
 		Connection conn = getConnection();
-		int result = dao.updateMemberStatus(conn, id, "N");
+		int result = dao.updateMemberStatus(conn, id, pwd, "N");
 		
 		if (result > 0) {
 			commit(conn);

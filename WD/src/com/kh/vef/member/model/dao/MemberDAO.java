@@ -156,15 +156,16 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int updateMemberStatus(Connection conn, String id, String status) {
+	public int updateMemberStatus(Connection conn, String id, String pwd, String status) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		try {
-			pstmt = conn.prepareStatement("UPDATE MEMBER SET STATUS=? WHERE USER_ID=?");
+			pstmt = conn.prepareStatement("UPDATE MEMBER SET STATUS=? WHERE USER_ID=? AND USER_PWD=?");
 			
 			pstmt.setString(1, status);
 			pstmt.setString(2, id);
+			pstmt.setString(3, pwd);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -175,13 +176,4 @@ public class MemberDAO {
 				
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
