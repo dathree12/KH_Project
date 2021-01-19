@@ -138,12 +138,12 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			pstmt = conn.prepareStatement(
-     "UPDATE MEMBER SET USER_NAME=?,PHONE=?,EMAIL=?,ADDRESS=?,HOBBY=?,MODIFY_DATE=SYSDATE WHERE USER_ID=?");
+			pstmt = conn.prepareStatement("UPDATE MEMBER SET USER_NAME=?,USER_EMAIL=?,VEG_TYPE=? WHERE USER_ID=?");
 			
 			pstmt.setString(1, member.getUserName());
-			pstmt.setString(3, member.getEmail());
-			pstmt.setString(6, member.getUserId());				
+			pstmt.setString(2, member.getEmail());
+			pstmt.setString(3, member.getVegType());
+			pstmt.setString(4, member.getUserId());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

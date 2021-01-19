@@ -10,6 +10,9 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style>
+		#hiddenId {
+			display: none;
+		}
 
 		#mypage-sidebar {
 		width: 150px;
@@ -20,7 +23,7 @@ Member loginMember = (Member)session.getAttribute("loginMember");
         border: 1px solid #bcbcbc;
 		}
 		
-		section {
+		.container {
         margin: 1rem auto;
 		width: 800px;
 		height: 1000px;
@@ -82,7 +85,7 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-	<section>
+	<section class="container">
 		<!--마이페이지 제목섹션-->
 		<div id="mypage-header">
 			<h1>마이페이지</h1>
@@ -92,7 +95,7 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 			<ul>
 				<li id="myMenuHome" onclick="location.href = '<%= request.getContextPath() %>/mypage/mypagehome';">마이페이지홈</li>
 				<li id="myMenuScrap">레시피스크랩</li>
-				<li id="myMenuEdit" onclick="location.href = '<%= request.getContextPath() %>/mypage/edit?userId=<%= loginMember.getUserId() %>';">회원정보수정</li>
+				<li id="myMenuUpdate" onclick="location.href = '<%= request.getContextPath() %>/mypage/update?userId=<%= loginMember.getUserId() %>';">회원정보수정</li>
 				<li id="myMenuDelete">회원탈퇴</li>
 			</ul>
 		</div>
