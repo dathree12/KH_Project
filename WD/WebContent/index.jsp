@@ -15,7 +15,7 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 <input type="button" value="로그인" onclick="location.href = '<%= request.getContextPath() %>/member/login';">
 <input type="button" value="회원가입" onclick="location.href = '<%= request.getContextPath() %>/member/enroll';">
 <% } else { %>
-<p><%= loginMember.getUserName() %> 님 안녕하세요.<p> <br>
+<p><%= loginMember.getUserId() %> 님 안녕하세요.<p> <br>
 <input type="button" value="마이페이지" onclick="location.href = '<%= request.getContextPath() %>/mypage/mypagehome';">
 <input type="button" value="로그아웃" onclick="location.replace('<%= request.getContextPath() %>/member/logout');">
 <% } %>

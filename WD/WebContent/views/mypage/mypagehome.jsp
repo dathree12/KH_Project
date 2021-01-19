@@ -26,10 +26,6 @@
 	<td><%= loginMember.getEmail() %></td>
 </tr>
 <tr>
-	<th>닉네임</th>
-	<td><%= loginMember.getUserName() %></td>
-</tr>
-<tr>
 	<th>선호채식</th>
 	<td id="vtPrint"></td>
 </tr>

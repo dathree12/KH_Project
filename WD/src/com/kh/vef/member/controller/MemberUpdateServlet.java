@@ -33,7 +33,6 @@ public class MemberUpdateServlet extends HttpServlet {
 		int result = 0;
 		Member member = new Member();
 		
-		member.setUserName(request.getParameter("userName"));
 		member.setEmail(request.getParameter("userEmail"));
 		member.setVegType(request.getParameter("vegType"));
 		member.setUserId(request.getParameter("userId"));

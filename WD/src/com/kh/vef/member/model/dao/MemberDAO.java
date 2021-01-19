@@ -35,7 +35,6 @@ public class MemberDAO {
 						rset.getString("USER_ID"),
 						rset.getString("USER_PWD"),
 						rset.getString("USER_EMAIL"),
-						rset.getString("USER_NAME"),
 						rset.getDate("ENROLL_DATE"),
 						rset.getString("VEG_TYPE"),
 						rset.getString("USER_ROLE"),
@@ -57,13 +56,12 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;		
 		
 		try {			
-			pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_USER_NUM.NEXTVAL, ?, ?, ?, ?, SYSDATE, ?, 'ROLE_USER', DEFAULT)");
+			pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_USER_NUM.NEXTVAL, ?, ?, ?, SYSDATE, ?, 'ROLE_USER', DEFAULT)");
 			
 			pstmt.setString(1, member.getUserId());
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getEmail());
-			pstmt.setString(4, member.getUserName());
-			pstmt.setString(5, member.getVegType());
+			pstmt.setString(4, member.getVegType());
 			
 			result = pstmt.executeUpdate();
 			
@@ -96,7 +94,6 @@ public class MemberDAO {
 						rset.getString("USER_ID"),
 						rset.getString("USER_PWD"),
 						rset.getString("USER_EMAIL"),
-						rset.getString("USER_NAME"),
 						rset.getDate("ENROLL_DATE"),
 						rset.getString("VEG_TYPE"),
 						rset.getString("USER_ROLE"),
@@ -139,12 +136,11 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			pstmt = conn.prepareStatement("UPDATE MEMBER SET USER_NAME=?,USER_EMAIL=?,VEG_TYPE=? WHERE USER_ID=?");
+			pstmt = conn.prepareStatement("UPDATE MEMBER SET USER_EMAIL=?,VEG_TYPE=? WHERE USER_ID=?");
 			
-			pstmt.setString(1, member.getUserName());
-			pstmt.setString(2, member.getEmail());
-			pstmt.setString(3, member.getVegType());
-			pstmt.setString(4, member.getUserId());
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getVegType());
+			pstmt.setString(3, member.getUserId());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

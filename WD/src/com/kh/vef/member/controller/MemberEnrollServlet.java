@@ -35,7 +35,6 @@ public class MemberEnrollServlet extends HttpServlet {
 		member.setUserId(request.getParameter("userId"));
 		member.setUserPwd(request.getParameter("userPwd"));
 		member.setEmail(request.getParameter("userEmail"));
-		member.setUserName(request.getParameter("userName"));
 		member.setVegType(request.getParameter("vegType"));
 		
 		System.out.println(member);		
