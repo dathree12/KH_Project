@@ -10,7 +10,7 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style>
-		#hiddenId {
+		.hidden {
 			display: none;
 		}
 
@@ -95,7 +95,8 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 			<ul>
 				<li id="myMenuHome" onclick="location.href = '<%= request.getContextPath() %>/mypage/mypagehome';">마이페이지홈</li>
 				<li id="myMenuScrap">레시피스크랩</li>
-				<li id="myMenuUpdate" onclick="location.href = '<%= request.getContextPath() %>/mypage/update?userId=<%= loginMember.getUserId() %>';">회원정보수정</li>
+				<li id="myMenuPassword" onclick="location.href = '<%= request.getContextPath() %>/mypage/updatepwd';">비밀번호 변경</li>
+				<li id="myMenuUpdate" onclick="location.href = '<%= request.getContextPath() %>/mypage/update?userId=<%= loginMember.getUserId() %>';">회원정보 수정</li>
 				<li id="myMenuDelete">회원탈퇴</li>
 			</ul>
 		</div>

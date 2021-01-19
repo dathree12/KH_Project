@@ -17,16 +17,14 @@ String vcheck = member.getVegType();
                 <label><input type="radio" name="vegType" value="v3" id="v3">페스코테리언</label>
                 <label><input type="radio" name="vegType" value="v4" id="v4">플렉시테리언</label>
                 <label><input type="radio" name="vegType" value="v0" id="v0">없음</label>
-            </div>
             <input type="submit" value="회원정보 수정" id="enrollSubmit">
         </form>
+</div>
 </section>
 
 <script>
 	
 	$(document).ready(() => {
-		console.log("typeof vcheck : " + typeof <%= vcheck %>);
-		console.log("vcheck : " + <%= vcheck %>);
 		$("#<%= vcheck %>").prop("checked", true);
 	});
 </script>

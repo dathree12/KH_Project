@@ -113,15 +113,16 @@ public class MemberDAO {
 		return member;
 	}
 
-	public int updatePassword(Connection conn, String id, String pwd) {
+	public int updatePassword(Connection conn, String id, String pwd, String newPwd) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		try {
-			pstmt = conn.prepareStatement("UPDATE MEMBER SET USER_PWD=? WHERE USER_ID=?");
+			pstmt = conn.prepareStatement("UPDATE MEMBER SET USER_PWD=? WHERE USER_ID=? AND USER_PWD=?");
 			
-			pstmt.setString(1, pwd);
+			pstmt.setString(1, newPwd);
 			pstmt.setString(2, id);
+			pstmt.setString(3, pwd);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
