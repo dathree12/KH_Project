@@ -8,9 +8,10 @@
 <%
 	Board board = (Board) request.getAttribute("board");
 	List<BoardReply> replies = (List) request.getAttribute("replies");
-	
+	List<Board> vegan = (List) request.getAttribute("vegan");
 	
 	System.out.println(replies);
+	System.out.println(vegan);
 %>
 <section id="content">
 	<div id='board-container'>
@@ -129,11 +130,10 @@
 			
 				<div class="mySlides fade2">
 					<span class="prev" onclick="plusSlides(-1)">❮</span> 
-					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food1.jpg">
+					<%for(Board veganlist : vegan){ %>
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food2.jpg">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/food3.jpg">
+					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
 				
 				</div>

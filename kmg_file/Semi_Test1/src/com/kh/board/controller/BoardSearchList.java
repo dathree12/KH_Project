@@ -1,4 +1,4 @@
-package com.kh.board.controller;
+ package com.kh.board.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,41 +13,43 @@ import com.kh.board.model.service.BoardService;
 import com.kh.board.model.vo.Board;
 import com.kh.board.model.vo.PageInfo;
 
-@WebServlet("/board/list")
-public class BoardListServlet extends HttpServlet {
+
+@WebServlet("/searchrecipe")
+public class BoardSearchList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+ 
+    public BoardSearchList() {
+        super();
        
-    public BoardListServlet() {
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO 1. 게시물 리스트 불러오기 
-		// TODO 2. 페이징 처리
-		
-		int page = 0;
+		String searchword = request.getParameter("searchword");
+		String searchoption = request.getParameter("search_sort");
+		int page= 0;
 		int listCount = 0;
 		PageInfo info = null;
 		List<Board> list = null;
-		String searchword = request.getParameter("searchword");
-		String searchoption = request.getParameter("search_sort");
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
-		}catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			page = 1;
 		}
 		
 		listCount = new BoardService().getBoardCount();
 		info = new PageInfo(page, 10, listCount, 6);
+		Board board = new Board();
+		list = new BoardService().getBoardSearchList(searchword, searchoption,info);		
 		
-		
-		list = new BoardService().getBoardList(info);
-		
-		
+		System.out.println("=" + list);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageInfo", info);
-		request.getRequestDispatcher("/views/common/list.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/common/BoardSearch.jsp").forward(request, response);
 	}
+	
+
 
 }

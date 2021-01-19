@@ -150,24 +150,56 @@ public class BoardDAO {
 		return result;
 	}
 	
-	public List<Board> findAll(Connection conn) {
+	public List<Board> findAll(Connection conn, PageInfo info) {
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query = 
-				  "SELECT BOARD_TITLE, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE FROM BOARD ORDER BY BOARD_CREATE_DATE DESC";
+				  "SELECT * "
+							+ "FROM ("
+							+    "SELECT ROWNUM AS RNUM, "
+							+           "BOARD_NO, "
+							+ 			"BOARD_TITLE, "
+							+ 			"USER_ID, "
+							+ 			"BOARD_CREATE_DATE, "
+							+ 			"BOARD_IMAGEF_FILE, "
+							+  			"BOARD_READCOUNT, "
+							+			"VEGANLIST, "
+							+     		"STATUS "
+							+ 	 "FROM ("
+							+ 	    "SELECT B.BOARD_NO, "
+							+ 			   "B.BOARD_TITLE, "
+							+  			   "M.USER_ID, "
+							+ 			   "B.BOARD_CREATE_DATE, "
+							+ 			   "B.BOARD_IMAGEF_FILE, "
+							+ 			   "B.BOARD_READCOUNT, "
+							+			   "B.VEGANLIST, "
+							+ 	   		   "B.STATUS "
+							+ 		"FROM BOARD B "
+							+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
+							+ 		"WHERE B.STATUS = 'Y'  ORDER BY B.BOARD_CREATE_DATE DESC"
+							+ 	 ")"
+							+ ") WHERE RNUM BETWEEN ? and ?";
 			
 		try {
 			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, info.getStartList());
+			pstmt.setInt(2, info.getEndList());
+			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				Board board = new Board(); 
 				
 				board.setBoardNo(rs.getInt("BOARD_NO"));
+				board.setRowNum(rs.getInt("RNUM"));
 				board.setBoardTitle(rs.getString("BOARD_TITLE"));
 				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
-				board.setBoardImageFile(rs.getString("BOARD_IAMAGEF_FILE"));
+				board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+				board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+				board.setUserId(rs.getString("USER_ID"));
+				board.setVeganlist(rs.getString("VEGANLIST"));
 				
 				list.add(board);				
 			}			
@@ -180,7 +212,6 @@ public class BoardDAO {
 	
 		return list;
 	}
-
 	public List<BoardReply> getReplies(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -308,4 +339,175 @@ public class BoardDAO {
 		return result;
 	}
 	
-}
+	public int getBoardCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String query = "SELECT COUNT(*) FROM BOARD WHERE STATUS = 'Y'";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		
+		return result;
+	}
+
+	
+
+	public List<Board> getBoardVegan(Connection conn, String veganlist) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList();
+		String query = 
+				"select * from board where veganlist = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, veganlist);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Board board = new Board();
+				
+				board.setBoardImageFile("BOARD_IMAGEF_FILE");
+				board.setBoardTitle("BOARD_TITLE");
+								
+				list.add(board);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+
+	
+		public List<Board> searchRecipe(Connection conn, String searchword, String searchoption, PageInfo info) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Board> list = new ArrayList<>();
+			String query1 = "SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_TITLE LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC)) WHERE RNUM BETWEEN ? and ?";
+					
+			String query2 = 
+					  "SELECT * "
+								+ "FROM ("
+								+    "SELECT ROWNUM AS RNUM, "
+								+           "BOARD_NO, "
+								+ 			"BOARD_TITLE, "
+								+ 			"USER_ID, "
+								+ 			"BOARD_CREATE_DATE, "
+								+ 			"BOARD_IMAGEF_FILE, "
+								+  			"BOARD_READCOUNT, "
+								+			"VEGANLIST, "
+								+     		"STATUS "
+								+ 	 "FROM ("
+								+ 	    "SELECT B.BOARD_NO, "
+								+ 			   "B.BOARD_TITLE, "
+								+  			   "M.USER_ID, "
+								+ 			   "B.BOARD_CREATE_DATE, "
+								+ 			   "B.BOARD_IMAGEF_FILE, "
+								+ 			   "B.BOARD_READCOUNT, "
+								+			   "B.VEGANLIST, "
+								+ 	   		   "B.STATUS "
+								+ 		"FROM BOARD B "
+								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
+								+ 		"WHERE B.STATUS = 'Y' AND  M.USER_ID LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC"
+								+ 	 ")"
+								+ ") WHERE RNUM BETWEEN ? and ?";
+				
+			  
+			String query3 = 
+					  "SELECT * "
+								+ "FROM ("
+								+    "SELECT ROWNUM AS RNUM, "
+								+           "BOARD_NO, "
+								+ 			"BOARD_TITLE, "
+								+ 			"USER_ID, "
+								+ 			"BOARD_CREATE_DATE, "
+								+ 			"BOARD_IMAGEF_FILE, "
+								+  			"BOARD_READCOUNT, "
+								+			"VEGANLIST, "
+								+     		"STATUS "
+								+ 	 "FROM ("
+								+ 	    "SELECT B.BOARD_NO, "
+								+ 			   "B.BOARD_TITLE, "
+								+  			   "M.USER_ID, "
+								+ 			   "B.BOARD_CREATE_DATE, "
+								+ 			   "B.BOARD_IMAGEF_FILE, "
+								+ 			   "B.BOARD_READCOUNT, "
+								+			   "B.VEGANLIST, "
+								+ 	   		   "B.STATUS "
+								+ 		"FROM BOARD B "
+								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
+								+ 		"WHERE B.STATUS = 'Y' AND   B.BOARD_CONTENT LIKE '%' || ? || '%' ORDER BY B.BOARD_CREATE_DATE DESC"
+								+ 	 ")"
+								+ ") WHERE RNUM BETWEEN ? and ?";
+			
+			try {
+			         if(searchoption.equals("s_title")) {
+			        	
+			        	pstmt = conn.prepareStatement(query1);
+			         	pstmt.setString(1, searchword);
+			         	pstmt.setInt(2, info.getStartList());
+			         	pstmt.setInt(3, info.getEndList());
+	
+			          
+			         } else if(searchoption.equals("s_id")) {
+			        	 	System.out.println("aaaaa" + searchoption);
+				        	pstmt = conn.prepareStatement(query2);
+				         	pstmt.setString(1, searchword);
+				        	pstmt.setInt(2, info.getStartList());
+				         	pstmt.setInt(3, info.getEndList());
+				         	System.out.println("bbbbbbbbb");
+				         }
+				         else if(searchoption.equals("s_content")) {
+				        	 pstmt = conn.prepareStatement(query3);
+				        	 pstmt.setString(1, searchword);
+				        		pstmt.setInt(2, info.getStartList());
+					         	pstmt.setInt(3, info.getEndList());
+				         }
+			       
+			        rs = pstmt.executeQuery();
+			        
+			     
+			        
+			        while (rs.next()) {
+					Board board = new Board(); 
+					
+					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setRowNum(rs.getInt("RNUM"));
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
+					board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
+					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+					board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+					board.setUserId(rs.getString("USER_ID"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
+					
+					list.add(board);				
+					
+					} 
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+				}
+			
+			System.out.println("1"+list);
+			return list;
+			
+		}
+	}

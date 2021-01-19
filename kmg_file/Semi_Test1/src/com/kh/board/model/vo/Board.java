@@ -7,6 +7,8 @@ public class Board {
 	
 	private String boardTitle;
 	
+	private int rowNum;
+	
 	private String boardContent;
 	
 	private String boardImageFile;
@@ -40,6 +42,18 @@ public class Board {
 
 	
 	
+	public int getRowNum() {
+		return rowNum;
+	}
+
+
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
+
+
 	public int getRecommned() {
 		return recommned;
 	}
@@ -200,12 +214,14 @@ public class Board {
 
 
 
-	public Board(int boardNo, String boardTitle, String boardContent, String boardImageFile, Date boardCreateDate,
-			Date boardModifyDate, String veganlist, String situation, int boardReadCount, String status,
-			String imagefile1, String imagefile2, String imagefile3, int boardWriteNo, String userId, int recommned) {
+	public Board(int boardNo, String boardTitle, int rowNum, String boardContent, String boardImageFile,
+			Date boardCreateDate, Date boardModifyDate, String veganlist, String situation, int boardReadCount,
+			String status, String imagefile1, String imagefile2, String imagefile3, int boardWriteNo, String userId,
+			int recommned) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
+		this.rowNum = rowNum;
 		this.boardContent = boardContent;
 		this.boardImageFile = boardImageFile;
 		this.boardCreateDate = boardCreateDate;
@@ -221,6 +237,10 @@ public class Board {
 		this.userId = userId;
 		this.recommned = recommned;
 	}
+
+
+
+	
 
 
 	

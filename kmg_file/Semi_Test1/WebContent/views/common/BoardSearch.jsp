@@ -76,27 +76,16 @@
 	
 	<button type="button" id="btn-add"
 			onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>
-			
-	 <form method="GET" action=<%=request.getContextPath()%>/searchrecipe>
-	        <select name="search_sort" class="dropdown">
+	
+        <form method="GET" action="<%=request.getContextPath()%>/searchrecipe">
+	        <select name="search_sort" id="search_sort" class="dropdown" onchange="SetSelectBox();">
 	          <option value="s_title" selected>제목</option>
 	          <option value="s_id">글쓴이</option>
 	          <option value="s_content">내용</option>
 	        </select>
-            <input type="search" placeholder="Search" name="searchword" />
-            
+            <input type="search" placeholder="Search" name="searchword" id="searchword" />
             <button class="btn btn-primary" type="submit" >검색</button>
         </form>
-        
-        <select name="board_sort" class="dropdown">
-          <option value="s_new" selected>최신순</option>
-          <option value="s_rating">별점순</option> 
-          <option value="s_views">조회순</option>
-        </select>
-        <select name="board_view" class="dropdown">
-          <option value="v_10" selected>10개씩 보기</option>
-          <option value="v_20">20개씩 보기</option>
-        </select>
         
 	 <div id="board_content" >
 	 <%  for(Board board : list) { %>
@@ -124,7 +113,7 @@
 				<% if(p == pageInfo.getCurrentPage()){ %>
 					<button disabled><%= p %></button>
 				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= p %>'"><%= p %></button>
+					<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%=p%>'"><%= p %></button>
 				<% } %>
 			<% } %>
 			
@@ -143,6 +132,9 @@
 				$("#userId").focus();
 			}
 		}
+		
+	
+		
 		</script>
 		
 		

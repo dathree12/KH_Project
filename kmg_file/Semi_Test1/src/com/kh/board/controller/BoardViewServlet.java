@@ -22,16 +22,23 @@ public class BoardViewServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println('=' + request.getParameter("boardNo"));
+		System.out.println('=' + request.getParameter("veganlist"));
+		
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		String veganlist = request.getParameter("veganlist"); 
+		
 		Board board = null;
 		List<BoardReply> replies = null;
-		
+		List<Board> vegan = null;
 
 		board = new BoardService().getBoard(boardNo);
 		replies = new BoardService().getReplyList(boardNo);
+		vegan = new BoardService().getVegan(veganlist);
 		
 		request.setAttribute("board", board);				
-		request.setAttribute("replies", replies);				
+		request.setAttribute("replies", replies);		
+		request.setAttribute("vegan", vegan);		
 		request.getRequestDispatcher("/views/common/read.jsp").forward(request, response);
 	}
 

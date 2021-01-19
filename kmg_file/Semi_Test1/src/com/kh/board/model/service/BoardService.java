@@ -59,16 +59,15 @@ public class BoardService {
 		return board;
 	}
 	
-	public List<Board> getBoardList() {
+	public List<Board> getBoardList(PageInfo info) {
 		Connection conn = getConnection();
 		
-		List<Board> list = new BoardDAO().findAll(conn);
+		List<Board> list = new BoardDAO().findAll(conn,info);
 		
 		close(conn);		
 		
 		return list;
-	}
-	
+	}	
 	public List<BoardReply> getReplyList(int boardNo) {
 		Connection conn = getConnection();
 		
@@ -144,6 +143,41 @@ public class BoardService {
 		
 		return result;
 	}
+	
+	public int getBoardCount() {
+		Connection conn = getConnection();
+		
+		int result = new BoardDAO().getBoardCount(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+	public List<Board> getVegan(String veganlist) {
+		Connection conn = getConnection();
+		
+	
+		List<Board> vegan = new BoardDAO().getBoardVegan(conn, veganlist);
+		
+		close(conn);
+		
+		return vegan;
+	}
+
+
+	public List<Board> getBoardSearchList(String searchword, String searchoption, PageInfo info) {
+		Connection conn = getConnection();
+		
+		List<Board> list = new BoardDAO().searchRecipe(conn,searchword,searchoption, info);
+		
+		close(conn);		
+		
+		return list;
+	}
+	
+	
 	
 }
 	
