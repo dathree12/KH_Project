@@ -7,7 +7,7 @@ String vcheck = member.getVegType();
 <%@ include file="/views/mypage/common/mymenu.jsp" %>
 <div class="title">회원정보수정</div>
         <form name="enrollForm" action="<%= request.getContextPath()%>/mypage/update" method="POST">
-        	<input type="text" name="userId" id="hiddenId" value="<%= member.getUserId() %>" readonly>
+        	<input type="text" name="userId" class="hidden" value="<%= member.getUserId() %>" readonly>
             <label>이메일 : <input type="email" name="userEmail" value="<%= member.getEmail() %>" required></label> <br><br>
             <label class="under">선호 채식 : </label>
             <div id="radio-container">
