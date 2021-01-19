@@ -23,7 +23,7 @@
 </head>
 <body>
         <form id="loginForm" action="<%= request.getContextPath()%>/member/login" method="POST">
-            <label id="id">아이디 : <input type="text" name="userId" placeholder="아이디를 입력하세요." required></label> <br>
+            <label id="id">아이디 : <input type="text" name="userId" placeholder="아이디를 입력하세요." value="<%= saveId == null ? "" : saveId %>" required></label> <br>
             <label><input type="checkbox" name="saveId" <%= saveId == null ? "" : "checked" %>>아이디 저장</label> <br>
             <label id="pwd">비밀번호 : <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요." required></label> <br>
             <input type="submit" value="로그인" id="login">
