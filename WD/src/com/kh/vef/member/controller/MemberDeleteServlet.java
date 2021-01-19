@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.vef.member.model.service.MemberService;
 
-@WebServlet("/mypage/delete")
+@WebServlet(name="delete", urlPatterns = "/mypage/delete")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
