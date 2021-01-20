@@ -82,7 +82,7 @@ Member loginMember = (Member)session.getAttribute("loginMember");
 	  .mypage-sorting:hover .dropdown-content { display : block;}
 	  .mypage-sorting:hover .dropdown-content {background-color: #cd853f;}
 </style>
-<script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery-3.5.1.js"></script>
 </head>
 <body>
 	<section class="container">
