@@ -135,7 +135,7 @@
 				<div class="mySlides fade2">
 					<span class="prev" onclick="plusSlides(-1)">❮</span>
 					<%for(Board veganlist : vegan){ count++; if(count>3){ break;}%>		
-					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
+					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>&vegan=<%=veganlist.getVeganlist()%>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
 				
@@ -145,7 +145,7 @@
 				<div class="mySlides fade2">
 					<span class="prev" onclick="plusSlides(-1)">❮</span>
 					<%for(Board veganlist : vegan){ count++; if(count>3){ break;}%>		
-					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
+					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>&vegan=<%=veganlist.getVeganlist()%>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
 				
@@ -154,7 +154,7 @@
 				<div class="mySlides fade2">
 					<span class="prev" onclick="plusSlides(-1)">❮</span>
 					<%for(Board veganlist : vegan){ count++; if(count>3){ break;}%>		
-					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
+					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>&vegan=<%=veganlist.getVeganlist()%>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
 
