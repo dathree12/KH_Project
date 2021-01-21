@@ -1,9 +1,8 @@
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-Member loginMember = (Member)session.getAttribute("loginMember");
-%>
+    
+<%@ include file="/views/common/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>

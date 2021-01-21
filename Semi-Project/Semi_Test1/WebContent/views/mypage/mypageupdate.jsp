@@ -29,3 +29,4 @@ String vcheck = member.getVegType();
 </script>
 </body>
 </html>
+<%@ include file="/views/common/footer.jsp"%>

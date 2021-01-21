@@ -1,4 +1,3 @@
-<%@page import="com.kh.board.model.vo.PageSearch"%>
 <%@page import="com.kh.board.model.vo.PageInfo"%>
 <%@page import="com.kh.board.model.vo.Board"%>
 <%@page import="java.util.List"%>
@@ -71,38 +70,37 @@
 	List<Board> list = (ArrayList)request.getAttribute("list");
 	System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
-	PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	
 %>
-
-
-
 <section id="content">
 	<h2 align="center">게시판 </h2>
 	
 	<button type="button" id="btn-add"
 			onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>
-	
-        <form method="GET" action="<%=request.getContextPath()%>/searchrecipe">
-	        <select name="search_sort" id="search_sort" class="dropdown" onchange="SetSelectBox();">
+			
+	 <form method="GET" action=<%=request.getContextPath()%>/searchrecipe>
+	        <select name="search_sort" class="dropdown">
 	          <option value="s_title" selected>제목</option>
 	          <option value="s_id">글쓴이</option>
 	          <option value="s_content">내용</option>
 	        </select>
-            <input type="search" placeholder="Search" name="searchword" id="searchword" />
+            <input type="search" placeholder="Search" name="searchword" />
+            
             <button class="btn btn-primary" type="submit" >검색</button>
         </form>
         
-        <button onclick="location.href='<%=request.getContextPath()%>/searchrecipe'">최신순</button>
-        <button onclick="location.href='<%=request.getContextPath()%>/boardsearchreco'">추천순</button>
+    
+        <button onclick="location.href='<%=request.getContextPath()%>/board/list'" value="rece" name="type">최신순</button>
+        <button onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" value="reco" name="type">추천순</button>
+      
         
 	 <div id="board_content" >
 	 <%  for(Board board : list) { %>
           <div id="content1" class="content" >
-       		<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>">  <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>"> </a>
-       		 <a><%= board.getBoardTitle() %></a><br>
+       		<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>">  <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>"> </a>
+       		<a><%= board.getBoardTitle() %></a><br>
             <a><%= board.getUserId() %></a><br>
-             <a><%= board.getVeganlist()%></a><br>
+            <a><%= board.getVeganlist()%></a><br>
             <a><%= board.getBoardCreateDate()%></a>
             <a>추천수:<%= board.getRecommned()%></a><br>
           </div>
@@ -112,25 +110,25 @@
      </div>
       <div id="pageBar" align="center">
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=1&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;&lt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>
 			
 			<!-- 이전 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getPrvePage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 
 			<!--  10개 페이지 목록 -->
 			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
 				<% if(p == pageInfo.getCurrentPage()){ %>
 					<button disabled><%= p %></button>
 				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%=p%>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'"><%= p %></button>
+					<button onclick="location.href='<%= request.getContextPath() %>/boardrecommendlist?page=<%= p %>'"><%= p %></button>
 				<% } %>
 			<% } %>
 			
 			<!-- 다음 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getNextPage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			
 			<!-- 맨 끝으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getMaxPage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&gt;&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/boardrecommendlist?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 		</div>
 		
 		<script type="text/javascript">
@@ -142,8 +140,9 @@
 			}
 		}
 		
-	
-		
+		function recommend() {
+				location.replace('<%=request.getContextPath()%>/boardrecommendlist');
+		}
 		</script>
 		
 		

@@ -48,7 +48,7 @@ public class BoardRecommendList extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageInfo", info);
-		request.getRequestDispatcher("/views/board/list.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/board/BoardReco.jsp").forward(request, response);
 	}
 
 	

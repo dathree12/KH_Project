@@ -75,15 +75,15 @@
 	
 %>
 
-
-
 <section id="content">
 	<h2 align="center">게시판 </h2>
+	
 	
 	<button type="button" id="btn-add"
 			onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>
 	
         <form method="GET" action="<%=request.getContextPath()%>/searchrecipe">
+       
 	        <select name="search_sort" id="search_sort" class="dropdown" onchange="SetSelectBox();">
 	          <option value="s_title" selected>제목</option>
 	          <option value="s_id">글쓴이</option>
