@@ -30,6 +30,8 @@ public class BoardSearchRecommendList extends HttpServlet {
 		String searchword = request.getParameter("searchword");
 		String searchoption = request.getParameter("search_sort");
 		
+		System.out.println("sereco" + searchword);
+		System.out.println("searchreco" + searchoption);
 	
 		int page= 0;
 		int listCount = 0;
