@@ -15,7 +15,7 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 	@Override
 	public String getParameter(String name) {
 		// client가 전달하는 값중에 비밀번호 name값만 암호화를 처리하고 나머지는 정상적으로 리턴하도록 처리
-		
+		System.out.println("name: " + name + ", super.getParameter(name) : " + super.getParameter(name));
 		if (name.equals("userPwd")) {
 			// 기존 비밀번호 name값 암호화 처리 후 반환
 			return EncryptUtil.oneWayEnc(super.getParameter(name), "SHA-256");
@@ -25,7 +25,6 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 		} else {
 			// 정상적으로 반환
 			return super.getParameter(name);
-		}	
-		
+		}
 	}
 }
