@@ -38,7 +38,8 @@ public class MemberDAO {
 						rset.getDate("ENROLL_DATE"),
 						rset.getString("VEG_TYPE"),
 						rset.getString("USER_ROLE"),
-						rset.getString("STATUS")
+						rset.getString("STATUS"),
+						rset.getString("SALT")
 				);
 			}
 		} catch (SQLException e) {
@@ -56,12 +57,13 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;		
 		
 		try {			
-			pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_USER_NUM.NEXTVAL, ?, ?, ?, SYSDATE, ?, 'ROLE_USER', DEFAULT)");
+			pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_USER_NUM.NEXTVAL, ?, ?, ?, SYSDATE, ?, 'ROLE_USER', DEFAULT, ?)");
 			
 			pstmt.setString(1, member.getUserId());
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getEmail());
 			pstmt.setString(4, member.getVegType());
+			pstmt.setString(5, member.getSalt());
 			
 			result = pstmt.executeUpdate();
 			
@@ -97,7 +99,8 @@ public class MemberDAO {
 						rset.getDate("ENROLL_DATE"),
 						rset.getString("VEG_TYPE"),
 						rset.getString("USER_ROLE"),
-						rset.getString("STATUS")
+						rset.getString("STATUS"),
+						rset.getString("SALT")
 				);
 			}
 		} catch (SQLException e) {
@@ -172,4 +175,32 @@ public class MemberDAO {
 				
 		return result;
 	}
+
+	public String getSalt(Connection conn, String userId) {
+		String salt = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			pstmt = conn.prepareStatement("SELECT * FROM MEMBER WHERE USER_ID = ?");
+			
+			pstmt.setString(1, userId);
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				salt = rset.getString("SALT");
+				System.out.println("MemberDAO : salt : " + salt);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return salt;
+	}
+
+
 }

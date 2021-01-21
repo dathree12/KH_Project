@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.common.util.EncryptUtil;
 import com.kh.member.model.service.MemberService;
 
 @WebServlet(name="delete", urlPatterns = "/mypage/delete")
@@ -25,15 +26,14 @@ public class MemberDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
-		int result = new MemberService().deleteMember(userId, userPwd);
-		String msg = "";
-		String loc = "";
+		String salt = new MemberService().getSalt(userId);
+		String stretchPwd = EncryptUtil.oneWayEnc(userPwd, salt);
+		String encPwd = EncryptUtil.oneWayEnc(stretchPwd, salt);
+		String msg = "정상적으로 탈퇴되었습니다.";
+		String loc = "/member/logout";
+		int result = new MemberService().deleteMember(userId, encPwd);
 		
-		// 회원이 삭제되었다면 로그아웃 서블릿을 호출하도록 만들어준다.
-		if(result > 0) {
-			msg = "정상적으로 탈퇴되었습니다.";
-			loc = "/member/logout";
-		} else {
+		if(result <= 0) {
 			msg = "탈퇴에 실패하였습니다.";
 			loc = "/mypage/delete";
 		}

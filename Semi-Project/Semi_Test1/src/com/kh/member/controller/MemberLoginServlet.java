@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.common.util.EncryptUtil;
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
 
@@ -32,14 +33,15 @@ public class MemberLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
-		String saveId = request.getParameter("saveId"); // checkbox에 value값을 지정하지 않았을 때 체크시 on, 미 체크시 null 
+		String saveId = request.getParameter("saveId");
+		String salt = new MemberService().getSalt(userId);
 		Member member = null;
+		String stretchPwd = EncryptUtil.oneWayEnc(userPwd, salt);
+		String encPwd = EncryptUtil.oneWayEnc(stretchPwd, salt);
 		
-		System.out.println("userID : " + userId + ", userPwd : " + userPwd + ", saveId : " + saveId);
+		member = new MemberService().login(userId, encPwd);
 		
-		member = new MemberService().login(userId, userPwd);
-		
-		System.out.println(member);
+		System.out.println("Member: " + member);
 		
 		// 아이디 저장로직 구현 -> Cookie를 이용!!
 		if (saveId != null) {

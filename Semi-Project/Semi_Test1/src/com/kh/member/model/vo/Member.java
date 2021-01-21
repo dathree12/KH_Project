@@ -11,12 +11,13 @@ public class Member {
 	private String vegType;
 	private String userRole;
 	private String status;
+	private String salt;
 
 	public Member() {
 	}
 
-	public Member(int userNum, String userId, String userPwd, String email, Date enrollDate,
-			String vegType, String userRole, String status) {
+	public Member(int userNum, String userId, String userPwd, String email, Date enrollDate, String vegType,
+			String userRole, String status, String salt) {
 		super();
 		this.userNum = userNum;
 		this.userId = userId;
@@ -26,6 +27,7 @@ public class Member {
 		this.vegType = vegType;
 		this.userRole = userRole;
 		this.status = status;
+		this.salt = salt;
 	}
 
 	public int getUserNum() {
@@ -92,11 +94,19 @@ public class Member {
 		this.status = status;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [userNum=" + userNum + ", userId=" + userId + ", userPwd=" + userPwd + ", email=" + email
-				+ ", userName=" + enrollDate + ", vegType=" + vegType + ", userRole="
-				+ userRole + ", status=" + status + "]";
+				+ ", enrollDate=" + enrollDate + ", vegType=" + vegType + ", userRole=" + userRole + ", status="
+				+ status + ", salt=" + salt + "]";
 	}
-
+	
 }

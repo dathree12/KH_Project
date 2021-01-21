@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Enroll</title>
-    <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
+    <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.js"></script>
     </head>
     <body>
     <section id="signup-container">
