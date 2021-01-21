@@ -7,7 +7,7 @@
 		<table id='board-table'>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" id="title" name="title"></td>
+				<td><input type="text" id="title" name="title" required></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<th>대표 사진</th>
-				<td><input type="file" name="boardImageFile"></td>
+				<td><input type="file" name="boardImageFile" required></td>
 			</tr>
 			<tr>
 				<th>내용</th>
