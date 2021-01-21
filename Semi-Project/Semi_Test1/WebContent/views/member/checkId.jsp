@@ -20,7 +20,7 @@
 		font-weight:bolder;
 	}
 </style>
-<script src="<%=request.getContextPath() %>/js/jquery-3.5.1.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery-3.5.1.js"></script>
 </head>
 <body>
 	<div id="checkId-container">

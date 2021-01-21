@@ -101,4 +101,14 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public String getSalt(String userId) {
+		Connection conn = getConnection();
+		
+		String salt = dao.getSalt(conn, userId);
+		
+		close(conn);
+		System.out.println("memberService : salt : " + salt);
+		return salt;
+	}
 }
