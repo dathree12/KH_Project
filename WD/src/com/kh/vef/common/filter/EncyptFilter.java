@@ -24,6 +24,7 @@ public class EncyptFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// request의 파라미터 값을 변경할 수 없기 때문에 RequestWrapper를 생성한다.
+		System.out.println((ServletRequest)request);
 		EncryptWrapper wrapper = new EncryptWrapper((HttpServletRequest)request);
 		
 		// request 대신에 생성한 wrapper 객체를 넘겨준다.
