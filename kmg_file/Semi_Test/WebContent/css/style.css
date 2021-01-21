@@ -1,0 +1,477 @@
+@charset "UTF-8";
+
+div,session,header,aside, footer{padding:10px;}
+
+
+/*div, input, form{
+            border:1px solid red; 
+            box-sizing:border-box;
+        }
+ */
+div{
+ 	align-content: center; 
+ 	border: solid 0px;
+ }
+       
+div#container {
+	background-color:#F0F0F0; 
+	width:960px;
+	margin:0 auto;
+}
+
+header{
+	background-color:#00BCd4;
+	height:130px;
+	position:relative;
+	padding:10px 0 0 0;
+	margin-bottom: 10px;
+}
+
+header h1{
+	margin-left:20px;
+}
+
+section#content {
+	background-color: #F5F5F5;
+	margin:5px auto;
+	width: 1000px;
+	min-height: 500px;
+
+	
+}
+#content_0{
+	width: 97%;
+	height: 50px;
+	margin: 5px;
+	align-content: center;
+
+}
+
+#content_1{
+	width: 180px;
+	min-height:700px;
+	float: left; 
+	margin: 5px;
+	
+}
+
+#content_2{
+	width: 900px;
+	min-height:700px;
+	float: left; 
+	margin: 5px;
+	border: solid 1px;
+	
+}
+
+#search{
+	margin:auto;
+	float: right;
+	
+}
+
+#category{
+	margin: 5px;
+	float: right;
+}
+
+
+footer { 
+	background-color:#00BCd4;
+	clear:both;
+	height:75px;
+	text-align:center;
+	padding-top:40px;
+}
+
+
+/* 메뉴관련스타일 */
+header nav {
+	background:#5283de; 
+	width:100%; 
+	margin-top:40px;
+}
+
+/* ul태그의 가운데정렬 */
+ul.main-nav {
+	/* width:80%; */
+	display:table;
+	padding:0px;
+	margin:auto;
+}
+
+ul.main-nav li { 
+	list-style-type: none; 
+	width: 8em; 
+	height: 2em;
+	float: left; 
+	text-align: center; 
+	font-family: "휴먼모음T", sans-serif; 
+	border-left: 1px #00bcd4 solid;
+	background-color: #5283de; 
+}
+
+ul.main-nav li:last-of-type {
+	border-right:1px #00bcd4 solid;
+}
+
+ul.main-nav li a {
+	/*a태그의 display기본값은 inline임*/
+	display: block;
+	padding:.5em;
+	text-decoration: none;
+	color: #292929;
+}
+
+/* hover시 배경색 변경 */
+
+ul.main-nav li:hover{
+	background-color: #3300ff;
+}
+
+ul.main-nav li:hover > a{
+	color:#FFF; /* 글자색*/
+}
+
+
+/* 글작성 css*/
+#write{
+	height: 600px;
+	border: solid 1px;
+	margin: auto;
+	background-color: white;
+}
+
+.num{
+	float: right;
+	margin: auto;
+	text-align: center;
+}
+
+#date{
+	align-content: center;
+	
+}
+
+#icon1{
+	width: 700px;
+	height: 50px;
+	margin: auto;
+	text-align: center;
+
+}
+
+#icon1>button{
+	text-align: center;
+	
+}
+
+#reply{
+	background-color: white;
+	border: solid 1px;
+	min-height: 200px;
+	
+}
+
+.main{
+	width: 600px;
+	height: 200px;
+	background-color: white;
+}
+
+
+/*댓글테이블*/
+table#tbl-comment {
+	border-collapse:collapse; 
+	clear: both;
+} 
+
+table#tbl-comment tr td {
+	border-top:1px solid; 
+	text-align:left; 
+	width:1000px;
+	
+}
+
+
+table#tbl-comment sub.comment-writer {
+	color:navy; 
+	font-size:14px
+}
+
+table#tbl-comment sub.comment-date {
+	color:tomato;
+	font-size:10px
+}
+
+div#comment-container{
+	height: 110px;
+}
+
+div#comment-container button#btn-insert {
+	width:100px;
+	height:100px; 
+	color:black;
+	background-color:white;
+	position:relative;
+	top:-45px;
+}
+
+/*별점찍기*/
+.star_rating {font-size:0; letter-spacing:-4px;}
+.star_rating a {
+    font-size:22px;
+    letter-spacing:0;
+    display:inline-block;
+    margin-left:5px;
+    color:#ccc;
+    text-decoration:none;
+}
+.star_rating a:first-child {margin-left:0;}
+.star_rating a.on {color:#777;}
+    
+/*다른 추천메뉴 슬라이드*/
+#other-recommend{
+	min-height: 330px;
+	border: solid 1px;
+	background-color: white;
+	
+}
+
+
+/* 글등록 style */
+#name_input{
+	width: 800px;
+	height: 40px;
+}
+
+#title{
+	width: 100%;
+	height: 30px;
+}
+
+#vegan-check{
+	width: 30px;
+	height: 30px;
+	padding-top: 30px;
+
+}
+
+#vegan-box1{
+	height: 60px;
+	padding-top: 10px;
+}
+
+#vegan-box2{
+	height: 60px;
+	padding-top: 10px;
+}
+
+
+#check{
+	float: left;
+}
+
+#content_write{
+	min-height: 500px;
+	background-color: white;
+	border: solid 1px; 
+}
+
+<!-- 작성테이블>
+
+
+#board-table th{
+	padding:5px 0;
+}
+
+#board-table td{
+	padding:5px 10px 5px 10px;
+}
+
+#board-table tr{
+
+}
+
+
+#write_1{
+	margin: auto;
+	text-align: center;
+}
+
+#button1{
+	width: 100px;
+	height: 50px;
+}
+
+
+/* 게시판 리스트 */
+
+section #board-container h2 {
+	margin:10px 0;
+}
+
+table#tbl-board {
+	width:100%; 
+	margin:0 auto; 
+	border:1px solid black; 
+	border-collapse:collapse; 
+	clear:both; 
+}
+
+table#tbl-board th, table#tbl-board td {
+	border:1px solid;
+	padding: 5px 0; 
+	text-align:center !important;
+} 
+
+#submit{
+	width: 60px;
+	height: 60px;
+	
+}
+
+#del{
+	position: relative;
+	top: -20px;
+}
+
+#submit2{
+	width: 60px;
+	height: 60px;
+
+}
+
+.login-container{
+	position: absolute;
+}
+
+#deletereply{
+	float: right;
+	text-decoration: none;
+	color: black;
+}
+
+#deletereply:hover {
+	float: right;
+	color: blue;
+	text-decoration: underline;
+}
+
+<!--슬라이드> 
+/* 메인 슬라이드 Slideshow container */
+	/* Slideshow container */ * 
+	{box-sizing: border-box}
+
+body {
+	font-family: Verdana, sans-serif;
+	margin: 0
+}
+
+/* Slideshow container */
+.slideshow-container {
+	width: 900px;
+	height: 200px;
+	position: static;
+	text-align: center;
+	margin: auto;
+	top: 30px;
+	
+}
+
+.main_slideImg {
+	width: 200px;
+	height: 200px;
+	top: 100px;
+	align-content: center;
+	text-align: center;
+	
+}
+
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	width: 3%;
+	padding: 16px;
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	height: 50px;
+	position: relative;
+	top: -90px;
+}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 13px;
+	width: 13px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade2 {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 0.5s;
+	animation-name: fade;
+	animation-duration: 5s;
+}
+
+@-webkit-keyframes fade2 {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+@keyframes fade2 {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+	.slprev, .slnext, .text {font-size: 11px}
+}
+
+.mySlides fade2{
+	border: solid 1px; 
+}
+
