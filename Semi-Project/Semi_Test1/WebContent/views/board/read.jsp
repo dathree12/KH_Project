@@ -153,7 +153,6 @@
 					</div>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
-				
 				</div>
 			
 			<%count = 0; %> 

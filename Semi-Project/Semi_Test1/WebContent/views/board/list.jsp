@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%> 
     
 <%@ include file="/views/common/header.jsp" %>
-
+ 
   <style>
       
       h2 {
@@ -32,8 +32,11 @@
         margin: 0 0.5rem;
       }
       #board_main {
-        display: flex;
+       display: inline-block;
         padding: none;
+        border: solid 1px;
+        float: left;
+       
       }
       #board_option {
         flex: 1;
@@ -45,6 +48,8 @@
         flex-wrap: wrap;
         align-content: flex-start;
         justify-content: center;
+    
+      
        
       }
      
@@ -64,6 +69,7 @@
    }
    
     </style>
+
     
 
 <%
@@ -88,11 +94,9 @@
             <button class="btn btn-primary" type="submit" >검색</button>
         </form>
         
-    
         <button onclick="location.href='<%=request.getContextPath()%>/board/list'">최신순</button>
         <button onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'">추천순</button>
-      
-        
+         
 	 <div id="board_content" >
 	 <%  for(Board board : list) { %>
           <div id="content1" class="content" >
@@ -103,7 +107,7 @@
             <a><%= board.getBoardCreateDate()%></a>
             <a>추천수:<%= board.getRecommned()%></a><br>
           </div>
- 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      <% } %>
     
      </div>
