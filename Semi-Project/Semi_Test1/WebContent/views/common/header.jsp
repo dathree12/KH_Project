@@ -45,7 +45,7 @@
 				<li class="home"><a href="<%=request.getContextPath()%>">Home</a></li>
 				<li id="notice"><a href="<%= request.getContextPath() %>/mypage/mypagehome" onfocus="checklogin()">마이페이지</a></li>
 				<li id="board"><a href="<%=request.getContextPath() %>/board/list">게시판</a></li>
-				<li id="board"><a href="<%=request.getContextPath() %>/board/list">고객센터</a></li>
+				<li id="board"><a href="<%=request.getContextPath() %>/service">고객센터</a></li>
 			</ul>
 		</nav>
 	</header>
