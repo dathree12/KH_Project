@@ -12,11 +12,14 @@ String vcheck = member.getVegType();
             <label class="under">선호 채식 : </label>
             <div id="radio-container">
                 <label><input type="radio" name="vegType" value="v1" id="v1">비건</label>
-                <label><input type="radio" name="vegType" value="v2" id="v2">락토/오보베지테리언</label>
-                <label><input type="radio" name="vegType" value="v3" id="v3">페스코테리언</label>
-                <label><input type="radio" name="vegType" value="v4" id="v4">플렉시테리언</label>
+                <label><input type="radio" name="vegType" value="v2" id="v2">락토 베지테리언</label>
+                <label><input type="radio" name="vegType" value="v3" id="v3">오보 베지테리언</label>
+                <label><input type="radio" name="vegType" value="v4" id="v4">락토/오보 베지테리언</label>
+                <label><input type="radio" name="vegType" value="v5" id="v5">페스코테리언</label>
+                <label><input type="radio" name="vegType" value="v6" id="v6">플렉시테리언</label>
                 <label><input type="radio" name="vegType" value="v0" id="v0">없음</label>
-            <input type="submit" value="회원정보 수정" id="enrollSubmit">
+            	<input type="submit" value="회원정보 수정" id="enrollSubmit">
+            </div>
         </form>
 </div>
 </section>
