@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="/views/common/header.jsp" %>
+<%@ include file="/views/common/sidebar.jsp" %>
 
 <%
 	QnA qna = (QnA) request.getAttribute("qna");

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="/views/common/header.jsp" %>
+<%@ include file="/views/common/sidebar.jsp" %>
 
 <form action='<%=request.getContextPath() %>/ServiceCenter/Notice/write' method="post" <%-- enctype="multipart/form-data" --%> >
 

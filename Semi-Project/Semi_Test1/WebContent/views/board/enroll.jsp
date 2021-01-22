@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" cols="130" rows="50" id="text"></textarea></td>
+				<td><textarea name="content" cols="120" rows="50" id="text"></textarea></td>
 			</tr>
 			<tr>
 				<th>완성 사진</th>

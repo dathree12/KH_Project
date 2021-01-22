@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="/views/common/header.jsp" %>
+<%@ include file="/views/common/sidebar.jsp" %>
     
 <%
 	List<NOTICE> list = (ArrayList) request.getAttribute("list");
