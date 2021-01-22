@@ -14,7 +14,7 @@
 	System.out.println(list);
 %>    
 
-	<!--사이드바 옆 div-->
+		<!--사이드바 옆 div-->
 		<div id="rightdiv">
 		<!--검색창, 필터, 등등 도구섹션 -->
 			<div id="board-name">
@@ -39,7 +39,9 @@
 							<th>번호</th>
 							<th>제목</th>
 							<th>회원번호</th>
+							<th>등록날짜</th>
 							<th>조회수</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -54,14 +56,16 @@
 					%>
 						<tr>
 							<td><%= qna.getQue_Num() %></td>
-							<td>
-								<a href="<%=request.getContextPath() %>/ServiceCenter/QnA?Que_Num=<%= qna.getQue_Num() %>">
+							<td id="listqnatitle">
+								<a href="<%=request.getContextPath() %>/ServiceCenter/Q&A/view?Que_Num=<%= qna.getQue_Num() %>">
 									<%= qna.getQue_Title() %>
 								</a>
 							</td>
 							<td><%= qna.getUser_Num() %></td>
+							<td><%= qna.getQue_Date() %></td>
 							<td><%= qna.getHIT() %></td>
-						</tr>
+							<td><button type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Q&A/answer/write?Que_Num=<%= qna.getQue_Num() %>'">답변쓰기</button></td>
+						</tr> 
 					<% }
 		   			  } %>
 					</tbody>
