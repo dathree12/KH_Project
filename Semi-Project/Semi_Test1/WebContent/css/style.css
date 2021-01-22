@@ -517,3 +517,13 @@ figcaption{
 	border: solid 1px; 
 }
 
+#foodimage{
+	border: solid 1px;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	
+	
+}
+
+

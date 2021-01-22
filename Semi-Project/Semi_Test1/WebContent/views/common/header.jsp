@@ -36,15 +36,24 @@
 		<input type="button" value="회원가입" onclick="location.href = '<%= request.getContextPath() %>/member/enroll';">
 		<% } else { %>
 		<p><%= loginMember.getUserId() %> 님 안녕하세요.<p> <br>
-		<input type="button" value="마이페이지" onclick="location.href = '<%= request.getContextPath() %>/mypage/mypagehome';">
+		<input  type="button" value="마이페이지" onclick="location.href = '<%= request.getContextPath() %>/mypage/mypagehome';">
 		<input type="button" value="로그아웃" onclick="location.replace('<%= request.getContextPath() %>/member/logout');">
 		<% } %>
 		</div>
 		<nav id="abc">
 			<ul class="main-nav">
 				<li class="home"><a href="<%=request.getContextPath()%>">Home</a></li>
-				<li id="notice"><a href="<%= request.getContextPath() %>/mypage/mypagehome">마이페이지</a></li>
+				<li id="notice"><a href="<%= request.getContextPath() %>/mypage/mypagehome" onfocus="checklogin()">마이페이지</a></li>
 				<li id="board"><a href="<%=request.getContextPath() %>/board/list">게시판</a></li>
 			</ul>
 		</nav>
 	</header>
+	
+	<script type="text/javascript">
+	function checklogin() {
+		if(<%= loginMember == null %>){
+			alert("로그인 후 이용해주세요!");
+		}
+	}
+	
+	</script>

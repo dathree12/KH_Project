@@ -10,8 +10,6 @@
 	List<BoardReply> replies = (List) request.getAttribute("replies");
 	List<Board> vegan = (List) request.getAttribute("vegan");
 	
-	System.out.println(replies);
-	System.out.println(vegan);
 %>
 <section id="content">
 	<div id='board-container'>
@@ -56,9 +54,25 @@
         <!-- 업로드한 이미지를 가져온다. -->
         <div id="food_images">
             <h2>완성사진</h2>
+            <%if(board.getImagefile1() != null){ %>
             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" width="300" height="300">
-            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
-            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
+            <%}else { %>
+            <div id="foodimage"></div>
+            <% } %>
+            
+            <%if(board.getImagefile2() != null){ %>
+             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
+            <%}else { %>
+            <div id="foodimage" ></div>
+            <% } %>
+            
+            <%if(board.getImagefile2() != null){ %>
+              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
+            <%}else { %>
+            <div  id="foodimage"></div>
+            <% } %>
+            
+           
         </div>
         
         <hr>
@@ -139,7 +153,6 @@
 					</div>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
-				
 				</div>
 			
 			<%count = 0; %> 
