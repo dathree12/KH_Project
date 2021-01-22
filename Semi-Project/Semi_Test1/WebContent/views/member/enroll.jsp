@@ -20,9 +20,11 @@
             <label class="under">선호 채식 : </label>
             <div id="radio-container">
                 <label><input type="radio" name="vegType" value="v1">비건</label>
-                <label><input type="radio" name="vegType" value="v2">락토/오보베지테리언</label>
-                <label><input type="radio" name="vegType" value="v3">페스코테리언</label>
-                <label><input type="radio" name="vegType" value="v4">플렉시테리언</label>
+                <label><input type="radio" name="vegType" value="v2">락토 베지테리언</label>
+                <label><input type="radio" name="vegType" value="v3">오보 베지테리언</label>
+                <label><input type="radio" name="vegType" value="v4">락토/오보 베지테리언</label>
+                <label><input type="radio" name="vegType" value="v5">페스코테리언</label>
+                <label><input type="radio" name="vegType" value="v6">플렉시테리언</label>
                 <label><input type="radio" name="vegType" value="v0" checked="checked">없음</label>
             </div>
             <input type="submit" value="가입하기" id="enrollSubmit">
