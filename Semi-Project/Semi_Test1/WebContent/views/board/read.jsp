@@ -62,20 +62,20 @@
 		<hr>
 		
         <!-- 업로드한 이미지를 가져온다. -->
-        <div id="food_images">
             <h2>완성사진</h2>
+        <div id="food_images">      
             <%if(board.getImagefile1() != null){ %>
             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" width="300" height="300">
             <%}else { %>
             <div id="foodimage"></div>
             <% } %>
-            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <%if(board.getImagefile2() != null){ %>
              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
             <%}else { %>
             <div id="foodimage" ></div>
             <% } %>
-            
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <%if(board.getImagefile2() != null){ %>
               <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
             <%}else { %>
@@ -93,8 +93,6 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<button onclick=""><img src="<%=request.getContextPath()%>/image/scrap.JPG" ></button> 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		
-		
 			<% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()))) { %> 
 				<span id="del"><button onclick="updateBoard()" id="submit">수정</button></span>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -102,7 +100,7 @@
 			 <%}%>
 		</div>
 
-		<br>
+		<br><br><br>
 
 		<div id=reply>
 			<strong>요리후기</strong> &nbsp;&nbsp; <a><%=replies.size()%>개의 댓글이 존재합니다.</a> 

@@ -8,12 +8,12 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ include file="/views/common/header.jsp"%>
 
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/slick-theme.css">
-<script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/slick.js"></script>
     
@@ -135,6 +135,7 @@ List<Board> list1 = new ArrayList<>();
           <a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>"><img src="image/<%=board.getBoardImageFile()%>" class="main_img"> </a><br>
        	  <a><%= board.getBoardTitle() %></a>
           </div>
+         
      <% } %>
 </div>
 	</div>

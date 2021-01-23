@@ -54,9 +54,8 @@
       }
      
       .content {
-        padding: 0;
         width: 11.7rem;
-        height: 12rem;
+        
    		
       }
       img {
@@ -313,7 +312,6 @@
 			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 		</div>
 		
-		<script type="text/javascript">
 		<script type="text/javascript">
 		function checklogin() {
 			if(<%= loginMember == null %>){

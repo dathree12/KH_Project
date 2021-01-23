@@ -211,7 +211,7 @@ table#tbl-comment sub.comment-date {
 }
 
 div#comment-container{
-	height: 110px;
+	min-height: 110px;
 }
 
 div#comment-container button#btn-insert {
@@ -245,7 +245,6 @@ div#comment-container button#btn-insert {
 }
 
 #slide{
-	width: 25%;
 	display: inline-block;
 	margin: 10px auto; 
 }
@@ -263,9 +262,7 @@ div#comment-container button#btn-insert {
 }
 
 #vegan-check{
-	width: 30px;
-	height: 30px;
-	padding-top: 30px;
+	
 
 }
 
@@ -344,7 +341,6 @@ table#tbl-board th, table#tbl-board td {
 }
 
 #del{
-	position: relative;
 	top: -20px;
 }
 
@@ -424,11 +420,15 @@ figcaption{
 
 .prev{
 	display: inline-block;
+	float: left;
+	top :80px;
 }
 
 /* Position the "next button" to the right */
 .next {
 	display: inline-block;
+	float: right;
+	top :80px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
@@ -500,6 +500,11 @@ figcaption{
 
 .mySlides fade2{
 	border: solid 1px; 
+}
+
+#food_images{
+	text-align: center;
+	
 }
 
 #foodimage{
