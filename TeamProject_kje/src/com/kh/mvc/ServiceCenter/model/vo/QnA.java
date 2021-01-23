@@ -5,6 +5,7 @@ import java.sql.Date;
 public class QnA {
 	
 	private int Que_Num;
+	private int rowNum;
 	private int User_Num;
 	private String Que_Title;
 	private String Que_Content;
@@ -17,9 +18,11 @@ public class QnA {
 	public QnA() {
 	}
 
-	public QnA(int que_Num, int user_Num, String que_Title, String que_Content, Date que_Date, int hIT, int qGROUP,
-			int sTEP, int qINDENT) {
+	public QnA(int que_Num, int rowNum, int user_Num, String que_Title, String que_Content, Date que_Date, int hIT,
+			int qGROUP, int sTEP, int qINDENT) {
+		super();
 		Que_Num = que_Num;
+		this.rowNum = rowNum;
 		User_Num = user_Num;
 		Que_Title = que_Title;
 		Que_Content = que_Content;
@@ -29,15 +32,21 @@ public class QnA {
 		STEP = sTEP;
 		QINDENT = qINDENT;
 	}
-
 	
-
 	public int getQue_Num() {
 		return Que_Num;
 	}
 
 	public void setQue_Num(int que_Num) {
 		Que_Num = que_Num;
+	}
+
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
 	}
 
 	public int getUser_Num() {
@@ -106,9 +115,9 @@ public class QnA {
 
 	@Override
 	public String toString() {
-		return "QnA [Que_Num=" + Que_Num + ", User_Num=" + User_Num + ", Que_Title=" + Que_Title + ", Que_Content="
-				+ Que_Content + ", Que_Date=" + Que_Date + ", HIT=" + HIT + ", QGROUP=" + QGROUP + ", STEP=" + STEP
-				+ ", QINDENT=" + QINDENT + "]";
+		return "QnA [Que_Num=" + Que_Num + ", rowNum=" + rowNum + ", User_Num=" + User_Num + ", Que_Title=" + Que_Title
+				+ ", Que_Content=" + Que_Content + ", Que_Date=" + Que_Date + ", HIT=" + HIT + ", QGROUP=" + QGROUP
+				+ ", STEP=" + STEP + ", QINDENT=" + QINDENT + "]";
 	}
 }
 

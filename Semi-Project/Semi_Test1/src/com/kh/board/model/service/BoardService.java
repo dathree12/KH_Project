@@ -199,6 +199,15 @@ public class BoardService {
 		return list;
 	}
 	
+	public List<Board> getBoardSortList(String veganOption, String situOption, PageInfo info) {
+		Connection conn = getConnection();
+		
+		List<Board> sortlist = new BoardDAO().sortingRecipe(conn,veganOption, situOption, info);
+		
+		close(conn);		
+		
+		return sortlist;
+	}
 	
 	
 }

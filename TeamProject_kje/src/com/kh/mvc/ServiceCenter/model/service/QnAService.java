@@ -19,7 +19,7 @@ public class QnAService {
 		
 		List<QnA> list = new QnADAO().findAll(conn, info);
 		
-		close(conn);		
+		close(conn);
 		
 		return list;
 	}
@@ -42,6 +42,48 @@ public class QnAService {
 			result = new QnADAO().updateQnA(conn, qna);	
 		} else {
 			result = new QnADAO().insertQnA(conn, qna);			
+		}
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;
+	}
+
+	public QnA getQnA(int que_Num, boolean hasRead) {
+		int result = 0;
+		Connection conn = getConnection();
+		QnA qna = new QnADAO().findQnAByNo(conn, que_Num);
+		
+		// 게시글 조회수 증가 로직
+		if(qna != null && !hasRead) {
+			result = new QnADAO().updateReadCount(conn, qna);
+			
+			if (result > 0) {
+				commit(conn);
+			} else {
+				rollback(conn);
+			}
+		}		
+		
+		close(conn);	
+		
+		return qna;
+	}
+
+	public int saveQnAAnswer(QnA qna) {
+		int result = 0;
+		Connection conn = getConnection();
+		
+		if(qna.getQue_Num() != 0) {
+			result = new QnADAO().updateQnAAnswer(conn, qna);	
+		} else {
+			result = new QnADAO().insertQnAAnswer(conn, qna);			
 		}
 		
 		if (result > 0) {

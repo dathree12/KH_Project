@@ -119,7 +119,7 @@
 			</ul>
 		</nav>
 	</header>
-	
+
 	<!-- Modal -->
 
 <div id="myModal" class="modal fade">
