@@ -23,8 +23,7 @@ public class MemberLoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 로그인 페이지로 전환해주는 기능
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/member/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/");
 		
 		dispatcher.forward(request, response);
 	}
