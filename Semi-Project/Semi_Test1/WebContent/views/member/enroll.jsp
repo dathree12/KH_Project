@@ -1,24 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Enroll</title>
-    <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.js"></script>
-    </head>
-    <body>
-    <section id="signup-container">
-        <div class="title">회원가입</div>
+	pageEncoding="UTF-8"%>
+<%@ include file="/views/common/header.jsp"%>
+    <style>
+    	.CS1{
+    		background-color: rgba(0, 0, 0, 0.05);
+    		-webkit-box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.6); 
+			box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.6);
+    		width: 700px;
+    		padding: 20px;
+    		margin: 20px auto;
+    		border-radius: 25px;
+    	}
+    	form > .CS2 {
+	    	text-align: center;
+    	}
+    	label {
+    		width: 120px;
+    		margin: 0px 30px;
+    	}
+    	label, input, h1 {
+    		border: 1px solid black;
+    	}
+    </style>
+    <section id="signup-container" class="container-md d-flex justify-content-center CS1">
         <form name="enrollForm" action="<%= request.getContextPath()%>/member/enroll" method="POST">
-            <label>아이디 : <input type="text" name="userId" id="newId" required></label><input type="button" id="validateBtn" value="중복확인"><br>
-            <span id="validateMsg"></span><br><br>
-            <label>비밀번호 : <input type="password" name="userPwd" id="pwd1" placeholder="n글자 이상, 특수문자를 포함해야합니다." required></label> <br><br>
-            <label>비밀번호 확인 : <input type="password" id="pwd2" required></label><br>
-            <span id="validatePwd"></span><br><br>
-            <label>이메일 : <input type="email" name="userEmail" required></label> <br><br>
-            <label class="under">선호 채식 : </label>
-            <div id="radio-container">
+	        <h1 class="CS2">회원가입</h1>
+            <div class="form-group">
+            	<label for="userId">아이디</label>
+            	<input type="text" name="userId" id="newId" required>
+            	<input type="button" id="validateBtn" value="중복확인">
+	            <span id="validateMsg"></span>
+            </div>
+	        <div class="form-group">
+	            <label for="userPwd">비밀번호</label>
+				<input type="password" name="userPwd" id="pwd1" placeholder="n글자 이상, 특수문자를 포함해야합니다." required><br><br>
+	            <label>비밀번호 확인</label>
+	            <input type="password" id="pwd2" required>
+	            <span id="validatePwd"></span>
+            </div>
+            <div class="form-group">
+	            <label for="userEmail">이메일</label>
+	            <input type="email" name="userEmail" required>
+            </div>
+            <div class="form-group">
+            	<label for="vegType">선호 채식</label><br>
+	            <div id="radio-container">
                 <label><input type="radio" name="vegType" value="v1">비건</label>
                 <label><input type="radio" name="vegType" value="v2">락토 베지테리언</label>
                 <label><input type="radio" name="vegType" value="v3">오보 베지테리언</label>
@@ -26,7 +52,8 @@
                 <label><input type="radio" name="vegType" value="v5">페스코테리언</label>
                 <label><input type="radio" name="vegType" value="v6">플렉시테리언</label>
                 <label><input type="radio" name="vegType" value="v0" checked="checked">없음</label>
-            </div>
+           	            </div>
+	        </div>
             <input type="submit" value="가입하기" id="enrollSubmit">
         </form>
         <form name="checkIdForm">
@@ -87,5 +114,4 @@
 		});
 	});
 </script>
-</body>
-</html>
+<%@ include file="/views/common/footer.jsp"%>
