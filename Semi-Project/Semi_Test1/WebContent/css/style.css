@@ -8,10 +8,7 @@ div,session,header,aside, footer{padding:10px;}
             box-sizing:border-box;
         }
  */
-div{
- 	align-content: center; 
- 	border: solid 0px;
- }
+
 
 /* 로그인 폼 */
 header div.login-container {
@@ -21,19 +18,7 @@ header div.login-container {
 	top: 10px;
 }
 
-/* 로그인테이블관련 : 탭순서를 고려해 submit버튼이 2번째행 2번째열에 배치 */
-#loginFrm table { 
-	empty-cells:hide;
-}
-
-#loginFrm input[type=submit] {
-	width:60px; 
-	height:50px; 
-	color:white; 
-	background:#3300ff; 
-	position:absolute; 
-	top:10px;
-}    
+ 
 div#container {
 	background-color:#F0F0F0; 
 	width:960px;
