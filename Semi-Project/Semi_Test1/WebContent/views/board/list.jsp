@@ -278,7 +278,7 @@
 	 <div id="board_content" >
 	 <%  for(Board board : list) { %>
           <div id="content1" class="content" >
-       		<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>">  <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>"> </a>
+       		<a href="<%=request.getContextPath()%>/board/view?boardNo=<%=board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>"><img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>"> </a>
        		<a><%= board.getBoardTitle() %></a><br>
             <a><%= board.getUserId() %></a><br>
             <a><%= board.getVeganlist()%></a><br>

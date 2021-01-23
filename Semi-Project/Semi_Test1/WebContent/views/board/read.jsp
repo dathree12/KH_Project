@@ -12,49 +12,95 @@
 	
 	String vl = board.getVeganlist();
 	char vlChar = vl.charAt(1);
-	String vlPrint = "";
+	String vlPrint = null;
 	switch(vlChar){
 	case '1' : vlPrint = "비건"; break;
 	case '2' : vlPrint = "락토 베지테리언"; break;
 	case '3' : vlPrint = "오보 베지테리언"; break;
 	case '4' : vlPrint = "락토 오보 베지테리언"; break;
 	case '5' : vlPrint = "페스코 베지테리언"; break;
+	}
+	
+	String si = board.getSituation();
+	si = si.substring(1);
+	si = si.substring(0,si.length()-1);
+	
+	String[] silist = si.split(", ");
+	String str = "";
+	String siPrint = null;
+	char siChar;
+	
+	for(int i = 0; i < silist.length; i++){
+		 siChar = silist[i].charAt(1);
+		
+		 switch(siChar){
+			case '1' : siPrint = "아침/점심 "; 
+						str += siPrint; 
+						break;
+			case '2' : siPrint = "저녁 ";  
+						str += siPrint; 
+						break;
+			case '3' : siPrint = "빠른조리 ";
+						str += siPrint; 
+						break;
+			case '4' : siPrint = "간식 ";
+						str += siPrint;
+						break;
+			case '5' : siPrint = "파티 ";
+						str += siPrint;  
+						break;
+			}
+		
+	}
+	
+	
 	
 %>
+
+<style>
+#date{
+	text-align: center;
+}
+
+#list{
+text-align: center;
+}
+
+#date{
+height: 50px;
+}
+
+#icon{
+	display: inline-block;
+}
+</style>
+
 <section id="content">
 	<div id='board-container'>
         <!-- 대표 이미지 가져와 출력 -->
         <div id="food_image" align="center">
         <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>">
         </div>
-		<div>
+		<div id="list">
 			<h2 id="title" align="center"><%=board.getBoardTitle() %></h2>
-			<div align="right">
-			<table>
-				<tr>
-				<td>채식주의 종류 :</td>
-				<td>[<%= vlPrint %>]</td>
-				</tr>
-				<tr>
-				<td>상황 카테고리 :</td>
-				<td> <%=board.getSituation() %></td>
-				</tr>
-			</table>
-			</div>
-			
-			<hr>
+			<a id="date"><%=board.getBoardCreateDate()%></a><br><hr><br>
+			<strong>채식주의 종류 : </strong> <span id="vlPrint"></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<strong>상황  :</strong> <span id="siPrint"></span>
 		</div>
-
+		
+		<hr>
+	
 		<div id="date">
-			<a align="left"><%=board.getBoardCreateDate()%></a> 
-			<a class="num"><%=board.getBoardReadCount()%></a> <img src="<%=request.getContextPath()%>/image/3.JPG" class="num"> 
-			<a class="num"><%=replies.size()%></a> <img src="<%=request.getContextPath()%>/image/1.JPG" class="num"> 
-			<a class="num"><%=board.getRecommned()%></a> <img src="<%=request.getContextPath()%>/image/2.JPG" class="num">
+			 <div id="icon"> <img src="<%=request.getContextPath()%>/image/2.JPG" class="num"> <br> <a class="num"> 추천순 : <%=board.getRecommned()%></a></div>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <div id="icon"><img src="<%=request.getContextPath()%>/image/1.JPG" class="num"> <br> <a class="num"> 댓글 : <%=replies.size()%></a></div> 
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <div id="icon"><img src="<%=request.getContextPath()%>/image/3.JPG" class="num"> <br> <a class="num"> 조회수 : <%=board.getBoardReadCount()%></a> </div> 
 			<!-- 추천 댓글 아이콘 구하기  -->
 		</div>
 
-		<hr>
-		<br>
+		<br><br><hr><br>
 
 		<div id="write"><pre><%=board.getBoardContent()%></pre></div>
 
@@ -62,20 +108,22 @@
 		<hr>
 		
         <!-- 업로드한 이미지를 가져온다. -->
+        <div id="food_images">
             <h2>완성사진</h2>
-        <div id="food_images">      
             <%if(board.getImagefile1() != null){ %>
-            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" id="foodimage">
+            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" width="300" height="300">
             <%}else { %>
             <div id="foodimage"></div>
             <% } %>
+            
             <%if(board.getImagefile2() != null){ %>
-             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" id="foodimage">
+             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
             <%}else { %>
             <div id="foodimage" ></div>
             <% } %>
+            
             <%if(board.getImagefile2() != null){ %>
-              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" id="foodimage">
+              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
             <%}else { %>
             <div  id="foodimage"></div>
             <% } %>
@@ -91,6 +139,8 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<button onclick=""><img src="<%=request.getContextPath()%>/image/scrap.JPG" ></button> 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		
+		
 			<% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()))) { %> 
 				<span id="del"><button onclick="updateBoard()" id="submit">수정</button></span>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -98,7 +148,7 @@
 			 <%}%>
 		</div>
 
-		<br><br><br>
+		<br><br>
 
 		<div id=reply>
 			<strong>요리후기</strong> &nbsp;&nbsp; <a><%=replies.size()%>개의 댓글이 존재합니다.</a> 
@@ -137,7 +187,7 @@
 				<form action="<%=request.getContextPath()%>/board/reply" method="post" id="reply_form">
 					<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
 					<input type="hidden" name="writer" value="<%= loginMember != null ? loginMember.getUserId() : "" %>">
-					<textarea name="content" cols="110" rows="4" onfocus="checklogin()"></textarea>
+					<textarea name="content" cols="110" rows="6" onfocus="checklogin()"></textarea>
 					<button type="submit" id="btn-insert">등록</button>
 				</form>
 			</div>
@@ -213,7 +263,7 @@
 		}
 		
 		function checklogin() {
-			if(<%=loginMember == null %>){
+			if(<%= loginMember == null %>){
 				alert("로그인 후 이용해주세요!");
 				$("#userId").focus();
 			}
@@ -226,17 +276,13 @@
 		});
 		
 		var slideIndex = 1;
-
 		showSlides(slideIndex);
-
 		function plusSlides(n) {
 			showSlides(slideIndex += n);
 		}
-
 		function currentSlide(n) {
 			showSlides(slideIndex = n);
 		}
-
 		function showSlides(n) {
 			var i;
 			var slides = document.getElementsByClassName("mySlides");
@@ -247,15 +293,12 @@
 			if (n < 1) {
 				slideIndex = slides.length
 			}
-
 			for (i = 0; i < slides.length; i++) {
 				slides[i].style.display = "none";
 			}
-
 			for (i = 0; i < dots.length; i++) {
 				dots[i].className = dots[i].className.replace(" active", "");
 			}
-
 			slides[slideIndex - 1].style.display = "block";
 			dots[slideIndex - 1].className += " active";
 		}
@@ -267,6 +310,13 @@
 			return starscore;
 		}
 		
+		$(document).ready(() => {
+			$("#vlPrint").text("<%=vlPrint %>");
+		});
+		
+		$(document).ready(() => {
+			$("#siPrint").text("<%=str%>");
+		});
 	</script>
  
 </section>

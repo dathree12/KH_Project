@@ -99,6 +99,7 @@ List<Board> list1 = new ArrayList<>();
             	board1.setBoardImageFile(rs1.getString("BOARD_IMAGEF_FILE"));
             	list1.add(board1);
             }
+            
             while(rs.next())
             {
             	Board board = new Board();

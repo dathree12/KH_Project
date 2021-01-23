@@ -149,7 +149,8 @@ ul.main-nav li:hover > a{
 }
 
 .num{
-	float: right;
+	width: 50px;
+	height: 50px;
 	margin: auto;
 	text-align: center;
 }
