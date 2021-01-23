@@ -10,6 +10,16 @@
 	List<BoardReply> replies = (List) request.getAttribute("replies");
 	List<Board> vegan = (List) request.getAttribute("vegan");
 	
+	String vl = board.getVeganlist();
+	char vlChar = vl.charAt(1);
+	String vlPrint = "";
+	switch(vlChar){
+	case '1' : vlPrint = "비건"; break;
+	case '2' : vlPrint = "락토 베지테리언"; break;
+	case '3' : vlPrint = "오보 베지테리언"; break;
+	case '4' : vlPrint = "락토 오보 베지테리언"; break;
+	case '5' : vlPrint = "페스코 베지테리언"; break;
+	}
 %>
 <section id="content">
 	<div id='board-container'>
@@ -23,7 +33,7 @@
 			<table>
 				<tr>
 				<td>채식주의 종류 :</td>
-				<td> [<%=board.getVeganlist()%>]</td>
+				<td>[<%= vlPrint %>]</td>
 				</tr>
 				<tr>
 				<td>상황 카테고리 :</td>
@@ -260,6 +270,7 @@
 			starscore = n;
 			return starscore;
 		}
+		
 	</script>
  
 </section>
