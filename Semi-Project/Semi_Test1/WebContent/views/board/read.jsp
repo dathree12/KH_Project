@@ -19,7 +19,7 @@
 	case '3' : vlPrint = "오보 베지테리언"; break;
 	case '4' : vlPrint = "락토 오보 베지테리언"; break;
 	case '5' : vlPrint = "페스코 베지테리언"; break;
-	}
+	
 %>
 <section id="content">
 	<div id='board-container'>
@@ -65,19 +65,17 @@
             <h2>완성사진</h2>
         <div id="food_images">      
             <%if(board.getImagefile1() != null){ %>
-            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" width="300" height="300">
+            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" id="foodimage">
             <%}else { %>
             <div id="foodimage"></div>
             <% } %>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <%if(board.getImagefile2() != null){ %>
-             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
+             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" id="foodimage">
             <%}else { %>
             <div id="foodimage" ></div>
             <% } %>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <%if(board.getImagefile2() != null){ %>
-              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
+              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" id="foodimage">
             <%}else { %>
             <div  id="foodimage"></div>
             <% } %>
@@ -139,7 +137,7 @@
 				<form action="<%=request.getContextPath()%>/board/reply" method="post" id="reply_form">
 					<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
 					<input type="hidden" name="writer" value="<%= loginMember != null ? loginMember.getUserId() : "" %>">
-					<textarea name="content" cols="110" rows="6" onfocus="checklogin()"></textarea>
+					<textarea name="content" cols="110" rows="4" onfocus="checklogin()"></textarea>
 					<button type="submit" id="btn-insert">등록</button>
 				</form>
 			</div>
@@ -215,7 +213,7 @@
 		}
 		
 		function checklogin() {
-			if(<%= loginMember == null %>){
+			if(<%=loginMember == null %>){
 				alert("로그인 후 이용해주세요!");
 				$("#userId").focus();
 			}

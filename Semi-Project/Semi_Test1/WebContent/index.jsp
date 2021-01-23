@@ -128,6 +128,8 @@ List<Board> list1 = new ArrayList<>();
        </div>
 </div>
 
+<hr>
+
 <h3 id="today_text">맞춤 레시피!<h3>
 <div id="main_view">
  <% int count = 0;  for(Board board : list) { count++; if(count>9){break;} %>

@@ -35,20 +35,20 @@ public class BoardSortRecipeServlet extends HttpServlet {
 		int j = 0;
 		if(veganOptions != null) {
 			while(i < veganOptions.length -1) {
-				veganOption += "'"+veganOptions[i]+"', ";
+				veganOption += " B.VEGANLIST LIKE '%"+veganOptions[i]+"%' OR ";
 				i++;
 			} 
 			if(i == veganOptions.length -1) {
-				veganOption += "'"+veganOptions[i]+"'";
+				veganOption += " B.VEGANLIST LIKE '%"+veganOptions[i]+"%'";
 			}
 		}
 		if(situOptions != null) {
 			while(j < situOptions.length -1) {
-				situOption += "'"+situOptions[j]+"', ";
+				situOption += " B.SITUATION LIKE '%"+situOptions[j]+"%' OR";
 				j++;
 			}  
 			if(j == situOptions.length -1) {
-				situOption += "'"+situOptions[j]+"'";
+				situOption += " B.SITUATION LIKE '%"+situOptions[j]+"%' ";
 			}
 		};		
 		System.out.println(veganOption + "이랑" + situOption);
