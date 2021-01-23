@@ -410,7 +410,7 @@ public class BoardDAO {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			List<Board> list = new ArrayList<>();
-			String query1 = "SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_TITLE LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC)) WHERE RNUM BETWEEN ? and ?";
+			String query1 = "SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS, RECOMMEND FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS, B.RECOMMEND FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_TITLE LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC)) WHERE RNUM BETWEEN ? and ?";
 					
 			String query2 = 
 					  "SELECT * "
@@ -423,7 +423,8 @@ public class BoardDAO {
 								+ 			"BOARD_IMAGEF_FILE, "
 								+  			"BOARD_READCOUNT, "
 								+			"VEGANLIST, "
-								+     		"STATUS "
+								+     		"STATUS, "
+								+			"RECOMMEND "
 								+ 	 "FROM ("
 								+ 	    "SELECT B.BOARD_NO, "
 								+ 			   "B.BOARD_TITLE, "
@@ -432,7 +433,8 @@ public class BoardDAO {
 								+ 			   "B.BOARD_IMAGEF_FILE, "
 								+ 			   "B.BOARD_READCOUNT, "
 								+			   "B.VEGANLIST, "
-								+ 	   		   "B.STATUS "
+								+ 	   		   "B.STATUS, "
+								+			   "B.RECOMMEND "
 								+ 		"FROM BOARD B "
 								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
 								+ 		"WHERE B.STATUS = 'Y' AND  M.USER_ID LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC"
@@ -451,7 +453,8 @@ public class BoardDAO {
 								+ 			"BOARD_IMAGEF_FILE, "
 								+  			"BOARD_READCOUNT, "
 								+			"VEGANLIST, "
-								+     		"STATUS "
+								+     		"STATUS, "
+								+			"RECOMMEND"
 								+ 	 "FROM ("
 								+ 	    "SELECT B.BOARD_NO, "
 								+ 			   "B.BOARD_TITLE, "
@@ -460,7 +463,8 @@ public class BoardDAO {
 								+ 			   "B.BOARD_IMAGEF_FILE, "
 								+ 			   "B.BOARD_READCOUNT, "
 								+			   "B.VEGANLIST, "
-								+ 	   		   "B.STATUS "
+								+ 	   		   "B.STATUS, "
+								+			   "B.RECOMMEND"
 								+ 		"FROM BOARD B "
 								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
 								+ 		"WHERE B.STATUS = 'Y' AND   B.BOARD_CONTENT LIKE '%' || ? || '%' ORDER BY B.BOARD_CREATE_DATE DESC"
@@ -506,6 +510,7 @@ public class BoardDAO {
 					board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
 					board.setUserId(rs.getString("USER_ID"));
 					board.setVeganlist(rs.getString("VEGANLIST"));
+					board.setRecommned(rs.getInt("RECOMMEND"));
 					
 					list.add(board);				
 					
@@ -590,7 +595,7 @@ public class BoardDAO {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			List<Board> list = new ArrayList<>();
-			String query1 = "SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_TITLE LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC)) WHERE RNUM BETWEEN ? and ?";
+			String query1 = "SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS, RECOMMEND FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS, B.RECOMMEND FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_TITLE LIKE '%' || ? || '%'  ORDER BY B.RECOMMEND DESC)) WHERE RNUM BETWEEN ? and ?";
 					
 			String query2 = 
 					  "SELECT * "
@@ -603,7 +608,8 @@ public class BoardDAO {
 								+ 			"BOARD_IMAGEF_FILE, "
 								+  			"BOARD_READCOUNT, "
 								+			"VEGANLIST, "
-								+     		"STATUS "
+								+     		"STATUS, "
+								+			"RECOMMEND "
 								+ 	 "FROM ("
 								+ 	    "SELECT B.BOARD_NO, "
 								+ 			   "B.BOARD_TITLE, "
@@ -612,7 +618,8 @@ public class BoardDAO {
 								+ 			   "B.BOARD_IMAGEF_FILE, "
 								+ 			   "B.BOARD_READCOUNT, "
 								+			   "B.VEGANLIST, "
-								+ 	   		   "B.STATUS "
+								+ 	   		   "B.STATUS, "
+								+			   "B.RECOMMEND "
 								+ 		"FROM BOARD B "
 								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
 								+ 		"WHERE B.STATUS = 'Y' AND  M.USER_ID LIKE '%' || ? || '%'  ORDER BY B.RECOMMEND DESC"
@@ -631,7 +638,8 @@ public class BoardDAO {
 								+ 			"BOARD_IMAGEF_FILE, "
 								+  			"BOARD_READCOUNT, "
 								+			"VEGANLIST, "
-								+     		"STATUS "
+								+     		"STATUS, "
+								+			"RECOMMEND "
 								+ 	 "FROM ("
 								+ 	    "SELECT B.BOARD_NO, "
 								+ 			   "B.BOARD_TITLE, "
@@ -640,7 +648,8 @@ public class BoardDAO {
 								+ 			   "B.BOARD_IMAGEF_FILE, "
 								+ 			   "B.BOARD_READCOUNT, "
 								+			   "B.VEGANLIST, "
-								+ 	   		   "B.STATUS "
+								+ 	   		   "B.STATUS, "
+								+			   "B.RECOMMEND "
 								+ 		"FROM BOARD B "
 								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
 								+ 		"WHERE B.STATUS = 'Y' AND   B.BOARD_CONTENT LIKE '%' || ? || '%' ORDER BY B.RECOMMEND DESC"
@@ -657,12 +666,10 @@ public class BoardDAO {
 	
 			          
 			         } else if(searchoption.equals("s_id")) {
-			        	 	System.out.println("aaaaa" + searchoption);
 				        	pstmt = conn.prepareStatement(query2);
 				         	pstmt.setString(1, searchword);
 				        	pstmt.setInt(2, info.getStartList());
 				         	pstmt.setInt(3, info.getEndList());
-				         	System.out.println("bbbbbbbbb");
 				         }
 				         else if(searchoption.equals("s_content")) {
 				        	 pstmt = conn.prepareStatement(query3);
@@ -686,6 +693,7 @@ public class BoardDAO {
 					board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
 					board.setUserId(rs.getString("USER_ID"));
 					board.setVeganlist(rs.getString("VEGANLIST"));
+					board.setRecommned(rs.getInt("RECOMMEND"));
 					
 					list.add(board);				
 					
@@ -696,7 +704,7 @@ public class BoardDAO {
 					close(pstmt);
 				}
 			
-			System.out.println("1"+list);
+			System.out.println("SEARCHRECO"+list);
 			return list;
 		}
 	}

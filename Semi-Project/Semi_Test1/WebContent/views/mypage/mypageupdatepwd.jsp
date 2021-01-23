@@ -34,3 +34,4 @@ $("#pwd2").blur((e) => {
 </script>
 </body>
 </html>
+<%@ include file="/views/common/footer.jsp"%>

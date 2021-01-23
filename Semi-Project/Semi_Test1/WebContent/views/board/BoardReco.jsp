@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%> 
     
 <%@ include file="/views/common/header.jsp" %>
- 
+
   <style>
       
       h2 {
@@ -32,11 +32,8 @@
         margin: 0 0.5rem;
       }
       #board_main {
-       display: inline-block;
+        display: flex;
         padding: none;
-        border: solid 1px;
-        float: left;
-       
       }
       #board_option {
         flex: 1;
@@ -48,8 +45,6 @@
         flex-wrap: wrap;
         align-content: flex-start;
         justify-content: center;
-    
-      
        
       }
      
@@ -69,13 +64,13 @@
    }
    
     </style>
-
     
 
 <%
 	List<Board> list = (ArrayList)request.getAttribute("list");
 	System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	
 %>
 <section id="content">
 	<h2 align="center">게시판 </h2>
@@ -94,9 +89,11 @@
             <button class="btn btn-primary" type="submit" >검색</button>
         </form>
         
-        <button onclick="location.href='<%=request.getContextPath()%>/board/list'">최신순</button>
-        <button onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'">추천순</button>
-         
+    
+        <button onclick="location.href='<%=request.getContextPath()%>/board/list'" value="rece" name="type">최신순</button>
+        <button onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" value="reco" name="type">추천순</button>
+      
+        
 	 <div id="board_content" >
 	 <%  for(Board board : list) { %>
           <div id="content1" class="content" >
@@ -107,7 +104,7 @@
             <a><%= board.getBoardCreateDate()%></a>
             <a>추천수:<%= board.getRecommned()%></a><br>
           </div>
- 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      <% } %>
     
      </div>
@@ -123,7 +120,7 @@
 				<% if(p == pageInfo.getCurrentPage()){ %>
 					<button disabled><%= p %></button>
 				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= p %>'"><%= p %></button>
+					<button onclick="location.href='<%= request.getContextPath() %>/boardrecommendlist?page=<%= p %>'"><%= p %></button>
 				<% } %>
 			<% } %>
 			
@@ -131,7 +128,7 @@
 			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			
 			<!-- 맨 끝으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/boardrecommendlist?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 		</div>
 		
 		<script type="text/javascript">

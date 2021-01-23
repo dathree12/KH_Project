@@ -9,7 +9,7 @@
     <script src="resources/js/slick.js"></script>
     
 <section id="content">
-	
+	<h4>깃테스트</h4>
 	
 </section>
 

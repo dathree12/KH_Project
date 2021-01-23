@@ -74,6 +74,9 @@
 	PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	
 %>
+
+
+
 <section id="content">
 	<h2 align="center">게시판 </h2>
 	
@@ -91,7 +94,11 @@
         </form>
         
         <button onclick="location.href='<%=request.getContextPath()%>/searchrecipe'">최신순</button>
-        <button onclick="location.href='<%=request.getContextPath()%>/boardsearchreco'">추천순</button>
+        <form action="<%=request.getContextPath()%>/boardsearchreco" method="GET" id="sereco">
+        	<input type="hidden" value="<%=pageSearch.getsearch1()%>" name="searchword">
+        	<input type="hidden" value="<%=pageSearch.getsearch2()%>" name="search_sort">
+        <button type="submit">추천순</button>
+        </form>
         
 	 <div id="board_content" >
 	 <%  for(Board board : list) { %>

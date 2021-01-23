@@ -10,8 +10,6 @@
 	List<BoardReply> replies = (List) request.getAttribute("replies");
 	List<Board> vegan = (List) request.getAttribute("vegan");
 	
-	System.out.println(replies);
-	System.out.println(vegan);
 %>
 <section id="content">
 	<div id='board-container'>
@@ -56,9 +54,25 @@
         <!-- 업로드한 이미지를 가져온다. -->
         <div id="food_images">
             <h2>완성사진</h2>
+            <%if(board.getImagefile1() != null){ %>
             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile1() %>" width="300" height="300">
-            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
-            <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
+            <%}else { %>
+            <div id="foodimage"></div>
+            <% } %>
+            
+            <%if(board.getImagefile2() != null){ %>
+             <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile2() %>" width="300" height="300">
+            <%}else { %>
+            <div id="foodimage" ></div>
+            <% } %>
+            
+            <%if(board.getImagefile2() != null){ %>
+              <img src="<%=request.getContextPath()%>/image/<%=board.getImagefile3() %>" width="300" height="300">
+            <%}else { %>
+            <div  id="foodimage"></div>
+            <% } %>
+            
+           
         </div>
         
         <hr>
@@ -112,10 +126,7 @@
 			</p>
 
 			
-		
-			
-			
-            <!-- 댓글 등록 부분참조 -->
+            <!-- 댓글 등록 -->
 			<div id="comment-container">
 				<form action="<%=request.getContextPath()%>/board/reply" method="post" id="reply_form">
 					<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
@@ -131,40 +142,46 @@
 		<div id="other-recommend">
 			<h3>다른 추천 메뉴</h3>
 			<div class="slideshow-container">
-			<%int count = 0; %> 
+			<%int count = 0; int i = 0; %> 
 				<div class="mySlides fade2">
 					<span class="prev" onclick="plusSlides(-1)">❮</span>
-					<%for(Board veganlist : vegan){ count++; if(count>3){ break;}%>		
-					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
+					<%for(i=0; i < vegan.size(); i++){ count++; if(count>3){ break;}%>	
+					<% Board b = vegan.get(i); %>
+					<div id="slide">
+					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= b.getBoardNo()%>&vegan=<%=b.getVeganlist()%>"> 
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=b.getBoardImageFile()%>"><figcaption><%=b.getBoardTitle()%></figcaption></a>
+					</div>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
-				
 				</div>
 			
+			<%count = 0; %> 
+				<div class="mySlides fade2">
+					<span class="prev" onclick="plusSlides(-1)">❮</span>
+					<%for(i=3; i < vegan.size(); i++){ count++; if(count>3){ break;}%>	
+					<% Board b = vegan.get(i); %>
+					<div id="slide">
+					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= b.getBoardNo()%>&vegan=<%=b.getVeganlist()%>"> 
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=b.getBoardImageFile()%>"><figcaption><%=b.getBoardTitle()%></figcaption></a>
+					</div>
+					<%} %>
+					<span class="next" onclick="plusSlides(1)">❯</span>
+				</div>
+				
 				<%count = 0; %> 
 				<div class="mySlides fade2">
 					<span class="prev" onclick="plusSlides(-1)">❮</span>
-					<%for(Board veganlist : vegan){ count++; if(count>3){ break;}%>		
-					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
+					<%for(i=6; i < vegan.size(); i++){ count++; if(count>3){ break;}%>	
+					<% Board b = vegan.get(i); %>
+					<div id="slide">
+					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= b.getBoardNo()%>&vegan=<%=b.getVeganlist()%>"> 
+					<img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=b.getBoardImageFile()%>"><figcaption><%=b.getBoardTitle()%></figcaption></a>
+					</div>
 					<%} %>
 					<span class="next" onclick="plusSlides(1)">❯</span>
-				
-				</div>
-				<%count = 0; %> 
-				<div class="mySlides fade2">
-					<span class="prev" onclick="plusSlides(-1)">❮</span>
-					<%for(Board veganlist : vegan){ count++; if(count>3){ break;}%>		
-					<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= veganlist.getBoardNo() %>"> <img class="main_slideImg" src="<%=request.getContextPath()%>/image/<%=veganlist.getBoardImageFile()%>"></a>
-					<%} %>
-					<span class="next" onclick="plusSlides(1)">❯</span>
-
 				</div>
 				
-				
-				
-			
-				
-				<div style="text-align: center">
+				<div style="text-align: center" id="dot">
 				<span class="dot" onclick="currentSlide(1)"></span> 
 				<span class="dot" onclick="currentSlide(2)"></span> 
 				<span class="dot" onclick="currentSlide(3)"></span>
