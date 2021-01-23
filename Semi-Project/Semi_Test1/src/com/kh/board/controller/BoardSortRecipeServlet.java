@@ -1,6 +1,7 @@
 package com.kh.board.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,7 +29,8 @@ public class BoardSortRecipeServlet extends HttpServlet {
 		String []situOptions = request.getParameterValues("situsort");
 		String veganOption = "";
 		String situOption = "";
-
+		
+		
 		int i = 0;
 		int j = 0;
 		if(veganOptions != null) {

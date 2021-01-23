@@ -28,9 +28,9 @@
 				<th>상황별</th>
 				<td>
 					<div action="" id="vegan-box2">
-						<input type="checkbox" id="vegan-check" value="건강식" name="situation">건강식 &nbsp; <input type="checkbox" id="vegan-check" value="빠른요리" name="situation">빠른요리 &nbsp; 
-						<input type="checkbox" id="vegan-check" value="일상식사" name="situation">일상식사 &nbsp; <input type="checkbox" id="vegan-check" value="다이어트" name="situation">다이어트 &nbsp;
-						<input type="checkbox" id="vegan-check" value="아침/점심" name="situation">아침/점심 &nbsp; <input type="checkbox" id="vegan-check" value="저녁" name="situation">저녁 &nbsp; 
+						<input type="checkbox" id="vegan-check" value="s1" name="situation">아침,점심 &nbsp; <input type="checkbox" id="vegan-check" value="s2" name="situation">저녁 &nbsp; 
+						<input type="checkbox" id="vegan-check" value="s3" name="situation">빠른조리 &nbsp; <input type="checkbox" id="vegan-check" value="s4" name="situation">간식 &nbsp;
+						<input type="checkbox" id="vegan-check" value="s5" name="situation">파티 &nbsp;
 					</div>
 				</td>
 			</tr>
