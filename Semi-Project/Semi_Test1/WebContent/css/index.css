@@ -10,6 +10,7 @@ section {
 
 #today_text{
 text-align: center;
+
 }
 
 .text_today {
@@ -23,7 +24,7 @@ text-align: center;
 }
 
 #today {
-    width: 980px;
+    width: 1800px;
     height: 350px;
    text-align: center;
     display: inline-block;
@@ -31,9 +32,8 @@ text-align: center;
 
 #today .list {
     text-align: center;
-    line-height: 250px;
     width: 250px;
-    height: 250px;
+    height: 330px;
 }
 
 #today .list01, .list03, .list05 {

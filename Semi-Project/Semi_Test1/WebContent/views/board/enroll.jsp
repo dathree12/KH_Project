@@ -23,6 +23,11 @@ section#content {
 	
 }
 
+#radio_text{
+	font-size: 20px;
+	position: relative;	
+	top: -5px;
+}
 
 </style>
 
@@ -41,11 +46,11 @@ section#content {
 				<th>비건종류</th>
 				<td>
 					<div id="vegan-box2">
-						<label><input type="radio" id="vegan-check" value="v1" name="veganlist"> 비건 &nbsp;</label> 
-						<input type="radio" id="vegan-check" value="v2" name="veganlist"> <label id="la">락토 &nbsp;</label> 
-						<input type="radio" id="vegan-check" value="v3" name="veganlist"> <label>오보 &nbsp;</label> 
-						<input type="radio" id="vegan-check" value="v4" name="veganlist"> <label>락토 오보 &nbsp;</label> 
-						<input type="radio" id="vegan-check" value="v5" name="veganlist"> <label>페스코 &nbsp;</label> 
+						<input type="radio" id="vegan-check" value="v1" name="veganlist"> <label id="radio_text">비건 &nbsp;</label> 
+						<input type="radio" id="vegan-check" value="v2" name="veganlist"> <label id="radio_text">락토 &nbsp;</label> 
+						<input type="radio" id="vegan-check" value="v3" name="veganlist"> <label id="radio_text">오보 &nbsp;</label> 
+						<input type="radio" id="vegan-check" value="v4" name="veganlist"> <label id="radio_text">락토 오보 &nbsp;</label> 
+						<input type="radio" id="vegan-check" value="v5" name="veganlist"> <label id="radio_text">페스코 &nbsp;</label> 
 					</div>
 				</td>
 			</tr>
@@ -53,11 +58,11 @@ section#content {
 				<th>상황별</th>
 				<td>
 					<div action="" id="vegan-box2">
-						<input type="checkbox" id="vegan-check" value="s1" name="situation"> 아침,점심 &nbsp; 
-						<input type="checkbox" id="vegan-check" value="s2" name="situation"> 저녁 &nbsp; 
-						<input type="checkbox" id="vegan-check" value="s3" name="situation"> 빠른조리 &nbsp; 
-						<input type="checkbox" id="vegan-check" value="s4" name="situation"> 간식 &nbsp;
-						<input type="checkbox" id="vegan-check" value="s5" name="situation"> 파티 &nbsp;
+						<input type="checkbox" id="vegan-check" value="s1" name="situation"> <label id="radio_text"> 아침,점심 &nbsp; </label>
+						<input type="checkbox" id="vegan-check" value="s2" name="situation"> <label id="radio_text"> 저녁 &nbsp; </label>
+						<input type="checkbox" id="vegan-check" value="s3" name="situation"> <label id="radio_text"> 빠른조리 &nbsp; </label> 
+						<input type="checkbox" id="vegan-check" value="s4" name="situation"> <label id="radio_text"> 간식 &nbsp;</label> 
+						<input type="checkbox" id="vegan-check" value="s5" name="situation"> <label id="radio_text"> 파티 &nbsp;</label> 
 					</div>
 				</td>
 			</tr>
@@ -77,11 +82,11 @@ section#content {
 		<br><br>
 		<div id="write_1">
 			<div>
-			<input type="submit" value="등록" id="button1">
+			<input type="submit" value="등록" id="button1" class="btn btn-outline-secondary">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="리셋" id="button1">
+			<input type="reset" value="리셋" id="button1" class="btn btn-outline-secondary">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button type="button" id="button1" onclick="history.back();">취소</button>
+			<button type="button" id="button1" class="btn btn-outline-secondary" onclick="history.back();">취소</button>
 			</div>
 		
 		</div>

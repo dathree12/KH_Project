@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-div,session,header,aside, footer{padding:10px;}
+session,header,aside, footer{padding:10px;}
 
 
 /*div, input, form{

@@ -208,6 +208,17 @@ public class BoardService {
 		
 		return sortlist;
 	}
+
+
+	public List<Board> getMainSearch(String search, PageInfo info) {
+		Connection conn = getConnection();
+		
+		List<Board> searchlist = new BoardDAO().mainSearch(conn, search, info);
+		
+		close(conn);	
+		
+		return searchlist;
+	}
 	
 	
 }
