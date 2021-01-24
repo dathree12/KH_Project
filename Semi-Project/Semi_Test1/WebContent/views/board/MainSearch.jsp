@@ -52,46 +52,46 @@
 		</div>
 	</nav>   
         
-    <div id="board_main">
+    <div id="board_main" class="float_sidebar">
       <form method="GET" action=<%=request.getContextPath()%>/recipesorting>
         <div id="board_option">
         <div>
           <table>
             <tr>
-              <th>채식 타입</th>
+              <th id="vgtype"><img src="<%=request.getContextPath() %>/css/images/corn.png" id="typeimage">채식 타입<img src="<%=request.getContextPath() %>/css/images/corn.png" id="typeimage"></th>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/carrot.png" id="typeimage">
                 전체선택
                 <input type="checkbox" name="vgcheckall" checked />
               </td>
              </tr>
              <tr> 
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/1.png" id="typeimage">
                 비건
                 <input type="checkbox" name="vgsort" value="v1" checked />
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/2.png" id="typeimage">
                 락토
                 <input type="checkbox" name="vgsort" value="v2" checked />
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/3.png" id="typeimage">
                 오보
                 <input type="checkbox" name="vgsort" value="v3" checked/>
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/4.png" id="typeimage">
                 락토-오보
                 <input type="checkbox" name="vgsort" value="v4" checked/>
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/5.png" id="typeimage">
                 페스코
                 <input type="checkbox" name="vgsort" value="v5" checked/>
               </td>
@@ -101,40 +101,40 @@
           <div>
           <table>
             <tr>
-              <th>상황별</th>
+              <th id="vgtype"><img src="<%=request.getContextPath() %>/css/images/corn.png" id="typeimage">상황별<img src="<%=request.getContextPath() %>/css/images/corn.png" id="typeimage"></th>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/carrot.png" id="typeimage">
                 전체선택
                 <input type="checkbox" name="situcheckall" checked />
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/6.png" id="typeimage">
                 아침,점심
                 <input type="checkbox" name="situsort" value="s1" checked/>
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/7.png" id="typeimage">
                 저녁
                 <input type="checkbox" name="situsort" value="s2"  checked/>
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/8.png" id="typeimage">
                 빠른조리
                 <input type="checkbox" name="situsort" value="s3" checked/>
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/9.png" id="typeimage">
                 간식
                 <input type="checkbox" name="situsort" value="s4" checked/>
               </td>
             </tr>
             <tr>
-              <td>
+              <td id="typefactor"><img src="<%=request.getContextPath() %>/css/images/10.png" id="typeimage">
                 파티
                 <input type="checkbox" name="situsort" value="s5" checked/>
               </td>
@@ -143,7 +143,7 @@
           </div>
         </div>
         <div>
-        <button class="btn btn-primary" type="submit" >검색</button>
+        <button class="btn btn-light" type="submit" >검색</button>
         </div>
         </form>
         </div>
