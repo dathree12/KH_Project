@@ -106,7 +106,7 @@ svg{
 			<a id="date"><%=board.getBoardCreateDate()%></a><br><hr><br>
 			<strong>채식주의 종류 : </strong> <span id="vlPrint"></span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<strong>상황  :</strong> <span id="siPrint"></span>
+			<strong>카테고리  :</strong> <span id="siPrint"></span>
 		</div>
 		
 		<hr>
@@ -213,7 +213,7 @@ svg{
 				<form action="<%=request.getContextPath()%>/board/reply" method="post" id="reply_form">
 					<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
 					<input type="hidden" name="writer" value="<%= loginMember != null ? loginMember.getUserId() : "" %>">
-					<textarea name="content" cols="110" rows="6" onfocus="checklogin()"></textarea>
+					<textarea name="content" cols="100" rows="4" onfocus="checklogin()"></textarea>
 					<button type="submit" id="btn-insert">등록</button>
 				</form>
 			</div>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-session,header,aside, footer{padding:10px;}
+div,session,header,aside, footer{padding:10px;}
 
 
 /*div, input, form{
@@ -291,15 +291,15 @@ div#comment-container button#btn-insert {
 <!-- 작성테이블>
 
 
-#board-table th{
+#board-table1 th{
 	padding:5px 0;
 }
 
-#board-table td{
+#board-table1 td{
 	padding:5px 10px 5px 10px;
 }
 
-#board-table tr{
+#board-table1 tr{
 
 }
 

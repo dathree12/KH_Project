@@ -33,7 +33,7 @@ section#content {
 
 <section id="content">
 	<form action='<%=request.getContextPath() %>/board/write' method="post" enctype="multipart/form-data">
-		<table id='board-table'>
+		<table id='board-table1'>
 			<tr>
 				<th>제목</th>
 				<td><input type="text" id="title" name="title" required></td>
@@ -72,7 +72,7 @@ section#content {
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" cols="120" rows="50" id="text"></textarea></td>
+				<td><textarea name="content" cols="110" rows="40" id="text"></textarea></td>
 			</tr>
 			<tr>
 				<th>완성 사진</th>

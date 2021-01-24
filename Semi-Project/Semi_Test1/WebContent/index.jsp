@@ -11,6 +11,7 @@
 	
 <%@ include file="/views/common/header.jsp"%>
 
+
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/slick.css">
 <link rel="stylesheet" href="css/slick-theme.css">
@@ -21,11 +22,10 @@
 <%
 List<Board> list = new ArrayList<>();
 List<Board> list1 = new ArrayList<>();
-
-
 %>
-<STYLE>
-	#aaa{
+
+<style>
+#aaa{
 	display: inline-block;
 	}
 	
@@ -56,7 +56,8 @@ List<Board> list1 = new ArrayList<>();
 		text-align: center;
 		min-height: 1000px;
 		position: relative;
-		width: 798px;
+		width: 900px;
+		left: -17%;
 	}
 	
 	#recipelist{
@@ -81,7 +82,7 @@ List<Board> list1 = new ArrayList<>();
     margin: auto;
     position: relative;
     text-align: center;
-    margin-top: 7%;
+    margin-top: 5%;
 	}
 	
 	#search_button{
@@ -169,11 +170,8 @@ display: inline-block;
 
 }
 
-<!-- 검색 -->
+</style>
 
-
-
-</STYLE>
 
 <section id="today_list">
 <%
@@ -274,6 +272,8 @@ display: inline-block;
 	<button  id="search_button" type="submit" class="btn btn-primary btn-lg"> 검색 </button>
 	</form>
 	</div>
+	
+	
 	
 	
 	

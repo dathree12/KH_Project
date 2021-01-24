@@ -6,10 +6,39 @@
  %>
   
 <%@ include file="/views/common/header.jsp" %>
+<style>
+th{
+	text-align: center;
+}
+
+#vegan-check{
+	width: 30px;
+	height: 30px;
+}
+
+section#content {
+	background-color: #F5F5F5;
+	margin:5px auto;
+	width: 1000px;
+	min-height: 500px;
+	border-radius: 30px;
+	border: solid 1px;
+	padding: 10px;
+	
+}
+
+#radio_text{
+	font-size: 20px;
+	position: relative;	
+	top: -5px;
+}
+
+</style>
+
 <section id="content">
 	<form action='<%=request.getContextPath()%>/board/update' method="post">
 		<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
-		<table id='board-table'>
+		<table id='board-table1'>
 			<tr>
 				<th>제목</th>
 				<td><input type="text" id="title" name="title" value="<%= board.getBoardTitle() %>"></td>
@@ -40,7 +69,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" cols="130" rows="50" id="text"><%=board.getBoardContent() %></textarea></td>
+				<td><textarea name="content" cols="110" rows="40" id="text"><%=board.getBoardContent() %></textarea></td>
 			</tr>
 			<tr>
 				<th>완성 사진</th>
@@ -52,7 +81,7 @@
 			<div>
 			<input type="submit" value="수정" id="button1">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="취소" id="button1">
+			<button type="button" id="button1" class="btn btn-outline-secondary" onclick="history.back();">취소</button>
 			</div>
 		</div>
 		
