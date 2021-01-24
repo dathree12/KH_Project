@@ -443,33 +443,7 @@ public class BoardDAO {
 				
 			  
 			String query3 = 
-					  "SELECT * "
-								+ "FROM ("
-								+    "SELECT ROWNUM AS RNUM, "
-								+           "BOARD_NO, "
-								+ 			"BOARD_TITLE, "
-								+ 			"USER_ID, "
-								+ 			"BOARD_CREATE_DATE, "
-								+ 			"BOARD_IMAGEF_FILE, "
-								+  			"BOARD_READCOUNT, "
-								+			"VEGANLIST, "
-								+     		"STATUS, "
-								+			"RECOMMEND"
-								+ 	 "FROM ("
-								+ 	    "SELECT B.BOARD_NO, "
-								+ 			   "B.BOARD_TITLE, "
-								+  			   "M.USER_ID, "
-								+ 			   "B.BOARD_CREATE_DATE, "
-								+ 			   "B.BOARD_IMAGEF_FILE, "
-								+ 			   "B.BOARD_READCOUNT, "
-								+			   "B.VEGANLIST, "
-								+ 	   		   "B.STATUS, "
-								+			   "B.RECOMMEND"
-								+ 		"FROM BOARD B "
-								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
-								+ 		"WHERE B.STATUS = 'Y' AND   B.BOARD_CONTENT LIKE '%' || ? || '%' ORDER BY B.BOARD_CREATE_DATE DESC"
-								+ 	 ")"
-								+ ") WHERE RNUM BETWEEN ? and ?";
+					"SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS, RECOMMEND FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS, B.RECOMMEND FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_CONTENT LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC)) WHERE RNUM BETWEEN ? and ?";
 			
 			try {
 			         if(searchoption.equals("s_title")) {
@@ -521,6 +495,8 @@ public class BoardDAO {
 					close(pstmt);
 				}
 			
+			System.out.println(searchword);
+			System.out.println(searchoption);
 			System.out.println("1"+list);
 			return list;
 			
@@ -679,8 +655,7 @@ public class BoardDAO {
 				         }
 			       
 			        rs = pstmt.executeQuery();
-			        
-			     
+			       
 			        
 			        while (rs.next()) {
 					Board board = new Board(); 
@@ -704,7 +679,6 @@ public class BoardDAO {
 					close(pstmt);
 				}
 			
-			System.out.println("SEARCHRECO"+list);
 			return list;
 		}
 		

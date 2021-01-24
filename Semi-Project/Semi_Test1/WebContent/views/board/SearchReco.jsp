@@ -37,6 +37,7 @@
 					<select name="search_sort" class="dropdown">
 					<option value="s_title" selected>제목</option>
 					<option value="s_id">글쓴이</option>
+					<option value="s_content">내용</option>
 					</select>
 					<div class="input-group">
 						<input type="search" class="form-control" placeholder="Search" name="searchword" />

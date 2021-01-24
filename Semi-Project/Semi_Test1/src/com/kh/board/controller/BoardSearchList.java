@@ -35,7 +35,6 @@ public class BoardSearchList extends HttpServlet {
 		PageSearch search = null;
 		List<Board> list = null;
 		
-	
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));

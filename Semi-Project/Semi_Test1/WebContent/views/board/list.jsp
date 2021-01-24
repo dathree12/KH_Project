@@ -15,6 +15,7 @@
 	System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	String vg = null;
+	
 %>
 <section id="content">
      <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -35,6 +36,7 @@
 					<select name="search_sort" class="dropdown">
 					<option value="s_title" selected>제목</option>
 					<option value="s_id">글쓴이</option>
+					<option value="s_content">내용</option>
 					</select>
 					<div class="input-group">
 						<input type="search" class="form-control" placeholder="Search" name="searchword" />
@@ -182,6 +184,7 @@
 		    		});
 		    	});
 		    });
+
 		    </script>
 		    
 		  <script type="text/javascript">
@@ -223,7 +226,9 @@
 		    		});
 		    	});
 		    });
+		    }
         </script>
+
          <div class="bs-example">
 	    <div class="container-fluid">
 	        <div class="row">
