@@ -1,3 +1,4 @@
+
 #QnAcontainer {
     padding: 0;
 }
@@ -123,14 +124,19 @@
 }
 
 #faqcontainer {
-    position: absolute;
     width: 60%;
     margin-left: 20%;
     padding: 0;
 }
 
+/*
 #faqcontainer > div{
     padding: 0;
+}
+*/
+
+.list04 {
+	margin-bottom: 40px;
 }
 
 .list {
@@ -176,3 +182,4 @@
 
 
 
+>>>>>>> 7b2237b7788e82b6978233bfa37baaa24ba82c69

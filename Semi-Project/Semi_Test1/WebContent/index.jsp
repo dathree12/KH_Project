@@ -17,8 +17,6 @@
 <link rel="stylesheet" href="css/slick-theme.css">
 <script src="js/slick.js"></script>
     
-    
-    
 <%
 List<Board> list = new ArrayList<>();
 List<Board> list1 = new ArrayList<>();

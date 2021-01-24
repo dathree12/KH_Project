@@ -6,6 +6,9 @@
     
 <%@ include file="/views/common/header.jsp" %>
  
+ <head>
+ 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/liststyle.css" type="text/css">
+</head>
   <style>
       
       h2 {
@@ -53,11 +56,6 @@
        
       }
      
-      .content {
-        width: 11.7rem;
-        
-   		
-      }
       img {
         width: 185px;
         height: 105px;
@@ -77,24 +75,35 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 %>
 <section id="content">
-	<h2 align="center">게시판 </h2>
-	
-	<button type="button" id="btn-add"
-			onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>
+     <nav class="navbar navbar-expand-md navbar-light bg-light">
+		<a href="<%=request.getContextPath() %>/board/list" class="navbar-brand">레시피게시판</a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+			<div class="navbar-nav">
+			<a type="button" id="btn-add" class="nav-item nav-link"
+					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
+			<a onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
+			<a onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" class="nav-item nav-link">추천순</a>		
 			
-	 <form method="GET" action=<%=request.getContextPath()%>/searchrecipe>
-	        <select name="search_sort" class="dropdown">
-	          <option value="s_title" selected>제목</option>
-	          <option value="s_id">글쓴이</option>
-	          <option value="s_content">내용</option>
-	        </select>
-            <input type="search" placeholder="Search" name="searchword" />
-            
-            <button class="btn btn-primary" type="submit" >검색</button>
-        </form>
-        
-        <button onclick="location.href='<%=request.getContextPath()%>/board/list'">최신순</button>
-        <button onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'">추천순</button>
+			<div id="searchbox">
+			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
+					<select name="search_sort" class="dropdown">
+					<option value="s_title" selected>제목</option>
+					<option value="s_id">글쓴이</option>
+					</select>
+					<div class="input-group">
+						<input type="search" class="form-control" placeholder="Search" name="searchword" />
+					</div>
+					<div class="input-group-append">
+						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></butto>
+					</div>
+				</div>
+			</div>	
+			</div>	
+	</nav>   
         
     <div id="board_main">
       <form method="GET" action=<%=request.getContextPath()%>/recipesorting>
@@ -273,22 +282,27 @@
 		    	});
 		    });
         </script>
-     </div>
-          
-	 <div id="board_content" >
-	 <%  for(Board board : list) { %>
-          <div id="content1" class="content" >
-       		<a href="<%=request.getContextPath()%>/board/view?boardNo=<%=board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>"><img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>"> </a>
-       		<a><%= board.getBoardTitle() %></a><br>
-            <a><%= board.getUserId() %></a><br>
-            <a><%= board.getVeganlist()%></a><br>
-            <a><%= board.getBoardCreateDate()%></a>
-            <a>추천수:<%= board.getRecommned()%></a><br>
-          </div>
- 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     <% } %>
-    
-     </div>
+         <div class="bs-example">
+	    <div class="container-fluid">
+	        <div class="row">
+	            <div class="card-columns">
+	            <%  for(Board board : list) { %>
+	                <div class="card">
+	                	<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>">
+	                    <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>" class="card-img-top" alt="..." id="img"></a>
+	                    <div class="card-body">
+	                        <h5 class="card-title"><%= board.getBoardTitle() %></h5>
+	                        <h6 class="card-subtitle mb-2 text-muted"><%= board.getUserId() %></h6>
+	                        <h6 class="card-subtitle mb-2 text-muted"><%= board.getVeganlist()%></h6>
+							<h7 class="card-subtitle mb-2 text-muted"><%= board.getBoardCreateDate()%></h7><br>
+	                        <small class="text-muted"><img src="../css/images/heart2.png" id="recoimage"> <%= board.getRecommned()%></small>
+	                    </div>
+	                </div>
+	                <% } %>
+	            </div>
+	        </div>
+	    </div>
+	</div>
       <div id="pageBar" align="center">
 			<!-- 맨 처음으로 -->
 			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>

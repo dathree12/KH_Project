@@ -24,7 +24,7 @@
 				<% if(loginMember.getUserId().equals("admin")) { %>
 					<div id="qna-toolbar">
 						<div>
-							<button id="QnAbtn" class="btn btn-dark"  type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Notice/write'">글쓰기</button>
+							<button id="QnAbtn" class="btn btn-dark text-white"  type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Notice/write'">글쓰기</button>
 						</div>
 					</div>	
 				<% } %>
@@ -44,7 +44,7 @@
 					<% if(list.isEmpty()) { %>		
 					<tr>
 						<td colspan="6">
-							조회된 Q&A가 없습니다.
+							조회된 공지사항이 없습니다.
 						</td>
 					</tr>	
 					<% } else {

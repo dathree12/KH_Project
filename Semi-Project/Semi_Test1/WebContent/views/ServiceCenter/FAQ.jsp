@@ -4,7 +4,6 @@
     <%@ include file="/views/common/header.jsp" %>
 
 
-	<section id="content">
 		<div class="faqtitle">FAQ</div>
 		<div id="faqcontainer">
 			<div class="list list01">
@@ -24,7 +23,7 @@
 				<div class="answer answer04">답변~~~~~~~~~~~</div>
 			</div>
 		</div>
-	</section>
+
 
 	<script>
 		$(document).ready(function () {
