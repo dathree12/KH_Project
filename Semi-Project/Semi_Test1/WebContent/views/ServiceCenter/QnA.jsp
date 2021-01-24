@@ -20,20 +20,17 @@
 			<div id="board-name">
 				<h3>Q&A</h3>
 			</div>
-			<div id="qna-toolbar"> 
-				<!--검색창-->
-				<div id="qna-search">
-					<span>
-						<input type='text' class='' />
-					</span>
-					<button type='submit' class=''>검색</button>
+			<% if(loginMember != null) { %>
+				<% if(!loginMember.getUserId().equals("admin")) { %>
+				<div id="qna-toolbar">
+					<div id="writing">
+						<button id="QnAbtn" class="btn btn-dark" type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Q&A/write'">글쓰기</button>
+					</div>
 				</div>
-				<div id="writing">
-					<button type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Q&A/write'">글쓰기</button>
-				</div>	
-			</div>
+				<% } %>
+			<% } %>
 			<div>
-				<table id="board-table">
+				<table id="board-table" class="table table-striped">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -41,7 +38,11 @@
 							<th>회원번호</th>
 							<th>등록날짜</th>
 							<th>조회수</th>
-							<th></th>
+							<% if(loginMember != null) { %>
+								<% if(loginMember.getUserId().equals("admin")) { %>
+								<th></th>
+								<% } %>
+							<% } %>
 						</tr>
 					</thead>
 					<tbody>
@@ -64,26 +65,20 @@
 							<td><%= qna.getUser_Num() %></td>
 							<td><%= qna.getQue_Date() %></td>
 							<td><%= qna.getHIT() %></td>
-							<td><button type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Q&A/answer/write?Que_Num=<%= qna.getQue_Num() %>'">답변쓰기</button></td>
+							<% if(loginMember != null) { %>
+								<% if(loginMember.getUserId().equals("admin")) { %>
+									<% if(qna.getSTEP() == 0) {%>
+										<td><button id="q-btn" class="btn btn-secondary" type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Q&A/answer/write?Que_Num=<%= qna.getQue_Num() %>'">답변쓰기</button></td>
+									<%} else {%>
+										<td></td>
+									<%} %>
+								<% }%>
+							<% } %>
 						</tr> 
 					<% }
 		   			  } %>
 					</tbody>
 				</table>
-			</div>
-			<div class="page">
-				<button><</button>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button>5</button>
-				<button>6</button>
-				<button>7</button>
-				<button>8</button>
-				<button>9</button>
-				<button>10</button>
-				<button>></button>
 			</div>
 		</div>
 
