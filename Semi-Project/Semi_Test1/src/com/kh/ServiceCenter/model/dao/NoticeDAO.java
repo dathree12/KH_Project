@@ -48,7 +48,8 @@ public class NoticeDAO {
 		ResultSet rs = null;
 		String query = 
 				  "SELECT NNUM, User_Num, NTITLE, NCONTENT, NDATE, NHIT "
-				  + "FROM NOTICE";
+				  + "FROM NOTICE "
+				  + "ORDER BY NNUM DESC";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -85,11 +86,11 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			pstmt = conn.prepareStatement("UPDATE NOTICE SET NTITLE=?, NCONTENT=? WHERE User_Num=?");
+			pstmt = conn.prepareStatement("UPDATE NOTICE SET NTITLE=?, NCONTENT=? WHERE NNUM=?");
 			
 			pstmt.setString(1, notice.getNTITLE());
 			pstmt.setString(2, notice.getNCONTENT());
-			pstmt.setInt(3, notice.getUser_Num());
+			pstmt.setInt(3, notice.getNNUM());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -127,7 +128,7 @@ public class NoticeDAO {
 		ResultSet rs = null;
 		NOTICE notice = null;
 		String query = 
-					"SELECT NNUM, User_Num, NTITLE, NCONTENT, NDATE, NHIT FROM NOTICE WHERE User_Num =?";
+					"SELECT NNUM, User_Num, NTITLE, NCONTENT, NDATE, NHIT FROM NOTICE WHERE NNUM =?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
