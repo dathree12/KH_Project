@@ -9,11 +9,13 @@
       #board_main {
        display: inline-block;
         padding: none;
-        border: solid 1px;
+        border: solid 0px;
         float: left;
-       
+        background-color: #F9E999;
+        border-radius: 12px;
       }
       #board_option {
+	
         flex: 1;
         padding: 1rem 0;
       }
@@ -59,4 +61,19 @@
 
   .text-muted {
     font-size: 15px;
+  }
+  
+  #searchbox {
+  	float: right;
+  }
+  
+  #vgtype {
+  font-size: 24px;
+  }
+   #typefactor {
+  font-size: 20px;
+  }
+  #typeimage {
+  	width: 30px;
+   	height: 30px;
   }
