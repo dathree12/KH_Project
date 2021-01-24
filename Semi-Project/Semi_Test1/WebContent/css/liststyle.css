@@ -1,0 +1,72 @@
+@charset "UTF-8";
+    a {
+      text-decoration:none;
+      color : #848484;
+    }
+      #board_top {
+        display: flex;
+        justify-content: flex-end;
+      }
+      #board_top > * {
+        margin: 0 0.5rem;
+      }
+      #board_main {
+       display: inline-block;
+        padding: none;
+        border: solid 1px;
+        float: left;
+       
+      }
+      #board_option {
+        flex: 1;
+        padding: 1rem 0;
+      }
+      #board_content {
+        flex: 5;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        justify-content: center;
+    
+      
+       
+      }
+     
+      img {
+        width: 185px;
+        height: 105px;
+      }
+      
+   #content1{
+	float: left;
+   }
+   
+   #recoimage {
+   	width: 20px;
+   	height: 20px;
+     }
+
+  /* IE 10, 11의 네이티브 화살표 숨기기 */
+
+  
+  select {
+
+    width: 100px; /* 원하는 너비설정 */
+    padding: .3em .3em; /* 여백으로 높이 설정 */
+    font-family: inherit;  /* 폰트 상속 */
+    font-size: 18px;
+    background: url('./images/direction.png') no-repeat 95% 50% ;
+    background-size: 15px; /* 네이티브 화살표를 커스텀 화살표로 대체 */
+    border: 0px solid #999;
+    border-radius: 0px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+}
+  select::-ms-expand {
+      display: none;
+  }
+
+  .text-muted {
+    font-size: 15px;
+  }

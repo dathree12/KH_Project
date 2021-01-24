@@ -1,55 +1,14 @@
 @charset "UTF-8";
 
-div,session,header,aside, footer{padding:10px;}
-
-
-/*div, input, form{
-            border:1px solid red; 
-            box-sizing:border-box;
-        }
- */
 div{
  	align-content: center; 
  	border: solid 0px;
  }
-
-/* 로그인 폼 */
-header div.login-container {
-	width:250px; 
-	position:absolute; 
-	right: 0px; 
-	top: 10px;
-}
-
-/* 로그인테이블관련 : 탭순서를 고려해 submit버튼이 2번째행 2번째열에 배치 */
-#loginFrm table { 
-	empty-cells:hide;
-}
-
-#loginFrm input[type=submit] {
-	width:60px; 
-	height:50px; 
-	color:white; 
-	background:#3300ff; 
-	position:absolute; 
-	top:10px;
-}    
+ 
 div#container {
 	background-color:#F0F0F0; 
 	width:960px;
 	margin:0 auto;
-}
-
-header{
-	background-color:#00BCd4;
-	height:130px;
-	position:relative;
-	padding:10px 0 0 0;
-	margin-bottom: 10px;
-}
-
-header h1{
-	margin-left:20px;
 }
 
 section#content {
@@ -57,15 +16,13 @@ section#content {
 	margin:5px auto;
 	width: 1000px;
 	min-height: 500px;
-
-	
 }
+
 #content_0{
 	width: 97%;
 	height: 50px;
 	margin: 5px;
 	align-content: center;
-
 }
 
 #content_1{
@@ -73,7 +30,6 @@ section#content {
 	min-height:700px;
 	float: left; 
 	margin: 5px;
-	
 }
 
 #content_2{
@@ -82,13 +38,11 @@ section#content {
 	float: left; 
 	margin: 5px;
 	border: solid 1px;
-	
 }
 
 #search{
 	margin:auto;
 	float: right;
-	
 }
 
 #category{
@@ -96,64 +50,13 @@ section#content {
 	float: right;
 }
 
-
 footer { 
-	background-color:#00BCd4;
+	background-color:rgb(192, 192, 192);
 	clear:both;
-	height:75px;
+	height:50px;
 	text-align:center;
-	padding-top:40px;
+	padding-top: 10px;
 }
-
-
-/* 메뉴관련스타일 */
-header nav {
-	background:#5283de; 
-	width:100%; 
-	margin-top:40px;
-}
-
-/* ul태그의 가운데정렬 */
-ul.main-nav {
-	/* width:80%; */
-	display:table;
-	padding:0px;
-	margin:auto;
-}
-
-ul.main-nav li { 
-	list-style-type: none; 
-	width: 8em; 
-	height: 2em;
-	float: left; 
-	text-align: center; 
-	font-family: "휴먼모음T", sans-serif; 
-	border-left: 1px #00bcd4 solid;
-	background-color: #5283de; 
-}
-
-ul.main-nav li:last-of-type {
-	border-right:1px #00bcd4 solid;
-}
-
-ul.main-nav li a {
-	/*a태그의 display기본값은 inline임*/
-	display: block;
-	padding:.5em;
-	text-decoration: none;
-	color: #292929;
-}
-
-/* hover시 배경색 변경 */
-
-ul.main-nav li:hover{
-	background-color: #3300ff;
-}
-
-ul.main-nav li:hover > a{
-	color:#FFF; /* 글자색*/
-}
-
 
 /* 글작성 css*/
 #write{
@@ -213,7 +116,6 @@ table#tbl-comment tr td {
 	width:1000px;
 	
 }
-
 
 table#tbl-comment sub.comment-writer {
 	color:navy; 
@@ -305,7 +207,7 @@ div#comment-container button#btn-insert {
 	border: solid 1px; 
 }
 
-<!-- 작성테이블>
+/* 작성테이블 */
 
 
 #board-table th{
@@ -315,11 +217,6 @@ div#comment-container button#btn-insert {
 #board-table td{
 	padding:5px 10px 5px 10px;
 }
-
-#board-table tr{
-
-}
-
 
 #write_1{
 	margin: auto;
@@ -369,10 +266,6 @@ table#tbl-board th, table#tbl-board td {
 
 }
 
-.login-container{
-	position: absolute;
-}
-
 #deletereply{
 	float: right;
 	text-decoration: none;
@@ -403,23 +296,12 @@ body {
 	text-align: center;
 	margin: auto;
 	top: 30px;
-	
-	
-	
 }
 
 .main_slideImg {
 	width: 220px;
 	height: 200px;
 	align-content: center;
-	
-	
-	
-}
-
-figcaption{
-
-	
 }
 
 /* Next & previous buttons */

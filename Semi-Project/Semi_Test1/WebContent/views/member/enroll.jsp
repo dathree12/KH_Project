@@ -3,10 +3,10 @@
 <%@ include file="/views/common/header.jsp"%>
     <style>
     	.CS1{
-    		background-color: rgba(0, 0, 0, 0.05);
+    		background-color: rgba(201, 252, 191, 0.2);
     		-webkit-box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.6); 
 			box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.6);
-    		width: 700px;
+    		width: 600px;
     		padding: 20px;
     		margin: 20px auto;
     		border-radius: 25px;
@@ -15,47 +15,62 @@
 	    	text-align: center;
     	}
     	label {
-    		width: 120px;
+    		min-width: 120px;
     		margin: 0px 30px;
     	}
-    	label, input, h1 {
-    		border: 1px solid black;
+    	h1 {
+    		text-align: center;
+    	}
+    	input[type="radio"] {
+    	margin-left : 25px;
+    	}
+    	span {
+    	font-size: small;
+    	margin-left: 195px;
+    	}
+    	button.btn.btn-primary{
+    		width:350px;
+    		text-align: center;
+    		display: block;
+    		margin: auto;
     	}
     </style>
     <section id="signup-container" class="container-md d-flex justify-content-center CS1">
         <form name="enrollForm" action="<%= request.getContextPath()%>/member/enroll" method="POST">
 	        <h1 class="CS2">회원가입</h1>
+	            <span id="validateMsg"></span>
             <div class="form-group">
             	<label for="userId">아이디</label>
             	<input type="text" name="userId" id="newId" required>
             	<input type="button" id="validateBtn" value="중복확인">
-	            <span id="validateMsg"></span>
             </div>
+	            <span id="validatePwd"></span>
 	        <div class="form-group">
 	            <label for="userPwd">비밀번호</label>
-				<input type="password" name="userPwd" id="pwd1" placeholder="n글자 이상, 특수문자를 포함해야합니다." required><br><br>
+				<input type="password" name="userPwd" id="pwd1" required><br><br>
 	            <label>비밀번호 확인</label>
 	            <input type="password" id="pwd2" required>
-	            <span id="validatePwd"></span>
             </div>
             <div class="form-group">
 	            <label for="userEmail">이메일</label>
 	            <input type="email" name="userEmail" required>
             </div>
             <div class="form-group">
-            	<label for="vegType">선호 채식</label><br>
-	            <div id="radio-container">
-                <label><input type="radio" name="vegType" value="v1">비건</label>
-                <label><input type="radio" name="vegType" value="v2">락토 베지테리언</label>
-                <label><input type="radio" name="vegType" value="v3">오보 베지테리언</label>
-                <label><input type="radio" name="vegType" value="v4">락토/오보 베지테리언</label>
-                <label><input type="radio" name="vegType" value="v5">페스코테리언</label>
-                <label><input type="radio" name="vegType" value="v6">플렉시테리언</label>
-                <label><input type="radio" name="vegType" value="v0" checked="checked">없음</label>
-           	            </div>
+	            <fieldset>
+	            	<legend>선호 채식</legend>
+		            <div id="radio-container">
+		                <div><input type="radio" name="vegType" value="v1" id="v1"><label for="v1">비건</label></div>
+		                <div><input type="radio" name="vegType" value="v2" id="v2"><label for="v2">락토 베지테리언</label></div>
+		                <div><input type="radio" name="vegType" value="v3" id="v3"><label for="v3">오보 베지테리언</label></div>
+		                <div><input type="radio" name="vegType" value="v4" id="v4"><label for="v4">락토/오보 베지테리언</label></div>
+		                <div><input type="radio" name="vegType" value="v5" id="v5"><label for="v5">페스코테리언</label></div>
+		                <div><input type="radio" name="vegType" value="v6" id="v6"><label for="v6">플렉시테리언</label></div>
+		                <div><input type="radio" name="vegType" value="v0" checked="checked" id="v0"><label for="v0">없음</label></div>
+	           	    </div>
+           	    </fieldset>
 	        </div>
-            <input type="submit" value="가입하기" id="enrollSubmit">
-        </form>
+	        	<button type="submit" class="btn btn-primary">가입하기</button>
+	        </form>
         <form name="checkIdForm">
 	 		<input type="hidden" name="userId">
 	 	</form>

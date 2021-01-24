@@ -739,7 +739,7 @@ public class BoardDAO {
 								+ 	   		   "B.STATUS "
 								+ 		"FROM BOARD B "
 								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
-								+ 		"WHERE B.STATUS = 'Y' AND (B.VEGANLIST IN(#vg) AND B.SITUATION IN(#situ)) ORDER BY B.BOARD_CREATE_DATE DESC"
+								+ 		"WHERE B.STATUS = 'Y' AND (#vg) AND (#situ) ORDER BY B.BOARD_CREATE_DATE DESC"
 								+ 	 "))";
 //								+ ") WHERE RNUM BETWEEN ? and ?";
 				
@@ -749,7 +749,7 @@ public class BoardDAO {
 			        	//System.out.println("첫번째쿼리"+replace1);
 			        	System.out.println(situOptions);
 			        	String replace2 = replace1.replace("#situ", situOptions);
-			        	//System.out.println("두번째쿼리"+replace2);
+			        	System.out.println("두번째쿼리"+replace2);
 			        	pstmt = conn.prepareStatement(replace2);
 //			         	pstmt.setInt(1, info.getStartList());
 //			         	pstmt.setInt(2, info.getEndList());

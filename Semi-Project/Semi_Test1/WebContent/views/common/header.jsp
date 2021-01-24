@@ -16,108 +16,66 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/headerStyles.css">
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<style>
-.modal-login {
-	color: #636363;
-	width: 450px;
-}
-.modal-login .modal-content {
-	padding: 20px;
-	border-radius: 5px;
-	border: none;
-}
-.modal-login .modal-header {
-	border-bottom: none;
-	position: relative;
-	justify-content: center;
-}
-.modal-login h4 {
-	text-align: center;
-	font-size: 26px;
-}
-.modal-login  .form-group {
-	position: relative;
-}
-.modal-login i {
-	position: absolute;
-	left: 13px;
-	top: 11px;
-	font-size: 18px;
-}
-.modal-login .form-control {
-	padding-left: 40px;
-}
-.modal-login .form-control:focus {
-	border-color: #00ce81;
-}
-.modal-login .form-control, .modal-login .btn {
-	min-height: 40px;
-	border-radius: 3px; 
-}
-.modal-login .hint-text {
-	text-align: center;
-	padding-top: 10px;
-}
-.modal-login .close {
-	position: absolute;
-	top: -5px;
-	right: -5px;
-}
-.modal-login .btn, .modal-login .btn:active {	
-	border: none;
-	background: #00ce81 !important;
-	line-height: normal;
-}
-.modal-login .btn:hover, .modal-login .btn:focus {
-	background: #00bf78 !important;
-}
-.modal-login .modal-footer {
-	background: #ecf0f1;
-	border-color: #dee4e7;
-	text-align: center;
-	margin: 0 -20px -20px;
-	border-radius: 5px;
-	font-size: 13px;
-	justify-content: center;
-}
-.modal-login .modal-footer a {
-	color: #999;
-}
-.btn {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: initial;
-}
-</style>
 </head>
 <body>
 	<header>
-		<h1 align="center">베프 프로젝트</h1>
-		<div class="login-container">
-		<% if(loginMember == null) {%>
-		<input type="button" value="로그인" id="modalOpen">
-		<input type="button" value="회원가입" onclick="location.href = '<%= request.getContextPath() %>/member/enroll';">
-		<% } else { %>
-		<p><%= loginMember.getUserId() %> 님 안녕하세요.<p> <br>
-		<input  type="button" value="마이페이지" onclick="location.href = '<%= request.getContextPath() %>/mypage/mypagehome';">
-		<input type="button" value="로그아웃" onclick="location.replace('<%= request.getContextPath() %>/member/logout');">
-		<% } %>
+		<div>
+			<img src="<%=request.getContextPath() %>/image/LogoTemp.PNG" alt="VeganFriends" class="mainLogo">
 		</div>
-		<nav id="abc">
-			<ul class="main-nav">
-				<li class="home"><a href="<%=request.getContextPath()%>">Home</a></li>
-				<% if(loginMember != null) {%>
-				<li id="notice"><a href="<%= request.getContextPath() %>/mypage/mypagehome">마이페이지</a></li>
-				<% } %>
-				<li id="board"><a href="<%=request.getContextPath() %>/board/list">게시판</a></li>
-				<li id="board"><a href="<%=request.getContextPath() %>/service">고객센터</a></li>
-			</ul>
-		</nav>
+		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand" href="<%=request.getContextPath()%>">비건 프랜즈</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto topnav">
+                <li class="nav-item">
+                    <a class="nav-link" href="<%=request.getContextPath()%>">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%=request.getContextPath() %>/board/list">레시피 게시판</a>
+                </li>
+                <% if(loginMember != null) {%>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="<%= request.getContextPath() %>/mypage/mypagehome" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        마이페이지
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<%= request.getContextPath() %>/mypage/mypagehome">마이페이지 홈</a>
+                        <a class="dropdown-item" href="<%= request.getContextPath() %>/mypage/updatepwd">비밀번호 변경</a>
+                        <a class="dropdown-item" href="<%= request.getContextPath() %>/mypage/update?userId=<%= loginMember.getUserId() %>">회원정보 수정</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<%= request.getContextPath() %>/mypage/delete">회원탈퇴</a>
+                    </div>
+                </li>
+                <% } %>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%=request.getContextPath() %>/service">고객센터</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">소개</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">연락처</a>
+                </li>
+                <% if(loginMember == null) {%>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary text-white" type="button" id="modalOpen" data-toggle="modal" data-target="#myModal">로그인</a>                  
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success text-white" type="button" href="<%= request.getContextPath() %>/member/enroll">회원가입</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-secondary text-white" type="button" href="<%= request.getContextPath() %>/mypage/mypagehome"><%= loginMember.getUserId() %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger text-white" type="button" onclick="location.replace('<%= request.getContextPath() %>/member/logout');" data-toggle="modal" data-target="#myModal">로그아웃</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+        </nav>
 	</header>
 
 	<!-- Modal -->
