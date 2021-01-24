@@ -2,77 +2,50 @@
     pageEncoding="UTF-8"%>
     
     <%@ include file="/views/common/header.jsp" %>
-    
-    <!--사이드바 옆 div-->
-		<div id="rightdiv">
-		<!--검색창, 필터, 등등 도구섹션 -->
-			<div id="board-name">
-				<h3>FAQ</h3>
+
+
+	<section id="content">
+		<div class="faqtitle">FAQ</div>
+		<div id="faqcontainer">
+			<div class="list list01">
+				<div class="question">질문1</div>
+				<div class="answer answer01">답변~~~~~~~~~~~</div>
 			</div>
-			<div id="qna-toolbar"> 
-				<!--검색창-->
-				<div id="qna-search">
-					<span>
-						<input type='text' class='' />
-					</span>
-					<button type='submit' class=''>검색</button>
-				</div>
-				<div id="writing">
-					<button type='submit' class=''>글쓰기</button>
-				</div>	
+			<div class="list list02">
+				<div class="question">질문2</div>
+				<div class="answer answer02">답변~~~~~~~~~~~</div>
 			</div>
-			<div>
-				<table id="board-table">
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>글쓴이</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>title_1</td>
-							<td>WonderDevelopers</td>
-							<td>20</td>
-						</tr>
-					</tbody>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>title_1</td>
-							<td>WonderDevelopers</td>
-							<td>20</td>
-						</tr>
-					</tbody>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>title_1</td>
-							<td>WonderDevelopers</td>
-							<td>20</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="list list03">
+				<div class="question">질문3</div>
+				<div class="answer answer03">답변~~~~~~~~~~~</div>
 			</div>
-			<div class="page">
-				<button><</button>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button>5</button>
-				<button>6</button>
-				<button>7</button>
-				<button>8</button>
-				<button>9</button>
-				<button>10</button>
-				<button>></button>
+			<div class="list list04">
+				<div class="question">질문4</div>
+				<div class="answer answer04">답변~~~~~~~~~~~</div>
 			</div>
 		</div>
-    
+	</section>
+
+	<script>
+		$(document).ready(function () {
+			$('.list01').click(function () {
+				$('.answer01').toggleClass('open');
+			});
+
+			$('.list02').click(function () {
+				$('.answer02').toggleClass('open');
+			});
+
+			$('.list03').click(function () {
+				$('.answer03').toggleClass('open');
+			});
+
+			$('.list04').click(function () {
+				$('.answer04').toggleClass('open');
+			});
+
+		});
+	</script>
     
     
     
