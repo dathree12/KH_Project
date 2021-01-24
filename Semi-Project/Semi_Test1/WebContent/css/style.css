@@ -264,7 +264,6 @@ table#tbl-board th, table#tbl-board td {
 }
 
 #del{
-	position: relative;
 	top: -20px;
 }
 

@@ -11,7 +11,7 @@
 	//List<Board> list = (ArrayList)request.getAttribute("list");
 	List<Board> sortlist = (ArrayList)request.getAttribute("sortlist");
 	//System.out.println(list);
-	//PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	//PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	
 %>
@@ -252,7 +252,43 @@
 	        </div>
 	    </div>
 	</div>
-     </div>    
+     </div>  
+           <div id="pageBar" align="center">
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>
+			
+			<!-- 이전 페이지로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+
+			<!--  10개 페이지 목록 -->
+			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
+				<% if(p == pageInfo.getCurrentPage()){ %>
+					<button disabled><%= p %></button>
+				<% } else { %>
+					<button onclick="location.href='<%= request.getContextPath() %>/boardrecommendlist?page=<%= p %>'"><%= p %></button>
+				<% } %>
+			<% } %>
+			
+			<!-- 다음 페이지로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			
+			<!-- 맨 끝으로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/boardrecommendlist?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+		</div>
+		
+		<script type="text/javascript">
+		<script type="text/javascript">
+		function checklogin() {
+			if(<%= loginMember == null %>){
+				alert("로그인 후 이용해주세요!");
+				$("#userId").focus();
+			}
+		}
+		
+		function recommend() {
+				location.replace('<%=request.getContextPath()%>/boardrecommendlist');
+		}
+		</script>  
  
 		
 </section>
