@@ -1,9 +1,5 @@
 @charset "UTF-8";
-    a {
-      text-decoration:none;
-      color : #848484;
-    }
-      #board_top {
+          #board_top {
         display: flex;
         justify-content: flex-end;
       }
@@ -30,12 +26,7 @@
     
       
       }
-     
-      img {
-        width: 185px;
-        height: 105px;
-      }
-      
+
    #content1{
 	float: left;
    }
