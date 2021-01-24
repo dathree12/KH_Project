@@ -6,68 +6,9 @@
     
 <%@ include file="/views/common/header.jsp" %>
  
- <head>
+<head>
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/liststyle.css" type="text/css">
 </head>
-  <style>
-      
-      h2 {
-        display: inline-block;
-        background-color: yellowgreen;
-        color: darkgreen;
-        padding: 8px;
-        border-radius: 18px;
-      }
-      table {
- 
- 
-      }
-     
-      div {
-        /* 테두리 보여주기 위한 border. 사이즈 조정후 삭제할 것. */
-     
-      }
-      #board_top {
-        display: flex;
-        justify-content: flex-end;
-      }
-      #board_top > * {
-        margin: 0 0.5rem;
-      }
-      #board_main {
-       display: inline-block;
-        padding: none;
-        border: solid 1px;
-        float: left;
-       
-      }
-      #board_option {
-        flex: 1;
-        padding: 1rem 0;
-      }
-      #board_content {
-        flex: 5;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        justify-content: center;
-    
-      
-       
-      }
-     
-      img {
-        width: 185px;
-        height: 105px;
-      }
-      
-   #content1{
-	float: left;
-   }
-   
-    </style>
-
-    
 
 <%
 	List<Board> list = (ArrayList)request.getAttribute("list");
@@ -76,7 +17,7 @@
 %>
 <section id="content">
      <nav class="navbar navbar-expand-md navbar-light bg-light">
-		<a href="<%=request.getContextPath() %>/board/list" class="navbar-brand">레시피게시판</a>
+		<a href="<%=request.getContextPath() %>/board/list" class="navbar-brand">레시피게시판</a>
 		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 			<span class="navbar-toggler-icon"></span>
 		</button>
