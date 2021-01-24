@@ -22,7 +22,7 @@ public class QnADAO {
 		String query = 
 				  "SELECT Que_Num, User_Num, Que_Title, Que_Content, Que_Date, HIT, QGROUP, STEP, QINDENT "
 				  + "FROM QNA_MEMBER "
-				  + "ORDER BY QGROUP DESC, STEP ASC";
+				  + "ORDER BY QGROUP DESC, STEP ASC, Que_Num ASC";
 		
 		try {
 			pstmt = conn.prepareStatement(query);

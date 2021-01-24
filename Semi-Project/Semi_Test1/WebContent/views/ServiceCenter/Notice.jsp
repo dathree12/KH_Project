@@ -20,20 +20,17 @@
 			<div id="board-name">
 				<h3>공지사항</h3>
 			</div>
-			<div id="qna-toolbar"> 
-				<!--검색창-->
-				<div id="qna-search">
-					<span>
-						<input type='text' class='' />
-					</span>
-					<button type='submit' class=''>검색</button>
-				</div>
-				<div id="writing">
-					<button type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Notice/write'">글쓰기</button>
-				</div>	
-			</div>
+			<% if(loginMember != null) { %>
+				<% if(loginMember.getUserId().equals("admin")) { %>
+					<div id="qna-toolbar">
+						<div>
+							<button id="QnAbtn" class="btn btn-dark text-white"  type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Notice/write'">글쓰기</button>
+						</div>
+					</div>	
+				<% } %>
+			<% } %>
 			<div>
-				<table id="board-table">
+				<table id="board-table"  class="table table-striped">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -47,7 +44,7 @@
 					<% if(list.isEmpty()) { %>		
 					<tr>
 						<td colspan="6">
-							조회된 Q&A가 없습니다.
+							조회된 공지사항이 없습니다.
 						</td>
 					</tr>	
 					<% } else {
@@ -68,20 +65,6 @@
 		   			  } %>
 					</tbody>
 				</table>
-			</div>
-			<div class="page">
-				<button><</button>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button>5</button>
-				<button>6</button>
-				<button>7</button>
-				<button>8</button>
-				<button>9</button>
-				<button>10</button>
-				<button>></button>
 			</div>
 		</div>
 

@@ -1,28 +1,26 @@
 @charset "UTF-8";
 
-div{
- 	align-content: center; 
- 	border: solid 0px;
- }
- 
-div#container {
+div,session,header,aside, footer{padding:10px;}
+
+#container {
 	background-color:#F0F0F0; 
 	width:960px;
 	margin:0 auto;
 }
 
-section#content {
+#content {
 	background-color: #F5F5F5;
 	margin:5px auto;
 	width: 1000px;
 	min-height: 500px;
-}
 
+}
 #content_0{
 	width: 97%;
 	height: 50px;
 	margin: 5px;
 	align-content: center;
+
 }
 
 #content_1{
@@ -30,6 +28,7 @@ section#content {
 	min-height:700px;
 	float: left; 
 	margin: 5px;
+	
 }
 
 #content_2{
@@ -38,11 +37,13 @@ section#content {
 	float: left; 
 	margin: 5px;
 	border: solid 1px;
+	
 }
 
 #search{
 	margin:auto;
 	float: right;
+	
 }
 
 #category{
@@ -116,6 +117,7 @@ table#tbl-comment tr td {
 	width:1000px;
 	
 }
+
 
 table#tbl-comment sub.comment-writer {
 	color:navy; 
@@ -218,6 +220,11 @@ div#comment-container button#btn-insert {
 	padding:5px 10px 5px 10px;
 }
 
+#board-table tr{
+
+}
+
+
 #write_1{
 	margin: auto;
 	text-align: center;
@@ -266,6 +273,10 @@ table#tbl-board th, table#tbl-board td {
 
 }
 
+.login-container{
+	position: absolute;
+}
+
 #deletereply{
 	float: right;
 	text-decoration: none;
@@ -278,7 +289,7 @@ table#tbl-board th, table#tbl-board td {
 	text-decoration: underline;
 }
 
-<!--슬라이드> 
+/* 슬라이드 */
 /* 메인 슬라이드 Slideshow container */
 	/* Slideshow container */ * 
 	{box-sizing: border-box}
@@ -296,12 +307,23 @@ body {
 	text-align: center;
 	margin: auto;
 	top: 30px;
+	
+	
+	
 }
 
 .main_slideImg {
 	width: 220px;
 	height: 200px;
 	align-content: center;
+	
+	
+	
+}
+
+figcaption{
+
+	
 }
 
 /* Next & previous buttons */

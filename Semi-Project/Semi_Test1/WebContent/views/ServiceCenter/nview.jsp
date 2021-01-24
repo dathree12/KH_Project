@@ -11,11 +11,20 @@
 	System.out.println("nview.jsp-notice : " + notice);
 %>
 
-<div id="QnAcontainer">
-	<div class="Qtitle viewQtitle">공지사항</div>
-	<div class="viewtitle">제목 : <%= notice.getNTITLE() %></div>
-	<div class="viewwriter">회원번호 : <%= notice.getUser_Num() %></div>
-	<div id="viewQnAContent"><%= notice.getNCONTENT() %></div>
+<div id="QnAcontainer" class="qnaview">
+	<table id="qex" border="1px slid lightgray" class="table table-bordered">
+		<tr class="qextr">
+			<th class="pQtitle qextd">제목</th>
+			<td class="qextd"><%= notice.getNTITLE() %></td>
+		</tr>
+		<tr class="qextr">
+			<th class="pQnum qextd">회원번호</th>
+			<td class="qextd"><%= notice.getUser_Num() %></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="qextd"><%= notice.getNCONTENT() %></td>
+		</tr>
+	</table>
 </div>
     
     
