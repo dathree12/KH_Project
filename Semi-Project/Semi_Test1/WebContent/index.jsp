@@ -40,7 +40,7 @@ List<Board> list1 = new ArrayList<>();
 	width: 250px;
 	height: 250px;
 	}
-	
+	 
 	.m_img{
 	width: 250px;
 	height: 250px;
