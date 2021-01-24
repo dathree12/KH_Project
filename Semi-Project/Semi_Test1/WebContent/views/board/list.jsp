@@ -14,6 +14,7 @@
 	List<Board> list = (ArrayList)request.getAttribute("list");
 	System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	String vg = null;
 %>
 <section id="content">
      <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -234,9 +235,26 @@
 	                    <div class="card-body">
 	                        <h5 class="card-title"><%= board.getBoardTitle() %></h5>
 	                        <h6 class="card-subtitle mb-2 text-muted"><%= board.getUserId() %></h6>
-	                        <h6 class="card-subtitle mb-2 text-muted"><%= board.getVeganlist()%></h6>
+	                        <h6 class="card-subtitle mb-2 text-muted">
+	                        <% if(board.getVeganlist().equals("v1")){
+									vg ="비건";
+	                        	}
+	                        else if(board.getVeganlist().equals("v2")){
+								vg ="락토";
+                        	}
+	                        else if(board.getVeganlist().equals("v3")){
+								vg ="오보";
+                        	}
+	                        else if(board.getVeganlist().equals("v4")){
+								vg ="락토-오보";
+                        	}
+	                        else if(board.getVeganlist().equals("v5")){
+								vg ="페스코";
+                        	}
+	                        %><%=vg %></h6>
+
 							<h7 class="card-subtitle mb-2 text-muted"><%= board.getBoardCreateDate()%></h7><br>
-	                        <small class="text-muted"><img src="../css/images/heart2.png" id="recoimage"> <%= board.getRecommned()%></small>
+	                        <small class="text-muted"><img src="<%=request.getContextPath() %>/css/images/heart2.png" id="recoimage"> <%= board.getRecommned()%></small>
 	                    </div>
 	                </div>
 	                <% } %>

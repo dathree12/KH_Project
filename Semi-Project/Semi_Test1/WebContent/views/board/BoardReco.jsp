@@ -9,6 +9,7 @@
 	List<Board> list = (ArrayList)request.getAttribute("list");
 	System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	String vg = null;
 	
 %>
   <head>
@@ -233,11 +234,28 @@
 	            <%  for(Board board : list) { %>
 	                <div class="card">
 	                	<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>">
-	                    <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>" class="card-img-top" alt="..." id="img"></a>
+	                    <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>" class="card-img-top" alt="..." id="cardimg"></a>
 	                    <div class="card-body">
 	                        <h5 class="card-title"><%= board.getBoardTitle() %></h5>
 	                        <h6 class="card-subtitle mb-2 text-muted"><%= board.getUserId() %></h6>
-	                        <h6 class="card-subtitle mb-2 text-muted"><%= board.getVeganlist()%></h6>
+	                        <h6 class="card-subtitle mb-2 text-muted">
+	                        <% if(board.getVeganlist().equals("v1")){
+									vg ="비건";
+	                        	}
+	                        else if(board.getVeganlist().equals("v2")){
+								vg ="락토";
+                        	}
+	                        else if(board.getVeganlist().equals("v3")){
+								vg ="오보";
+                        	}
+	                        else if(board.getVeganlist().equals("v4")){
+								vg ="락토-오보";
+                        	}
+	                        else if(board.getVeganlist().equals("v5")){
+								vg ="페스코";
+                        	}
+	                        %><%=vg %></h6>
+
 							<h7 class="card-subtitle mb-2 text-muted"><%= board.getBoardCreateDate()%></h7><br>
 	                        <small class="text-muted"><img src="<%=request.getContextPath() %>/css/images/heart2.png" id="recoimage"> <%= board.getRecommned()%></small>
 	                    </div>
@@ -246,8 +264,7 @@
 	            </div>
 	        </div>
 	    </div>
-	</div>
-     </div>        
+	</div>     
       <div id="pageBar" align="center">
 			<!-- 맨 처음으로 -->
 			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>
