@@ -32,7 +32,6 @@
 </table>
 </div>
 <div>
-<h2>(옵션)스크랩 미리보기 4개</h2>
 </div>
 </section>
 <script>

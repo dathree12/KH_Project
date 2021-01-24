@@ -11,11 +11,20 @@
 	System.out.println(qna);
 %>
 
-<div id="QnAcontainer">
-	<div class="Qtitle viewQtitle">Q&A</div>
-	<div class="viewtitle">제목 : <%= qna.getQue_Title() %></div>
-	<div class="viewwriter">회원번호 : <%= qna.getUser_Num() %></div>
-	<div id="viewQnAContent"><%= qna.getQue_Content() %></div>
+<div id="QnAcontainer" class="qnaview">
+	<table id="qex" border="1px slid lightgray" class="table table-bordered">
+		<tr class="qextr">
+			<th class="pQtitle qextd">제목</th>
+			<td class="qextd"><%= qna.getQue_Title() %></td>
+		</tr>
+		<tr class="qextr">
+			<th class="pQnum qextd">회원번호</th>
+			<td class="qextd"><%= qna.getUser_Num() %></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="qextd"><%= qna.getQue_Content() %></td>
+		</tr>
+	</table>
 </div>
     
     

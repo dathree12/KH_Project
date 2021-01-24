@@ -3,7 +3,7 @@
 
 	<footer>
 		<p>
-			&lt;Copyright 2021. <strong>KH정보교육원</strong>.ALL rights reserved.&gt; 
+			&lt;&copy; Copyright 2021- <strong>Wonder Developers</strong> ALL rights reserved&gt; 
 		</p>
 	</footer>
 </body>
