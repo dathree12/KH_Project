@@ -12,7 +12,7 @@
 	List<Board> sortlist = (ArrayList)request.getAttribute("sortlist");
 	//System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
-	//PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
+	PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	String vg = null;
 	
 %>
@@ -31,8 +31,8 @@
 		<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 			<div class="navbar-nav">
 			<a type="button" id="btn-add" class="nav-item nav-link"
-					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>	
-			<a  onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</>
+					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
+			<a  onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
 			<a onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" class="nav-item nav-link">추천순</a>		
 			
 			<div id="searchbox">
@@ -49,10 +49,8 @@
 						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></butto>
 					</div>
 				</div>
-				</form>
 			</div>	
 			</div>	
-		</div>
 	</nav>   
         
     <div id="board_main" class="float_sidebar">
@@ -237,7 +235,7 @@
 	    <div class="container-fluid">
 	        <div class="row">
 	            <div class="card-columns">
-	            <%  for(Board board : list) { %>
+	            <%  for(Board board : sortlist) { %>
 	                <div class="card">
 	                	<a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>&vegan=<%=board.getVeganlist() %>">
 	                    <img src="<%=request.getContextPath()%>/image/<%=board.getBoardImageFile()%>" class="card-img-top" alt="..." id="cardimg"></a>
