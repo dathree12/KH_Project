@@ -8,9 +8,11 @@
 	switch (vtChar) {
 	case '0' : vtPrint = "없음"; break;
 	case '1' : vtPrint = "비건"; break;
-	case '2' : vtPrint = "락토/오보베지테리언"; break;
-	case '3' : vtPrint = "페스코테리언"; break;
-	case '4' : vtPrint = "플렉시테리언"; break;
+	case '2' : vtPrint = "락토 베지테리언"; break;
+	case '3' : vtPrint = "오보 베지테리언"; break;
+	case '4' : vtPrint = "락토/오보 베지테리언"; break;
+	case '5' : vtPrint = "페스코테리언"; break;
+	case '6' : vtPrint = "플렉시테리언"; break;
 	}
 	%>
 <h1>마이페이지 홈</h1>

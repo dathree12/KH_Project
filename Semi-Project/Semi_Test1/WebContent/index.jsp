@@ -190,9 +190,9 @@ display: inline-block;
             String dbPass = "VEF";
    
             if(loginMember != null){
-            	 query = "select * from BOARD WHERE VEGANLIST = ? ";
+            	 query = "select * from BOARD WHERE VEGANLIST = ? ORDER BY BOARD_CREATE_DATE DESC";
             }else{
-             query = "select * from BOARD ";
+             query = "select * from BOARD ORDER BY BOARD_CREATE_DATE DESC";
             }
    
             query1 = "select * from BOARD ORDER BY RECOMMEND DESC";
