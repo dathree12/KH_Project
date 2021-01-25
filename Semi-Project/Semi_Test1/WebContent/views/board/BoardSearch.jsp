@@ -32,7 +32,11 @@
 			<a type="button" id="btn-add" class="nav-item nav-link"
 					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
 			<a onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
-			<a onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" class="nav-item nav-link">추천순</a>		
+			<form action="<%=request.getContextPath()%>/boardsearchreco" method="GET" id="sereco">
+		        <input type="hidden" value="<%=pageSearch.getsearch1()%>" name="searchword">
+		        <input type="hidden" value="<%=pageSearch.getsearch2()%>" name="search_sort">
+		        <button type="submit">추천순</button>
+		      </form class="nav-item nav-link">		
 			
 			<div id="searchbox">
 			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
@@ -269,25 +273,25 @@
 	</div>
       <div id="pageBar" align="center">
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=1&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;&lt;</button>
 			
 			<!-- 이전 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getPrvePage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;</button>
 
 			<!--  10개 페이지 목록 -->
 			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
 				<% if(p == pageInfo.getCurrentPage()){ %>
 					<button disabled><%= p %></button>
 				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= p %>'"><%= p %></button>
+					<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%=p%>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'"><%= p %></button>
 				<% } %>
 			<% } %>
 			
 			<!-- 다음 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getNextPage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&gt;</button>
 			
 			<!-- 맨 끝으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/list?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getMaxPage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&gt;&gt;</button>
 		</div>
 		
 		<script type="text/javascript">

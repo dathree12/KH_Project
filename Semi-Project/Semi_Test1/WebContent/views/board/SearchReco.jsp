@@ -29,8 +29,9 @@
 			<div class="navbar-nav">
 			<a type="button" id="btn-add" class="nav-item nav-link"
 					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
-			<a onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
-			<a onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" class="nav-item nav-link">추천순</a>		
+				<button class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/searchrecipe?search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'" id="buttonf">최신순</button>
+        		<button class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/boardsearchreco'" id="buttonf">추천순</button>
+		
 			
 			<div id="searchbox">
 			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
