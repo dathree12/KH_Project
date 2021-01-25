@@ -13,7 +13,6 @@
 <title>Vegan Friends</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" type="text/css">
 <script src="<%=request.getContextPath() %>/js/jquery-3.5.1.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style-notice.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,7 +24,7 @@
 <body>
 	<header>
 		<div>
-			<img src="<%=request.getContextPath() %>/image/LogoTemp.png" alt="VeganFriends" class="mainLogo">
+			<img src="<%=request.getContextPath() %>/image/LogoTemp.PNG" alt="VeganFriends" class="mainLogo">
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <a class="navbar-brand" href="<%=request.getContextPath()%>">비건 프랜즈</a>
@@ -55,10 +54,10 @@
                     <a class="nav-link" href="<%=request.getContextPath() %>/service">고객센터</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">소개</a>
+                    <a class="nav-link" href="<%= request.getContextPath() %>/aboutus/intro">채식주의 소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">연락처</a>
+                    <a class="nav-link" href="<%= request.getContextPath() %>/aboutus/aboutus">베프 소개</a>
                 </li>
                 <% if(loginMember == null) {%>
                 <li class="nav-item">
