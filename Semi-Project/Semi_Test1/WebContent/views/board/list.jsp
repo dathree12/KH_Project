@@ -187,7 +187,7 @@
 
 		    </script>
 		    
-		  <script type="text/javascript">
+		<script type="text/javascript">
  		/* situation종류 전체선택버튼 */
 		    function allCheckFunc2(obj) {
 		    		$("[name=situsort]").prop("checked", $(obj).prop("checked") );
@@ -226,9 +226,15 @@
 		    		});
 		    	});
 		    });
-		    }
         </script>
-
+	<script type="text/javascript">
+		function check() {
+			if ($("input:checkbox[name='vgoption']").is(":checked")==false && $("input:checkbox[name='situoption']").is(":checked")==false) {
+				alert("적어도 하나는 선택하여 주십시오.");
+				return;
+			}
+		}
+	</script>
          <div class="bs-example">
 	    <div class="container-fluid">
 	        <div class="row">
