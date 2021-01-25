@@ -27,7 +27,7 @@
 			<img src="<%=request.getContextPath() %>/image/LogoTemp.PNG" alt="VeganFriends" class="mainLogo">
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <a class="navbar-brand" href="<%=request.getContextPath()%>">비건 프랜즈</a>
+        <a class="navbar-brand" href="<%=request.getContextPath()%>">베지테리안 프렌즈</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto topnav">
                 <li class="nav-item">
