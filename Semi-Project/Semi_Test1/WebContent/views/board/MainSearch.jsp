@@ -1,3 +1,4 @@
+<%@page import="com.kh.board.model.vo.MainSearch"%>
 <%@page import="com.kh.board.model.vo.PageSearch"%>
 <%@page import="com.kh.board.model.vo.PageInfo"%>
 <%@page import="com.kh.board.model.vo.Board"%>
@@ -13,6 +14,7 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	String vg = null;
+	MainSearch mainSearch  = (MainSearch) request.getAttribute("mainSearch");
 	
 %>
 <head>
@@ -269,27 +271,27 @@
 	        </div>
 	    </div>
 	</div> 
-      <div id="pageBar" align="center">
+         <div id="pageBar" align="center">
 			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=1&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;&lt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=1'">&lt;&lt;</button>
 			
 			<!-- 이전 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getPrvePage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 
 			<!--  10개 페이지 목록 -->
 			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
 				<% if(p == pageInfo.getCurrentPage()){ %>
 					<button disabled><%= p %></button>
 				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%=p%>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'"><%= p %></button>
+					<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%=p%>&search=<%=mainSearch.getsearch()%>'"><%= p %></button>
 				<% } %>
 			<% } %>
 			
 			<!-- 다음 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getNextPage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			
 			<!-- 맨 끝으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=<%= pageInfo.getMaxPage() %>&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&gt;&gt;</button>
+			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 		</div>
 		
 		<script type="text/javascript">

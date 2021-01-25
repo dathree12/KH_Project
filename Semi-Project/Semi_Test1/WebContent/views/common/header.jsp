@@ -25,7 +25,7 @@
 <body>
 	<header>
 		<div>
-			<img src="<%=request.getContextPath() %>/image/LogoTemp.png" alt="VeganFriends" class="mainLogo">
+			<img src="<%=request.getContextPath() %>/image/LogoTemp.PNG" alt="VeganFriends" class="mainLogo">
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <a class="navbar-brand" href="<%=request.getContextPath()%>">비건 프랜즈</a>
