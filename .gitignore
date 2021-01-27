@@ -1,5 +1,6 @@
 Servers/
-
+.metadata/
+.classpath
 # Created by https://www.toptal.com/developers/gitignore/api/java,windows,eclipse,intellij,vscode,java-web,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,windows,eclipse,intellij,vscode,java-web,maven
 

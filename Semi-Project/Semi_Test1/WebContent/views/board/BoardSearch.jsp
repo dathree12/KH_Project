@@ -35,6 +35,7 @@ height: 50px;
 
 		<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 			<div class="navbar-nav">
+
 			<button type="button" id="btn-add" class="nav-item nav-link button1"
 					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>	
 			<button onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link button1">최신순</button>
@@ -43,7 +44,7 @@ height: 50px;
         	<input type="hidden" value="<%=pageSearch.getsearch2()%>" name="search_sort">
         	<button type="submit" class="button1">추천순</button>
       		 </form class="nav-item nav-link">
-			
+
 			<div id="searchbox">
 			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
 					<select name="search_sort" class="dropdown">

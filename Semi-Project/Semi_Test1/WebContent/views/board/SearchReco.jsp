@@ -25,7 +25,7 @@
 </style>
 
 <section id="content">
-	<nav class="navbar navbar-expand-md navbar-light bg-light">
+     <nav class="navbar navbar-expand-md navbar-light bg-light">
 		<a href="<%=request.getContextPath() %>/board/list" class="navbar-brand">레시피게시판</a>
 		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 			<span class="navbar-toggler-icon"></span>
@@ -35,9 +35,9 @@
 			<div class="navbar-nav">
 			<a type="button" id="btn-add" class="nav-item nav-link"
 					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
+
 					 <button id="button1" class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/searchrecipe?search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">최신순</button>
         			 <button id="button1" class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/boardsearchreco'">추천순</button>
-				
 			
 			<div id="searchbox">
 			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
@@ -52,11 +52,12 @@
 					<div class="input-group-append">
 						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
 					</div>
-					</form>
+			</form>
 				</div>
+			</div>
+				
 			</div>	
-			</div>	
-	</nav>   
+	</nav>  
         
     <div id="board_main" class="float_sidebar">
       <form method="GET" action=<%=request.getContextPath()%>/recipesorting>

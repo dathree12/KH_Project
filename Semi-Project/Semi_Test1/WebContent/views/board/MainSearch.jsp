@@ -14,7 +14,7 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	String vg = null;
-	MainSearch mainSearch  = (MainSearch) request.getAttribute("mainSearch");
+	MainSearch mainSearch = (MainSearch) request.getAttribute("mainSearch");
 	
 %>
 <head>
@@ -23,7 +23,7 @@
 
 
 <section id="content">
-	<nav class="navbar navbar-expand-md navbar-light bg-light">
+     <nav class="navbar navbar-expand-md navbar-light bg-light">
 		<a href="<%=request.getContextPath() %>/board/list" class="navbar-brand">레시피게시판</a>
 		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 			<span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
 			<div class="navbar-nav">
 			<a type="button" id="btn-add" class="nav-item nav-link"
 					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
-			<a  onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
+			<a onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
 			<a onclick="location.href='<%=request.getContextPath()%>/boardrecommendlist'" class="nav-item nav-link">추천순</a>		
 			
 			<div id="searchbox">
@@ -41,6 +41,7 @@
 					<select name="search_sort" class="dropdown">
 					<option value="s_title" selected>제목</option>
 					<option value="s_id">글쓴이</option>
+					<option value="s_content">내용</option>
 					</select>
 					<div class="input-group">
 						<input type="search" class="form-control" placeholder="Search" name="searchword">
@@ -48,11 +49,11 @@
 					<div class="input-group-append">
 						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
 					</div>
+			</form>
 				</div>
-				</form>
+			</div>
 			</div>	
-			</div>	
-	</nav>   
+	</nav>    
         
     <div id="board_main" class="float_sidebar">
       <form method="GET" action=<%=request.getContextPath()%>/recipesorting>
@@ -270,27 +271,27 @@
 	    </div>
 	</div> 
          <div id="pageBar" align="center">
-			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=1'">&lt;&lt;</button>
-			
-			<!-- 이전 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+         <!-- 맨 처음으로 -->
+         <button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=1'">&lt;&lt;</button>
+         
+         <!-- 이전 페이지로 -->
+         <button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 
-			<!--  10개 페이지 목록 -->
-			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
-				<% if(p == pageInfo.getCurrentPage()){ %>
-					<button disabled><%= p %></button>
-				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%=p%>&search=<%=mainSearch.getsearch()%>'"><%= p %></button>
-				<% } %>
-			<% } %>
-			
-			<!-- 다음 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
-			
-			<!-- 맨 끝으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
-		</div>
+         <!--  10개 페이지 목록 -->
+         <% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
+            <% if(p == pageInfo.getCurrentPage()){ %>
+               <button disabled><%= p %></button>
+            <% } else { %>
+               <button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%=p%>&search=<%=mainSearch.getsearch()%>'"><%= p %></button>
+            <% } %>
+         <% } %>
+         
+         <!-- 다음 페이지로 -->
+         <button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+         
+         <!-- 맨 끝으로 -->
+         <button onclick="location.href='<%= request.getContextPath() %>/mainsearch?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+      </div>
 		
 		<script type="text/javascript">
 		<script type="text/javascript">
