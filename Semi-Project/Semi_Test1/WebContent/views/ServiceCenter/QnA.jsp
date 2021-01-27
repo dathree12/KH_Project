@@ -24,6 +24,7 @@
 				<% if(!loginMember.getUserId().equals("admin")) { %>
 				<div id="qna-toolbar">
 					<div id="writing">
+
 						<button id="QnAbtn" class="btn btn-dark text-white" type="button" onclick="location.href ='<%=request.getContextPath() %>/ServiceCenter/Q&A/write'">글쓰기</button>
 					</div>
 				</div>

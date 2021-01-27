@@ -1,4 +1,4 @@
- package com.kh.board.controller;
+  package com.kh.board.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +35,6 @@ public class BoardSearchList extends HttpServlet {
 		PageSearch search = null;
 		List<Board> list = null;
 		
-	
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));

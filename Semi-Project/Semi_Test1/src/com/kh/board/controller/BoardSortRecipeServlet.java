@@ -1,10 +1,12 @@
 package com.kh.board.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +30,7 @@ public class BoardSortRecipeServlet extends HttpServlet {
 		String []situOptions = request.getParameterValues("situsort");
 		String veganOption = "";
 		String situOption = "";
-
+				
 		int i = 0;
 		int j = 0;
 		if(veganOptions != null) {
@@ -50,7 +52,8 @@ public class BoardSortRecipeServlet extends HttpServlet {
 			}
 		};		
 		System.out.println(veganOption + "이랑" + situOption);
-
+		
+		
 		int page= 0;
 		int listCount = 0;
 		PageInfo info = null;

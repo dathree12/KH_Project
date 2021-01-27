@@ -443,33 +443,7 @@ public class BoardDAO {
 				
 			  
 			String query3 = 
-					  "SELECT * "
-								+ "FROM ("
-								+    "SELECT ROWNUM AS RNUM, "
-								+           "BOARD_NO, "
-								+ 			"BOARD_TITLE, "
-								+ 			"USER_ID, "
-								+ 			"BOARD_CREATE_DATE, "
-								+ 			"BOARD_IMAGEF_FILE, "
-								+  			"BOARD_READCOUNT, "
-								+			"VEGANLIST, "
-								+     		"STATUS, "
-								+			"RECOMMEND"
-								+ 	 "FROM ("
-								+ 	    "SELECT B.BOARD_NO, "
-								+ 			   "B.BOARD_TITLE, "
-								+  			   "M.USER_ID, "
-								+ 			   "B.BOARD_CREATE_DATE, "
-								+ 			   "B.BOARD_IMAGEF_FILE, "
-								+ 			   "B.BOARD_READCOUNT, "
-								+			   "B.VEGANLIST, "
-								+ 	   		   "B.STATUS, "
-								+			   "B.RECOMMEND"
-								+ 		"FROM BOARD B "
-								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
-								+ 		"WHERE B.STATUS = 'Y' AND   B.BOARD_CONTENT LIKE '%' || ? || '%' ORDER BY B.BOARD_CREATE_DATE DESC"
-								+ 	 ")"
-								+ ") WHERE RNUM BETWEEN ? and ?";
+					"SELECT * FROM (SELECT ROWNUM AS RNUM, BOARD_NO, BOARD_TITLE, USER_ID, BOARD_CREATE_DATE, BOARD_IMAGEF_FILE, BOARD_READCOUNT, VEGANLIST, STATUS, RECOMMEND FROM (SELECT B.BOARD_NO, B.BOARD_TITLE, M.USER_ID, B.BOARD_CREATE_DATE, B.BOARD_IMAGEF_FILE, B.BOARD_READCOUNT, B.VEGANLIST, B.STATUS, B.RECOMMEND FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) WHERE B.STATUS = 'Y' AND B.BOARD_CONTENT LIKE '%' || ? || '%'  ORDER BY B.BOARD_CREATE_DATE DESC)) WHERE RNUM BETWEEN ? and ?";
 			
 			try {
 			         if(searchoption.equals("s_title")) {
@@ -521,6 +495,8 @@ public class BoardDAO {
 					close(pstmt);
 				}
 			
+			System.out.println(searchword);
+			System.out.println(searchoption);
 			System.out.println("1"+list);
 			return list;
 			
@@ -679,8 +655,7 @@ public class BoardDAO {
 				         }
 			       
 			        rs = pstmt.executeQuery();
-			        
-			     
+			       
 			        
 			        while (rs.next()) {
 					Board board = new Board(); 
@@ -704,11 +679,11 @@ public class BoardDAO {
 					close(pstmt);
 				}
 			
-			System.out.println("SEARCHRECO"+list);
 			return list;
 		}
 		
 		//게시판 검색 필터 비건별, 상황별 
+
 		public List<Board> sortingRecipe(Connection conn, String veganOptions, String situOptions, PageInfo info) {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -745,17 +720,91 @@ public class BoardDAO {
 				
 			
 			try {
-			        	String replace1 = query.replace("#vg", veganOptions);
-			        	//System.out.println("첫번째쿼리"+replace1);
-			        	System.out.println(situOptions);
-			        	String replace2 = replace1.replace("#situ", situOptions);
-			        	System.out.println("두번째쿼리"+replace2);
-			        	pstmt = conn.prepareStatement(replace2);
-//			         	pstmt.setInt(1, info.getStartList());
-//			         	pstmt.setInt(2, info.getEndList());
-			       
+	        	String replace1 = query.replace("#vg", veganOptions);
+	        	//System.out.println("첫번째쿼리"+replace1);
+	        	System.out.println(situOptions);
+	        	String replace2 = replace1.replace("#situ", situOptions);
+	        	System.out.println("두번째쿼리"+replace2);
+	        	pstmt = conn.prepareStatement(replace2);
+//	         	pstmt.setInt(1, info.getStartList());
+//	         	pstmt.setInt(2, info.getEndList());
+	       
+	        rs = pstmt.executeQuery();
+	      
+	        
+	        while (rs.next()) {
+			Board board = new Board(); 
+			
+			board.setBoardNo(rs.getInt("BOARD_NO"));
+			board.setRowNum(rs.getInt("RNUM"));
+			board.setBoardTitle(rs.getString("BOARD_TITLE"));
+			board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
+			board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+			board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+			board.setUserId(rs.getString("USER_ID"));
+			board.setVeganlist(rs.getString("VEGANLIST"));
+			
+			sortlist.add(board);				
+			
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+	
+	System.out.println("1"+sortlist);
+	return sortlist;
+	
+}
+
+		public List<Board> mainSearch(Connection conn, String search, PageInfo info) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Board> list = new ArrayList<>();
+					
+			String query = 
+					  "SELECT * "
+								+ "FROM ("
+								+    "SELECT ROWNUM AS RNUM, "
+								+           "BOARD_NO, "
+								+ 			"BOARD_TITLE, "
+								+ 			"USER_ID, "
+								+ 			"BOARD_CREATE_DATE, "
+								+ 			"BOARD_IMAGEF_FILE, "
+								+  			"BOARD_READCOUNT, "
+								+			"VEGANLIST, "
+								+     		"STATUS, "
+								+			"RECOMMEND, "
+								+			"BOARD_CONTENT "
+								+ 	 "FROM ("
+								+ 	    "SELECT B.BOARD_NO, "
+								+ 			   "B.BOARD_TITLE, "
+								+  			   "M.USER_ID, "
+								+ 			   "B.BOARD_CREATE_DATE, "
+								+ 			   "B.BOARD_IMAGEF_FILE, "
+								+ 			   "B.BOARD_READCOUNT, "
+								+			   "B.VEGANLIST, "
+								+ 	   		   "B.STATUS, "
+								+			   "B.RECOMMEND, "
+								+			   "B.BOARD_CONTENT "
+								+ 		"FROM BOARD B "
+								+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NUM) "
+								+ 		"WHERE B.STATUS = 'Y' AND  (M.USER_ID LIKE '%' || ? || '%' OR B.BOARD_TITLE LIKE '%' || ? || '%' OR B.BOARD_CONTENT LIKE '%' || ? || '%') ORDER BY B.BOARD_CREATE_DATE DESC"
+								+ 	 ")"
+								+ ") WHERE RNUM BETWEEN ? and ?";
+				
+			
+			try {
+					pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, search);
+					pstmt.setString(2, search);
+					pstmt.setString(3, search);
+					pstmt.setInt(4, info.getStartList());
+					pstmt.setInt(5, info.getEndList());
+				
+				
 			        rs = pstmt.executeQuery();
-			      
 			        
 			        while (rs.next()) {
 					Board board = new Board(); 
@@ -768,8 +817,9 @@ public class BoardDAO {
 					board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
 					board.setUserId(rs.getString("USER_ID"));
 					board.setVeganlist(rs.getString("VEGANLIST"));
+					board.setRecommned(rs.getInt("RECOMMEND"));
 					
-					sortlist.add(board);				
+					list.add(board);				
 					
 					} 
 				} catch (Exception e) {
@@ -778,8 +828,6 @@ public class BoardDAO {
 					close(pstmt);
 				}
 			
-			System.out.println("1"+sortlist);
-			return sortlist;
-			
-	}
+			return list;
+		}
 }

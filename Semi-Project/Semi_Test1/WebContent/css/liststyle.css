@@ -1,9 +1,5 @@
 @charset "UTF-8";
-    a {
-      text-decoration:none;
-      color : #848484;
-    }
-      #board_top {
+          #board_top {
         display: flex;
         justify-content: flex-end;
       }
@@ -13,11 +9,13 @@
       #board_main {
        display: inline-block;
         padding: none;
-        border: solid 1px;
+        border: solid 0px;
         float: left;
-       
+        background-color: #F9E999;
+        border-radius: 12px;
       }
       #board_option {
+	
         flex: 1;
         padding: 1rem 0;
       }
@@ -29,14 +27,8 @@
         justify-content: center;
     
       
-       
       }
-     
-      img {
-        width: 185px;
-        height: 105px;
-      }
-      
+
    #content1{
 	float: left;
    }
@@ -69,4 +61,24 @@
 
   .text-muted {
     font-size: 15px;
+  }
+  
+  #searchbox {
+  	float: right;
+  }
+  
+  #vgtype {
+  font-size: 24px;
+  }
+   #typefactor {
+  font-size: 20px;
+  }
+  #typeimage {
+  	width: 30px;
+   	height: 30px;
+  }
+  
+  #optionf {
+  height: 50px;
+  width: 100px;
   }

@@ -57,6 +57,7 @@ public class BoardWriteServlet extends HttpServlet {
 		//배열값을 문자열로 변환 
 		String str = Arrays.toString(situation);
 		
+		 
 		
 //		// 파일에 대한 정보를 가져올 때
 		String boardImageFile = mr.getOriginalFileName("boardImageFile");	
