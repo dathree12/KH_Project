@@ -1,6 +1,10 @@
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/views/mypage/common/mymenu.jsp" %>
+<%@ include file="/views/common/header.jsp"%>
+    
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPageStyles.css" type="text/css">
+	
 <%
 	String vt = loginMember.getVegType();
 	char vtChar = vt.charAt(1);
@@ -13,27 +17,27 @@
 	case '4' : vtPrint = "플렉시테리언"; break;
 	}
 	%>
-<h1>마이페이지 홈</h1>
-<div>
-<h2>내 정보</h2>
-<table>
-<tr>
-	<th>아이디</th>
-	<td><%= loginMember.getUserId() %></td>
-</tr>
-<tr>
-	<th>이메일</th>
-	<td><%= loginMember.getEmail() %></td>
-</tr>
-<tr>
-	<th>선호채식</th>
-	<td id="vtPrint"></td>
-</tr>
-</table>
-</div>
-<div>
-</div>
-</section>
+
+    <section id="myPage-container" class="container-md d-flex justify-content-center CS1">
+	        <form>
+	        <div class="form-group">
+	        <h1 class="CS2">마이페이지 홈</h1>
+	        </div>
+            <div class="form-group">
+            	<label class="mpLabel" for="userId">아이디</label>
+            	<p id="userId"><%= loginMember.getUserId() %></p>
+            </div>
+	        <div class="form-group">
+	            <label class="mpLabel" for="userEmail">이메일</label>
+				<p id="userEmail"><%= loginMember.getEmail() %></p>
+            </div>
+            <div class="form-group">
+	            <label class="mpLabel" for="vtPrint">선호채식</label>
+	            <p id="vtPrint"></p>
+            </div>
+            </form>
+    </section>
+
 <script>
 	$(document).ready(() => {
 		$("#vtPrint").text("<%= vtPrint %>");
