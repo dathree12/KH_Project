@@ -12,7 +12,7 @@
 	List<Board> sortlist = (ArrayList)request.getAttribute("sortlist");
 	//System.out.println(list);
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
-	//PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
+	PageSearch pageSearch  = (PageSearch) request.getAttribute("pageSearch");
 	String vg = null;
 	
 %>
@@ -50,8 +50,8 @@
 					</div>
 			</form>
 				</div>
+
 			</div>
-				
 			</div>	
 	</nav>     
         

@@ -19,6 +19,12 @@
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/liststyle.css" type="text/css">
 </head>
 
+<style>
+.button1{
+width: 100px;
+height: 50px;
+}
+</style>
 
 <section id="content">
      <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -29,29 +35,31 @@
 
 		<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 			<div class="navbar-nav">
-			<a type="button" id="btn-add" class="nav-item nav-link"
-					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
-			<a onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link">최신순</a>
-			<form action="<%=request.getContextPath()%>/boardsearchreco" method="GET" id="sereco">
-		        <input type="hidden" value="<%=pageSearch.getsearch1()%>" name="searchword">
-		        <input type="hidden" value="<%=pageSearch.getsearch2()%>" name="search_sort">
-		        <button type="submit">추천순</button>
-		      </form class="nav-item nav-link">		
-			
+
+			<button type="button" id="btn-add" class="nav-item nav-link button1"
+					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</button>	
+			<button onclick="location.href='<%=request.getContextPath()%>/board/list'" class="nav-item nav-link button1">최신순</button>
+			 <form action="<%=request.getContextPath()%>/boardsearchreco" method="GET" id="sereco">
+        	<input type="hidden" value="<%=pageSearch.getsearch1()%>" name="searchword">
+        	<input type="hidden" value="<%=pageSearch.getsearch2()%>" name="search_sort">
+        	<button type="submit" class="button1">추천순</button>
+      		 </form class="nav-item nav-link">
+
 			<div id="searchbox">
 			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
 					<select name="search_sort" class="dropdown">
-					<option value="s_title" selected>제목</option>
-					<option value="s_id">글쓴이</option>
-					<option value="s_content">내용</option>
+						<option value="s_title" selected>제목</option>
+						<option value="s_id">글쓴이</option>
+						<option value="s_content">내용</option>
 					</select>
-					<div class="input-group">
-						<input type="search" class="form-control" placeholder="Search" name="searchword" />
-					</div>
-					<div class="input-group-append">
-						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></butto>
-					</div>
-				</div>
+						<div class="input-group">
+							<input type="search" class="form-control" placeholder="Search" name="searchword" />
+						</div>
+						<div class="input-group-append">
+							<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+						</div>
+					</form>
+			</div>
 			</div>	
 			</div>	
 	</nav>   
@@ -271,7 +279,7 @@
 	        </div>
 	    </div>
 	</div>
-      <div id="pageBar" align="center">
+ <div id="pageBar" align="center">
 			<!-- 맨 처음으로 -->
 			<button onclick="location.href='<%= request.getContextPath() %>/searchrecipe?page=1&search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">&lt;&lt;</button>
 			

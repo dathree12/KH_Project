@@ -220,6 +220,37 @@ public class BoardService {
 		return searchlist;
 	}
 	
+
+	public List<Board> getMainList() {
+		Connection conn = getConnection();
+		
+		List<Board> mainlist = new BoardDAO().mainList(conn);
+		
+		close(conn);	
+		
+		return mainlist;
+	}
+	
+	public List<Board> getMainVegan(String vegan) {
+		Connection conn = getConnection();
+		
+		List<Board> veganlist = new BoardDAO().mainVegan(conn, vegan);
+		
+		close(conn);	
+		
+		return veganlist;
+	}
+	
+	public List<Board> getMainVegan1() {
+		Connection conn = getConnection();
+		
+		List<Board> veganlist1 = new BoardDAO().mainVegan1(conn);
+		
+		close(conn);	
+		
+		return veganlist1;
+	}
+	
 	
 }
 	

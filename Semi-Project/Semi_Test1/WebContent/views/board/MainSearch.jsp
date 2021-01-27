@@ -44,7 +44,7 @@
 					<option value="s_content">내용</option>
 					</select>
 					<div class="input-group">
-						<input type="search" class="form-control" placeholder="Search" name="searchword" />
+						<input type="search" class="form-control" placeholder="Search" name="searchword">
 					</div>
 					<div class="input-group-append">
 						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
@@ -52,7 +52,6 @@
 			</form>
 				</div>
 			</div>
-				
 			</div>	
 	</nav>    
         
@@ -233,7 +232,6 @@
 		    	});
 		    });
         </script>
-     </div>
      <div class="bs-example">
 	    <div class="container-fluid">
 	        <div class="row">

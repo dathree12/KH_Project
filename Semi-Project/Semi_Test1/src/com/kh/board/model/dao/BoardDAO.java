@@ -830,4 +830,100 @@ public class BoardDAO {
 			
 			return list;
 		}
+		
+		public List<Board> mainList(Connection conn){
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Board> list = new ArrayList<>();
+			
+			String query = "select * from BOARD WHERE STATUS = 'Y' ORDER BY RECOMMEND DESC ";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+						
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Board board = new Board();
+					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
+					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
+					list.add(board);
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+		return list;
+		}
+		
+		public List<Board> mainVegan(Connection conn, String vegan){
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Board> list = new ArrayList<>();
+			
+			String query = "select * from BOARD WHERE VEGANLIST = ? AND STATUS = 'Y' ";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+						
+				pstmt.setString(1, vegan);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Board board = new Board();
+					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
+					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
+					
+					list.add(board);
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+		return list;
+		}
+
+		public List<Board> mainVegan1(Connection conn){
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Board> list = new ArrayList<>();
+			
+			String query = "select * from BOARD WHERE STATUS = 'Y' ORDER BY BOARD_CREATE_DATE DESC ";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+										
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Board board = new Board();
+					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
+					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
+					
+					list.add(board);
+				}
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+		return list;
+		}
+
+
 }

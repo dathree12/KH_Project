@@ -17,6 +17,12 @@
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/liststyle.css" type="text/css">
 </head>
 
+<style>
+#button1{
+	height: 50px;
+	width: 100px;
+}
+</style>
 
 <section id="content">
      <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -29,9 +35,9 @@
 			<div class="navbar-nav">
 			<a type="button" id="btn-add" class="nav-item nav-link"
 					onclick="location.href ='<%=request.getContextPath() %>/board/write'" onfocus="checklogin()">글쓰기</a>	
-				<button class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/searchrecipe?search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'" id="buttonf">최신순</button>
-        		<button class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/boardsearchreco'" id="buttonf">추천순</button>
-		
+
+					 <button id="button1" class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/searchrecipe?search_sort=<%=pageSearch.getsearch2()%>&searchword=<%=pageSearch.getsearch1() %>'">최신순</button>
+        			 <button id="button1" class="nav-item nav-link" onclick="location.href='<%=request.getContextPath()%>/boardsearchreco'">추천순</button>
 			
 			<div id="searchbox">
 			<form method="GET" class="form-inline" action=<%=request.getContextPath()%>/searchrecipe>
@@ -41,7 +47,7 @@
 					<option value="s_content">내용</option>
 					</select>
 					<div class="input-group">
-						<input type="search" class="form-control" placeholder="Search" name="searchword" />
+						<input type="search" class="form-control" placeholder="Search" name="searchword">
 					</div>
 					<div class="input-group-append">
 						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
@@ -230,7 +236,6 @@
 		    	});
 		    });
         </script>
-     </div>
      <div class="bs-example">
 	    <div class="container-fluid">
 	        <div class="row">
