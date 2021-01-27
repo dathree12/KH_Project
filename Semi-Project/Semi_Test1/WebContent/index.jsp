@@ -65,7 +65,6 @@ List<Board> list1 = new ArrayList<>();
 	background-color: #b8de6f;
 	left: 50%;
 	transform:translate(-50%, -50%); 
-
 	}
 	
 	#searchbar{
@@ -104,7 +103,6 @@ List<Board> list1 = new ArrayList<>();
 	
 	#relist{
 	text-align: center;
-
 	margin:5px auto;
 	width: 700px;
 	min-height: 300px;
@@ -148,26 +146,19 @@ List<Board> list1 = new ArrayList<>();
 	display: inline-block;
 	transition: background-color 0.6s ease;
 }
-
 #dot{
-
 	clear: both;
 }
-
 .list{
 	text-align: center;
 	
 }
-
-
 #img_text{
 height: 50px;
 width: 300px;
 position: relative;
 display: inline-block;
-
 }
-
 </style>
 
 
@@ -190,9 +181,9 @@ display: inline-block;
             String dbPass = "VEF";
    
             if(loginMember != null){
-            	 query = "select * from BOARD WHERE VEGANLIST = ? ORDER BY BOARD_CREATE_DATE ";
+            	 query = "select * from BOARD WHERE VEGANLIST = ? ORDER BY BOARD_CREATE_DATE DESC";
             }else{
-             query = "select * from BOARD ";
+             query = "select * from BOARD ORDER BY BOARD_CREATE_DATE DESC";
             }
    
             query1 = "select * from BOARD ORDER BY RECOMMEND DESC";
@@ -319,8 +310,6 @@ display: inline-block;
 	        pauseOnHover: false,
 	    });
 	});
-
-
 </script>
 </section>
 
