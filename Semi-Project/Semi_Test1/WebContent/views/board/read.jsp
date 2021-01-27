@@ -93,6 +93,14 @@ svg{
 	border: solid 1px green;
 	font-weight: bolder;
 }
+.main_slideImg{
+width: 250px;
+height: 250px;
+}
+
+#other-recommend{
+text-align: center;
+}
 </style>
 
 <section id="content">
