@@ -1,3 +1,4 @@
+<%@page import="com.kh.board.model.service.BoardService"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.DriverManager"%>
@@ -18,8 +19,18 @@
 <script src="js/slick.js"></script>
     
 <%
-List<Board> list = new ArrayList<>();
-List<Board> list1 = new ArrayList<>();
+
+List<Board> list = new BoardService().getMainVegan1();	
+	
+
+List<Board> list1 = new BoardService().getMainList();
+
+if(loginMember != null){
+	list =  new BoardService().getMainVegan(loginMember.getVegType());	
+	System.out.println("type : " + loginMember.getVegType());
+}
+
+
 %>
 
 <style>
@@ -164,68 +175,7 @@ display: inline-block;
 
 <section id="today_list">
 <%
-      // 1. JDBC 드라이버 로딩
-      Class.forName("oracle.jdbc.driver.OracleDriver");
-  	
-      Connection conn = null; // DBMS와 Java연결객체
-      PreparedStatement pstmt = null; // SQL구문을 실행
-      PreparedStatement pstmt1 = null; // SQL구문을 실행
-      ResultSet rs = null; // SQL구문의 실행결과를 저장
-      ResultSet rs1 = null; // SQL구문의 실행결과를 저장
-      String query = null;
-      String query1 = null;
-      try
-      {
-            String jdbcDriver = "jdbc:oracle:thin:@localhost:1521:xe";
-            String dbUser = "VEF";
-            String dbPass = "VEF";
-   
-            if(loginMember != null){
-            	 query = "select * from BOARD WHERE VEGANLIST = ? ORDER BY BOARD_CREATE_DATE DESC";
-            }else{
-             query = "select * from BOARD ORDER BY BOARD_CREATE_DATE DESC";
-            }
-   
-            query1 = "select * from BOARD ORDER BY RECOMMEND DESC";
-            // 2. 데이터베이스 커넥션 생성
-            conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-   
-            // 3. Statement 생성
-            pstmt = conn.prepareStatement(query);
-            pstmt1 = conn.prepareStatement(query1);
-   
-            if(loginMember != null){
-           	pstmt.setString(1, loginMember.getVegType());
-           }
-            // 4. 쿼리 실행
-            rs = pstmt.executeQuery();
-            rs1 = pstmt1.executeQuery();
-   
-          
-            // 5. 쿼리 실행 결과 출력
-            while(rs1.next()){
-            	Board board1 = new Board();
-            	board1.setBoardNo(rs1.getInt("BOARD_NO"));
-            	board1.setBoardTitle(rs1.getString("BOARD_TITLE"));
-            	board1.setBoardImageFile(rs1.getString("BOARD_IMAGEF_FILE"));
-            	list1.add(board1);
-            }
-            
-            while(rs.next())
-            {
-            	Board board = new Board();
-            	board.setBoardNo(rs.getInt("BOARD_NO"));
-            	board.setBoardTitle(rs.getString("BOARD_TITLE"));
-            	board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
-            	list.add(board);
-            }
-           
-      }catch(SQLException ex){
-            ex.printStackTrace();
-      }finally{
-      
-      }
-      
+    
      
 %>
 <br>
@@ -250,7 +200,6 @@ display: inline-block;
 </section>
 
 <div id = "searchbar">
-
 	<div id="search_main">
 	<form  method="GET" action=<%=request.getContextPath()%>/mainsearch>
 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="search_icon">
@@ -261,11 +210,6 @@ display: inline-block;
 	<button  id="search_button" type="submit" class="btn btn-primary btn-lg"> 검색 </button>
 	</form>
 	</div>
-	
-	
-	
-	
-	
 </div>
 
 

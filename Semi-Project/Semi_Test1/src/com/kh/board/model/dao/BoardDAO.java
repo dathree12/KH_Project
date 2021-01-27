@@ -836,7 +836,7 @@ public class BoardDAO {
 			ResultSet rs = null;
 			List<Board> list = new ArrayList<>();
 			
-			String query = "select * from BOARD ORDER BY RECOMMEND ";
+			String query = "select * from BOARD WHERE STATUS = 'Y' ORDER BY RECOMMEND DESC ";
 			
 			try {
 				pstmt = conn.prepareStatement(query);
@@ -846,7 +846,8 @@ public class BoardDAO {
 				while(rs.next()) {
 					Board board = new Board();
 					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
-					
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
+					board.setBoardNo(rs.getInt("BOARD_NO"));
 					list.add(board);
 				}
 				
@@ -864,7 +865,7 @@ public class BoardDAO {
 			ResultSet rs = null;
 			List<Board> list = new ArrayList<>();
 			
-			String query = "select * from BOARD WHERE VEGANLIST = ? ";
+			String query = "select * from BOARD WHERE VEGANLIST = ? AND STATUS = 'Y' ";
 			
 			try {
 				pstmt = conn.prepareStatement(query);
@@ -876,6 +877,8 @@ public class BoardDAO {
 				while(rs.next()) {
 					Board board = new Board();
 					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
+					board.setBoardNo(rs.getInt("BOARD_NO"));
 					
 					list.add(board);
 				}
@@ -894,7 +897,7 @@ public class BoardDAO {
 			ResultSet rs = null;
 			List<Board> list = new ArrayList<>();
 			
-			String query = "select * from BOARD ORDER BY BOARD_CREATE_DATE DESC ";
+			String query = "select * from BOARD WHERE STATUS = 'Y' ORDER BY BOARD_CREATE_DATE DESC ";
 			
 			try {
 				pstmt = conn.prepareStatement(query);
@@ -904,8 +907,8 @@ public class BoardDAO {
 				while(rs.next()) {
 					Board board = new Board();
 					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
+					board.setBoardTitle(rs.getString("BOARD_TITLE"));
 					board.setBoardNo(rs.getInt("BOARD_NO"));
-					
 					
 					list.add(board);
 				}
