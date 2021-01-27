@@ -848,6 +848,7 @@ public class BoardDAO {
 					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
 					board.setBoardTitle(rs.getString("BOARD_TITLE"));
 					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
 					list.add(board);
 				}
 				
@@ -879,6 +880,7 @@ public class BoardDAO {
 					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
 					board.setBoardTitle(rs.getString("BOARD_TITLE"));
 					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
 					
 					list.add(board);
 				}
@@ -909,6 +911,7 @@ public class BoardDAO {
 					board.setBoardImageFile(rs.getString("BOARD_IMAGEF_FILE"));
 					board.setBoardTitle(rs.getString("BOARD_TITLE"));
 					board.setBoardNo(rs.getInt("BOARD_NO"));
+					board.setVeganlist(rs.getString("VEGANLIST"));
 					
 					list.add(board);
 				}

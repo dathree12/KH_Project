@@ -184,7 +184,7 @@ display: inline-block;
         <div id="today">
         <% int count1 = 0;  for(Board board1 : list1) { count1++; if(count1>16){break;} %>
           <div class="list" >
-          <a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board1.getBoardNo() %>"><img src="image/<%=board1.getBoardImageFile()%>" class="m_img"></a>
+          <a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board1.getBoardNo() %>&vegan=<%=board1.getVeganlist()%>"><img src="image/<%=board1.getBoardImageFile()%>" class="m_img"></a>
           <br><strong id="title"><%=board1.getBoardTitle() %></strong>
           </div>
      <% } %>
@@ -225,7 +225,7 @@ display: inline-block;
 <div id="main_view">
  <% int count = 0;  for(Board board : list) { count++; if(count>9){break;} %>
           <div id="content1" class="content" >
-          <a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>"><img src="image/<%=board.getBoardImageFile()%>" class="main_img"> </a><br>
+          <a href="<%=request.getContextPath() %>/board/view?boardNo=<%= board.getBoardNo() %>&vegan=<%=board.getVeganlist()%>"><img src="image/<%=board.getBoardImageFile()%>" class="main_img"> </a><br>
        	  <a><%= board.getBoardTitle() %></a>
           </div>
          
